@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import {createUser} from '../auth_api/route'
+import {createUser} from '../../auth_api/route'
 
 const CreateUserPage = () => {
   const [user, setUser] = useState({

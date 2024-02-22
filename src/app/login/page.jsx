@@ -1,6 +1,7 @@
 "use client";
 // pages/LoginPage.js
 import React, { useState } from "react";
+import {loginUser , registerUser} from '../auth_api/route'
 
 const LoginPage = () => {
   const [studentId, setStudentId] = useState("");
@@ -9,8 +10,14 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Your login logic here
-    console.log("Student ID:", studentId);
-    console.log("Password:", password);
+    const userData = {
+      user_name: studentId,
+      password: password,
+    };
+    loginUser(userData);
+    console.log("user_name",studentId);
+    console.log("password",password);
+
   };
 
   return (
@@ -64,7 +71,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
                 id="remember-me"
@@ -88,7 +95,7 @@ const LoginPage = () => {
                 Forgot your password?
               </a>
             </div>
-          </div>
+          </div> */}
 
           <div>
             <button

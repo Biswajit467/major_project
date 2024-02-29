@@ -1,7 +1,7 @@
 "use client";
 // pages/LoginPage.js
 import React, { useState } from "react";
-import {loginUser , registerUser} from '../auth_api/route'
+import { loginUser, registerUser } from "../auth_api/route";
 
 const LoginPage = () => {
   const [studentId, setStudentId] = useState("");
@@ -11,13 +11,12 @@ const LoginPage = () => {
     e.preventDefault();
     // Your login logic here
     const userData = {
-      user_name: studentId,
+      student_id: studentId,
       password: password,
     };
     loginUser(userData);
-    console.log("user_name",studentId);
-    console.log("password",password);
-
+    console.log("student_id", studentId);
+    console.log("password", password);
   };
 
   return (
@@ -70,32 +69,6 @@ const LoginPage = () => {
               />
             </div>
           </div>
-
-          {/* <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
-              >
-                Remember me
-              </label>
-            </div>
-
-            <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Forgot your password?
-              </a>
-            </div>
-          </div> */}
 
           <div>
             <button

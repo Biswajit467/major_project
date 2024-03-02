@@ -6,17 +6,27 @@ import { loginUser, registerUser } from "../auth_api/route";
 const LoginPage = () => {
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Your login logic here
-    const userData = {
-      student_id: studentId,
-      password: password,
-    };
-    loginUser(userData);
-    console.log("student_id", studentId);
-    console.log("password", password);
+    try {
+      const userData = {
+        student_id: studentId,
+        password: password,
+      };
+      const response = await loginUser(userData);
+      setStudentId("");
+      setPassword("");
+      console.log("This is login response : ", response);
+    } catch (error) {
+      setMessage(error.response?.data?.error);
+
+      setTimeout(() => {
+        setMessage("");
+      }, 4000);
+      console.log(error);
+    }
   };
 
   return (
@@ -100,6 +110,7 @@ const LoginPage = () => {
             </button>
           </div>
         </form>
+        {message && <p className="text-red-500 text-center">{message}</p>}
       </div>
     </div>
   );

@@ -52,7 +52,7 @@ const CreateUserPage = () => {
             htmlFor="student_id"
             className="block text-sm font-medium text-gray-700 dark:text-white"
           >
-            User Name:
+            Student_id:
           </label>
           <input
             type="text"

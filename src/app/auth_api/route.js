@@ -33,6 +33,14 @@ export const loginUser = async (userData) => {
     }
 
     console.log("data from login function", response);
+
+    // const jsonResponse = await response.json();
+    // console.log("this is jsonResopnse ",jsonResponse)
+
+    const token = response.data.student_id_token;
+    console.log("this is token", token)
+    localStorage.setItem("student_id_token", token);
+
     return { data: response.data };
   } catch (error) {
     console.error("Error logging in user:", error.message);

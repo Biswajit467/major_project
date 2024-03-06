@@ -7,6 +7,7 @@ const LoginPage = () => {
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const[user_id , setUser_id] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,9 +17,10 @@ const LoginPage = () => {
         password: password,
       };
       const response = await loginUser(userData);
+      setUser_id(response?.data?.user?.id)
       setStudentId("");
       setPassword("");
-      console.log("This is login response : ", response);
+      // console.log("This is login response from LoginPage component : ", response);
     } catch (error) {
       setMessage(error.response?.data?.error);
 
@@ -28,6 +30,8 @@ const LoginPage = () => {
       console.log(error);
     }
   };
+
+  console.log('user_id' , user_id)
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

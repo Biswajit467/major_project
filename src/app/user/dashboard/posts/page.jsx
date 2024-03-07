@@ -1,20 +1,31 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { MAIN_URL } from "@/app/common/urls";
+import { addPost } from "@/app/auth_api/route";
 
 const AddPost = () => {
-  const [title, setTitle] = useState("");
-  const [img, setImg] = useState("");
-  const [desc, setDesc] = useState("");
-  const [category, setCategory] = useState("");
-  const [token, setToken] = useState("");
+  const [postData, setPostData] = useState({
+    title: "",
+    img: "",
+    desc: "",
+    category: "",
+    token: "",
+    uid: 6, // we set the uid dynamically letter on ,for now it is 6 and 6 is holla user's uid.
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setPostData((prevData) => ({
+      ...postData,
+      [name]: value,
+    }));
+  };
 
   useEffect(() => {
     const tokenFromStorage = localStorage.getItem("student_id_token");
     if (tokenFromStorage) {
-      setToken(tokenFromStorage);
+      postData.token = tokenFromStorage;
     }
     console.log("this is token from add post component", tokenFromStorage);
   }, []);
@@ -23,32 +34,17 @@ const AddPost = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        `${MAIN_URL}add-post/`,
-        {
-          title,
-          img,
-          desc,
-          category,
-          uid: 6, // we set the uid dynamicaly letter
-        },
-        {
-          headers: {
-            Authorization: token, // Pass token in headers
-          },
-        }
-      );
-      console.log(response.data);
+      const token = postData.token;
+      const response = await addPost(postData, token);
+      console.log("Response from AddPost component: ", response);
+      setPostData({
+        title: "",
+        img: "",
+        desc: "",
+        category: "",
+      });
     } catch (error) {
-      console.error("Error adding post:", error);
-      // Handle authentication errors here, e.g., redirect the user to login page
-      if (error.response.status === 401) {
-        // Redirect to login page or show an error message
-        // Example:
-        // history.push("/login");
-        // or
-        // setError("Unauthorized access. Please log in.");
-      }
+      console.log(error);
     }
   };
 
@@ -65,8 +61,10 @@ const AddPost = () => {
           <input
             type="text"
             id="title"
+            name="title"
+            value={postData.title}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-4">
@@ -79,8 +77,10 @@ const AddPost = () => {
           <input
             type="text"
             id="img"
+            name="img"
+            value={postData.img}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={(e) => setImg(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-4">
@@ -92,8 +92,10 @@ const AddPost = () => {
           </label>
           <textarea
             id="desc"
+            name="desc"
+            value={postData.desc}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={handleChange}
           ></textarea>
         </div>
         <div className="mb-4">
@@ -105,9 +107,11 @@ const AddPost = () => {
           </label>
           <input
             type="text"
+            name="category"
+            value={postData.category}
             id="category"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={handleChange}
           />
         </div>
 

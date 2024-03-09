@@ -21,14 +21,10 @@ const ChooseLoginPopup = ({ onClose }) => {
   }, [onClose]);
 
   const handleStudentLogin = () => {
-    // Call function for student login
-    console.log("Student login clicked");
     onClose();
   };
 
   const handleAdminLogin = () => {
-    // Call function for admin login
-    console.log("Admin login clicked");
     onClose();
   };
   const handleConatactWithUs = () =>{

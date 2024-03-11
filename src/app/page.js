@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Script from "next/script";
+import ChooseLoginPopup from "./components/ChooseLoginPopup";
 
 import "./common.css";
 
@@ -10,16 +12,27 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
   return (
     <div>
-      <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center">
+      {showPopup && <ChooseLoginPopup onClose={closePopup} />}
+      {/* <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center"> */}
+      <nav className="bg-0a2351 h-19 p-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
             width="94"
             height="94"
             src="https://img.icons8.com/3d-fluency/94/graduation-cap.png"
             alt="graduation-cap"
-            className="w-24 h-24 transition-transform duration-300 transform hover:scale-110"
+            className="w-20 h-20 transition-transform duration-300 transform hover:scale-110"
           />
           <h1
             id="n"
@@ -33,14 +46,15 @@ export default function Home() {
           <button
             id="btn"
             className="relative overflow-hidden transition-transform duration-300 transform hover:scale-110"
+            onClick={togglePopup}
           >
-            <a href="https://thank-you-two.vercel.app/">
-              <img
-                className="w-16 h-16"
-                src="https://img.icons8.com/nolan/64/toggl-app.png"
-                alt="toggl-app"
-              />
-            </a>
+            {/* <a href="https://thank-you-two.vercel.app/"> */}
+            <img
+              className="w-16 h-16"
+              src="https://img.icons8.com/nolan/64/toggl-app.png"
+              alt="toggl-app"
+            />
+            {/* </a> */}
           </button>
         </div>
       </nav>

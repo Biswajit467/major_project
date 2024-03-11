@@ -18,6 +18,7 @@ export const createUser = async (userData) => {
 };
 
 export const loginUser = async (userData) => {
+  console.log("THIS IS USER DATA:-" ,userData)
   try {
     const FD = new FormData();
     for (const key in userData) {

@@ -1,7 +1,9 @@
-import React, { useRef, useEffect } from "react";
+"use client";
+import React, { useRef, useEffect, useState } from "react";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
 import { SiGooglemessages } from "react-icons/si";
+import Link from "next/link";
 
 const ChooseLoginPopup = ({ onClose }) => {
   const popupRef = useRef(null);
@@ -27,12 +29,12 @@ const ChooseLoginPopup = ({ onClose }) => {
   const handleAdminLogin = () => {
     onClose();
   };
-  const handleConatactWithUs = () =>{
+  const handleConatactWithUs = () => {
     onClose();
-  }
+  };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black bg-opacity-50 backdrop-blur">
+    <div className="fixed top-0 left-0 w-screen h-full flex items-center justify-center z-50 bg-black bg-opacity-50 backdrop-blur">
       <div
         ref={popupRef}
         className="bg-slate-900 rounded-lg shadow-lg p-8 w-96"
@@ -58,33 +60,50 @@ const ChooseLoginPopup = ({ onClose }) => {
           </h2>
           <div className="mb-4 text-white flex flex-col items-center">
             <p className="mb-2">Are You A Student?</p>
-            <button
+            <Link
+              href={{
+                pathname: "/login",
+                query: {
+                  isAdmin: false,
+                },
+              }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mr-2 w-80 flex items-center justify-center"
               onClick={handleStudentLogin}
             >
               {" "}
-              <PiStudentBold  className="w-6 h-6 mr-2"  />
+              <PiStudentBold className="w-6 h-6 mr-2" />
               Login as a Student
-            </button>
+            </Link>
           </div>
           <div className="mb-4 text-white flex  flex-col items-center">
             <p className="mb-2 mr-2">Are You An Admin?</p>
-            <button
+            <Link
+              href={{
+                pathname: "/login",
+                query: {
+                  isAdmin: true,
+                },
+              }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-80  flex items-center justify-center"
               onClick={handleAdminLogin}
             >
               {" "}
-              <MdAdminPanelSettings  className="w-6 h-6 mr-2"  /> Login as an Admin
-            </button>
+              <MdAdminPanelSettings className="w-6 h-6 mr-2" /> Login as an
+              Admin
+            </Link>
           </div>
           <div className="mb-4 text-white flex flex-col items-center">
             <p className="mb-2 text-xs mr-2">
               Or Want To Be Registered As An Admin?
             </p>
-            <button className="bg-slate-700 hover:bg-slate-800 text-white font-semibold py-2 px-4 rounded w-80 flex items-center justify-center" onClick={handleConatactWithUs}>
+            <Link
+              href="/dashboard"
+              className="bg-slate-700 hover:bg-slate-800 text-white font-semibold py-2 px-4 rounded w-80 flex items-center justify-center"
+              onClick={handleConatactWithUs}
+            >
               <SiGooglemessages className="w-6 h-6 mr-2" />
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>

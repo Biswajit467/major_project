@@ -45,16 +45,14 @@ export default function Home() {
         <div className="nav-buttons">
           <button
             id="btn"
-            className="relative overflow-hidden transition-transform duration-300 transform hover:scale-110"
+            className="relative  transition-transform duration-300 transform hover:scale-110"
             onClick={togglePopup}
           >
-            {/* <a href="https://thank-you-two.vercel.app/"> */}
             <img
               className="w-16 h-16"
               src="https://img.icons8.com/nolan/64/toggl-app.png"
               alt="toggl-app"
             />
-            {/* </a> */}
           </button>
         </div>
       </nav>

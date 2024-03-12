@@ -7,7 +7,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 
-const LoginPage = () => {
+const LoginPage = ({searchParams}) => {
+  console.log("searchParams" , searchParams.isAdmin);
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -107,7 +108,7 @@ const LoginPage = () => {
 
                   class="font-semibold text-sm text-gray-400 pb-1 block"
                   for="login"
-                >Student-id</label>
+                >{searchParams.isAdmin === 'true' ? 'Admin-id' : 'student-id'}</label>
                 <input
                   id="student-id"
                   name="student-id"
@@ -157,7 +158,7 @@ const LoginPage = () => {
                   ></span>
                   <span
                     class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10"
-                  >student?</span>
+                  >{ searchParams.isAdmin === 'true' ? 'Admin ?' : 'Student ?'}</span>
                 </button>
 
               </div>

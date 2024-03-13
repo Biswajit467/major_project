@@ -49,12 +49,23 @@ export const loginUser = async (userData) => {
   }
 };
 
-export const addPost = async (postData, token) => {
+export const addPost = async (postData) => {
   console.log("this is postData", postData);
   try {
-    const response = await axios.post(`${MAIN_URL}add-post/`, postData, {
+    const formData = new FormData();
+    formData.append("title", postData.title);
+    formData.append("img", postData.img); // Append the image file
+    formData.append("desc", postData.desc);
+    formData.append("category", postData.category);
+    formData.append("token", postData.token);
+    formData.append("uid", postData.uid);
+
+    console.log("THIS IS FROMDATA FROM ADDPOST ROUTE : ", formData);
+
+    const response = await axios.post(`${MAIN_URL}add-post/`, formData, {
       headers: {
-        Authorization: token,
+        "Content-Type": "multipart/form-data",
+        Authorization: postData.token,
       },
     });
 

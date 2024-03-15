@@ -64,7 +64,7 @@ const ChooseLoginPopup = ({ onClose }) => {
               href={{
                 pathname: "/login",
                 query: {
-                  isAdmin: false,
+                  is_Admin: false,
                 },
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mr-2 w-80 flex items-center justify-center"
@@ -81,7 +81,7 @@ const ChooseLoginPopup = ({ onClose }) => {
               href={{
                 pathname: "/login",
                 query: {
-                  isAdmin: true,
+                  is_Admin: true,
                 },
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-80  flex items-center justify-center"

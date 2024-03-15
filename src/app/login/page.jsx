@@ -51,6 +51,7 @@ const LoginPage = ({ searchParams }) => {
   const sendUserData = () => {
     if (user_id && !isBanned) {
       if (isAdmin) {
+        console.log("isadmin value",isAdmin)
         router.push("admin/dashboard/home");
       } else {
         router.push("user/dashboard/home");
@@ -124,7 +125,7 @@ const LoginPage = ({ searchParams }) => {
                   class="font-semibold text-sm text-gray-400 pb-1 block"
                   for="login"
                 >
-                  {searchParams.isAdmin === "true" ? "Admin-id" : "student-id"}
+                  {searchParams.is_Admin === "true" ? "Admin-id" : "student-id"}
                 </label>
                 <input
                   id="student-id"
@@ -167,7 +168,7 @@ const LoginPage = ({ searchParams }) => {
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-indigo-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-indigo-600 rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
                   <span class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10">
-                    {searchParams.isAdmin === "true" ? "Admin ?" : "Student ?"}
+                    {searchParams.is_Admin === "true" ? "Admin ?" : "Student ?"}
                   </span>
                 </button>
               </div>

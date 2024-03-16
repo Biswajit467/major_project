@@ -5,7 +5,7 @@ import { loginUser, registerUser } from '../auth_api/route'
 import "./login.css"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-
+import NavBar from "../user/userComponents/NavBar";
 
 const LoginPage = () => {
   const [studentId, setStudentId] = useState("");
@@ -41,6 +41,7 @@ const LoginPage = () => {
 
     <div>
       <div id="c">
+  
 
 
         <div id="k">

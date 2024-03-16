@@ -32,15 +32,13 @@ export const loginUser = async (userData) => {
     if (response.status !== 200) {
       throw new Error("Failed to login user");
     }
-
-    console.log("data from login function", response);
-
     // const jsonResponse = await response.json();
     // console.log("this is jsonResopnse ",jsonResponse)
 
     const token = response.data.student_id_token;
     console.log("this is token", token);
     localStorage.setItem("student_id_token", token);
+    localStorage.setItem('user_id',response.data?.user?.id);
 
     return { data: response.data };
   } catch (error) {
@@ -49,12 +47,23 @@ export const loginUser = async (userData) => {
   }
 };
 
-export const addPost = async (postData, token) => {
+export const addPost = async (postData) => {
   console.log("this is postData", postData);
   try {
-    const response = await axios.post(`${MAIN_URL}add-post/`, postData, {
+    const formData = new FormData();
+    formData.append("title", postData.title);
+    formData.append("img", postData.img); // Append the image file
+    formData.append("desc", postData.desc);
+    formData.append("category", postData.category);
+    formData.append("token", postData.token);
+    formData.append("uid", postData.uid);
+
+    console.log("THIS IS FROMDATA FROM ADDPOST ROUTE : ", formData);
+
+    const response = await axios.post(`${MAIN_URL}add-post/`, formData, {
       headers: {
-        Authorization: token,
+        "Content-Type": "multipart/form-data",
+        Authorization: postData.token,
       },
     });
 

@@ -1,4 +1,5 @@
-'use client'
+
+"use client"
 import React, { useEffect, useState } from "react";
 import { get_user_data } from "@/app/user_apis/route";
 
@@ -9,7 +10,8 @@ const Home = () => {
     const fetchUserData = async () => {
       try {
         const userData = await get_user_data();
-        setUserInfo(userData);
+        console.log("USERDATA: ", userData.user);
+        setUserInfo(userData.user);
       } catch (error) {
         console.error("Error fetching user data in home page:", error);
       }
@@ -18,20 +20,21 @@ const Home = () => {
     fetchUserData();
   }, []); // Empty dependency array to execute effect only once when component mounts
 
-  console.log("user info from home",userInfo)
+  console.log("user info from home", userInfo);
+
   return (
-    <>
-      {userInfo ? (
+    <div>
+      <h1>User Information</h1>
+      {userInfo && (
         <div>
-          {/* Render user data here */}
-          <p>User ID: {userInfo.id}</p>
           <p>Name: {userInfo.name}</p>
-          {/* Render other user information */}
+          <p>Email: {userInfo.email}</p>
+          <p>Student ID: {userInfo.student_id}</p>
+          <p>Semester: {userInfo.sem}</p>
+          
         </div>
-      ) : (
-        <p>Loading user data...</p>
       )}
-    </>
+    </div>
   );
 };
 

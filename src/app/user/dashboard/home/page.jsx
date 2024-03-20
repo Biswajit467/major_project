@@ -24,7 +24,7 @@ const Home = () => {
       {userInfo ? (
         <div>
           {/* Render user data here */}
-          <p>User ID: {userInfo.id}</p>
+          <p>User ID: {userInfo.user.id}</p>
           <p>Name: {userInfo.name}</p>
           {/* Render other user information */}
         </div>

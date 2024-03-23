@@ -1,9 +1,12 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
-import { get_user_data } from "@/app/user_apis/route";
+import { get_user_data, get_user_scores } from "@/app/user_apis/route";
+import { RadarChart } from "../../userComponents/RadarChart";
+import Link from "next/link";
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState(null);
+  const [userScores, setUserScores] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -18,7 +21,25 @@ const Home = () => {
     fetchUserData();
   }, []); // Empty dependency array to execute effect only once when component mounts
 
-  console.log("user info from home",userInfo)
+  useEffect(() => {
+    const fetchUserScores = async () => {
+      try {
+        const userScores = await get_user_scores(
+          userInfo.user.id,
+          userInfo.user.sem
+        );
+        setUserScores(userScores);
+      } catch (error) {
+        console.log("error in fetching scores data from home page:", error);
+      }
+    };
+    {
+      userInfo ? fetchUserScores() : null;
+    }
+  }, [userInfo]);
+
+  console.log("user info from home", userInfo);
+  console.log("user scores from home", userScores);
   return (
     <>
       {userInfo ? (
@@ -31,6 +52,10 @@ const Home = () => {
       ) : (
         <p>Loading user data...</p>
       )}
+      <div>
+        <h1>My Next.js App with Radar Chart</h1>
+        <RadarChart props={ userScores && userScores?.radar_chart} />
+      </div>
     </>
   );
 };

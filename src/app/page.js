@@ -23,7 +23,7 @@ export default function Home() {
   };
   return (
     <div>
-      {showPopup && <ChooseLoginPopup onClose={closePopup} />}
+      {showPopup && <ChooseLoginPopup onClose={closePopup}/>}
       {/* <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center"> */}
       <nav className="bg-0a2351 h-19 p-4 flex justify-between items-center">
         <div className="flex items-center">

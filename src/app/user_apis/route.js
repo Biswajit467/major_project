@@ -14,13 +14,3 @@ export const get_user_data = async () => {
   }
 };
 
-export const get_user_scores = async ( userId , sem) =>{
-   try {
-    const response = await axios.get(`${MAIN_URL}user/get-user-scores/${userId}/${sem}/`)
-    console.log(response.data);
-    return response.data;
-   }catch(error){
-    console.log("Error fetching scores data : " , error);
-    return null;
-   }
-}

@@ -1,6 +1,7 @@
 "user client";
 import dynamic from "next/dynamic";
 import React, { useRef, useEffect, useState } from "react";
+import'./apexchart.css'
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -9,8 +10,6 @@ export const CompareRadarChart = ({
   current_user_score,
   tobeCompared_student_score,
 }) => {
-  console.log("current_user_score", current_user_score);
-  console.log("tobeCompared_student_score", tobeCompared_student_score);
   const popupRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -25,8 +24,6 @@ export const CompareRadarChart = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
-
-  console.log("inside compare radar chart");
   const options = {
     chart: {
       id: "apexchart-example",
@@ -37,9 +34,24 @@ export const CompareRadarChart = ({
         style: {
           fontSize: "20px",
           fontWeight: "bold",
-          color: "#ffffff",
+          color: "#121212",
         },
       },
+      toolbar: {
+        show: true,
+        offsetX: 0,
+        offsetY: 0,
+        tools: {
+          download: true,
+          selection: true,
+          zoom: true,
+          zoomin: true,
+          zoomout: true,
+          pan: true,
+          reset: true | '<img src="/static/icons/reset.png" width="20">',
+          customIcons: []
+        },
+      }
     },
     xaxis: {
       categories: ["Academic", "Arts", "ECA", "Sports", "Tech"],
@@ -88,7 +100,7 @@ export const CompareRadarChart = ({
 
   const series = [
     {
-      name: "series-1",
+      name: "You",
       data: current_user_score && [
         current_user_score?.academic,
         current_user_score?.art,
@@ -98,7 +110,7 @@ export const CompareRadarChart = ({
       ],
     },
     {
-      name: "series-2",
+      name: tobeCompared_student_score?.student_details.name,
       data: tobeCompared_student_score && [
         tobeCompared_student_score?.academic,
         tobeCompared_student_score?.art,
@@ -106,7 +118,6 @@ export const CompareRadarChart = ({
         tobeCompared_student_score?.sports,
         tobeCompared_student_score?.tech,
       ],
-      //   data:  [50 , 60 , 200 , 69 , 100],
     },
   ];
 

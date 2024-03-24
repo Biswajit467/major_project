@@ -1,6 +1,8 @@
 "user client";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
+import'./apexchart.css'
+
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const ColumnGraph = (props) => {

@@ -1,12 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { get_user_data} from "@/app/user_apis/route";
+import { get_user_data } from "@/app/user_apis/route";
 import { get_user_scores } from "../../user_apis/route";
 import { RadarChart } from "../../userComponents/RadarChart";
 import { ColumnGraph } from "../../userComponents/ColumnGraph";
 import Link from "next/link";
+import { MdLogout } from "react-icons/md";
+import Typewriter from "typewriter-effect";
+import { CiSettings } from "react-icons/ci";
 
-const Home = () => {
+const NavBar = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userScores, setUserScores] = useState(null);
 
@@ -14,18 +17,22 @@ const Home = () => {
     const fetchUserData = async () => {
       try {
         const userData = await get_user_data();
+        console.log("userData from home", userData);
         setUserInfo(userData);
       } catch (error) {
-        console.error("Error fetching user data in home page:", error);
+        console.error("Error fetching user data:", error);
       }
     };
 
     fetchUserData();
-  }, []); // Empty dependency array to execute effect only once when component mounts
+  }, []);
+
+  console.log("userInfo from home page", userInfo);
 
   useEffect(() => {
     const fetchUserScores = async () => {
       try {
+        console.log("checking user scores inside");
         const userScores = await get_user_scores(
           userInfo.user.id,
           userInfo.user.sem
@@ -40,21 +47,95 @@ const Home = () => {
     }
   }, [userInfo]);
 
-  console.log("user info from home", userInfo);
-  console.log("user scores from home", userScores);
   return (
     <>
-      {userInfo ? (
-        <div>
-          {/* Render user data here */}
-          <p>User ID: {userInfo.user.id}</p>
-          <p>Name: {userInfo.user.name}</p>
-          {/* Render other user information */}
-        </div>
-      ) : (
-        <p>Loading user data...</p>
-      )}
-      <div>
+      <div style={{ padding:'2%'}}>
+        {userInfo ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                marginTop: "1rem",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 10px",
+                  marginLeft: "50rem",
+                  fontSize: "14px",
+                }}
+              ></p>
+              <p style={{ margin: "0", fontSize: "14px" }}>
+                Branch: {userInfo?.user.branch}
+              </p>
+              <p style={{ margin: "0 10px", fontSize: "14px" }}>|</p>
+              <p style={{ margin: "0", fontSize: "14px" }}>
+                REG: {userInfo?.user.registration_number}
+              </p>
+              <p style={{ margin: "0 10px", fontSize: "14px" }}>|</p>
+              <p style={{ margin: "0", fontSize: "14px" }}>
+                Sem: {userInfo?.user.sem}
+              </p>
+              <button class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
+                <CiSettings />
+              </button>
+              <button class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700">
+                <MdLogout />
+              </button>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "flex-start" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "8rem",
+                }}
+              >
+                <div
+                  style={{
+                    height: "7rem",
+                    width: "7rem",
+                    border: "1px solid white",
+                    borderRadius: "100%",
+                  }}
+                ></div>
+
+                <h1
+                  style={{
+                    margin: "0",
+                    fontSize: "30px",
+                    marginLeft: "1rem",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  <Typewriter
+                    options={{
+                      strings: [` welcome ${userInfo?.user.name},`],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                </h1>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <p style={{ margin: "0", fontSize: "14px", fontWeight: "bold" }}>
+            No user data available
+          </p>
+        )}
+      </div>
+
+      <div style={{ width: "90%", marginTop: "2%" }}>
         <div>
           {userScores?.radar_chart ? (
             <div
@@ -62,12 +143,12 @@ const Home = () => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                width: "80%",
+                width: "100%",
                 backgroundColor: "transparent",
                 borderRadius: "10px",
-                boxShadow: '3px 3px 5px 0px rgba(163, 16, 255, 0.695)',
-                margin:'2%',
-                padding: '2%'
+                boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
+                margin: "2%",
+                padding: "2%",
               }}
             >
               <RadarChart props={userScores && userScores?.radar_chart} />
@@ -96,12 +177,12 @@ const Home = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
-                width: "80%",
+                width: "100%",
                 backgroundColor: "transparent",
                 borderRadius: "10px",
-                boxShadow: '3px 3px 5px 0px rgba(163, 16, 255, 0.695)',
-                margin:'2%',
-                padding: '2%'
+                boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
+                margin: "2%",
+                padding: "2%",
               }}
             >
               <ColumnGraph props={userScores && userScores?.bar_graph} />
@@ -141,4 +222,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default NavBar;

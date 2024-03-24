@@ -1,5 +1,4 @@
 "use client";
-// pages/LoginPage.js
 import React, { useEffect, useState } from "react";
 import { loginUser, registerUser } from "../auth_api/route";
 import "./login.css";
@@ -61,6 +60,8 @@ const LoginPage = ({ searchParams }) => {
   useEffect(() => {
     sendUserData();
   }, [user_id, isAdmin]);
+
+  console.log("user_id and isbanned" , user_id , isBanned); 
 
 
   return (

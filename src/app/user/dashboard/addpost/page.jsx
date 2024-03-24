@@ -114,6 +114,7 @@ const AddPost = () => {
               rows={8}
             ></textarea>
           </div>
+
           <div className="mb-4">
             <label
               htmlFor="category"
@@ -126,9 +127,16 @@ const AddPost = () => {
               id="category"
               value={postData.category}
               onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              style={{
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                width: "100%",
+              }}
             >
-              <option value="">Select a category</option>
+              <option disabled value="">
+                Select a category
+              </option>
               <option value="Technology">Technology</option>
               <option value="Travel">Travel</option>
               <option value="Food">Food</option>

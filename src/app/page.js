@@ -5,9 +5,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import ChooseLoginPopup from "./components/ChooseLoginPopup";
-
-import "./common.css";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
@@ -24,7 +21,6 @@ export default function Home() {
   return (
     <div>
       {showPopup && <ChooseLoginPopup onClose={closePopup}/>}
-      {/* <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center"> */}
       <nav  className="bg-0a2351 h-19 p-4 flex justify-between items-center">
         <div className="flex items-center">
           <img

@@ -38,7 +38,7 @@ export const loginUser = async (userData) => {
     const token = response.data.student_id_token;
     console.log("this is token", token);
     localStorage.setItem("student_id_token", token);
-    localStorage.setItem('user_id',response.data?.user?.id);
+    localStorage.setItem('user_id',response.data?.id);
 
     return { data: response.data };
   } catch (error) {

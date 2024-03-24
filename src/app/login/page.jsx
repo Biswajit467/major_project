@@ -26,9 +26,9 @@ const LoginPage = ({ searchParams }) => {
         password: password,
       };
       const response = await loginUser(userData);
-      setUser_id(response?.data?.user?.id);
-      setIsAdmin(response?.data?.user?.is_admin);
-      setIsBanned(response?.data?.user?.is_banned);
+      setUser_id(response?.data?.id);
+      setIsAdmin(response?.data?.is_admin);
+      setIsBanned(response?.data?.is_banned);
       setStudentId("");
       setPassword("");
       console.log(

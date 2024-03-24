@@ -32,13 +32,11 @@ export const loginUser = async (userData) => {
     if (response.status !== 200) {
       throw new Error("Failed to login user");
     }
-    // const jsonResponse = await response.json();
-    // console.log("this is jsonResopnse ",jsonResponse)
 
     const token = response.data.student_id_token;
     console.log("this is token", token);
     localStorage.setItem("student_id_token", token);
-    localStorage.setItem('user_id',response.data?.id);
+    localStorage.setItem('user_id',response.data?.user.id);
 
     return { data: response.data };
   } catch (error) {

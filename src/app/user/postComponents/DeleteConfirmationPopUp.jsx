@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const DeleteConfirmationModal = ({ isOpen, onClose, onDelete }) => {
+const DeleteConfirmationPopUp = ({ isOpen, onClose, onDelete }) => {
   const modalRef = useRef(null);
 
   const handleDelete = () => {
@@ -75,4 +75,4 @@ const DeleteConfirmationModal = ({ isOpen, onClose, onDelete }) => {
   );
 };
 
-export default DeleteConfirmationModal;
+export default DeleteConfirmationPopUp;

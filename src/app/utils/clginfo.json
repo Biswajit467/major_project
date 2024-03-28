@@ -1,0 +1,208 @@
+[
+  {
+    "name": "Mr Binod Das",
+    "position": "Chairman and Managing Trustee",
+    "phone_number": " 6589966473",
+    "email": "Binoddas34@gamil.com",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwC9QEeU32GJcMgC6GBGM2zLymOIQVCbXICVed8ngKnA&s",
+    "category": "Admin"
+  },
+  {
+    "name": "Mr Chitrasen Jagatdeo",
+    "department": "English",
+    "position": "Associate Professor",
+    "phone_number": "7632456275",
+    "email": "Chitrasenjagatdeo097@gmail.com",
+    "image": "https://synergyinstitute.ac.in/assets/img/director.jpg",
+    "category": "admin"
+  },
+  {
+    "name": " prof.(Dr) Jogeswari Rout",
+    "department": "chemistry",
+    "position": "Associate Professor",
+    "phone_number": "9867453689",
+    "email": "Jogeswarirout456@gmail.com",
+    "image": "https://synergyinstitute.ac.in/assets/img/principal.jpg",
+    "category": "admin"
+  },
+  {
+    "name": "Dr. Ajaya kumar Swain",
+    "department": "Mathematics",
+    "position": "Associate Professor",
+    "phone_number": "892547897",
+    "email": "Ajayakumarswain342@gamil.com",
+    "image": "https://synergyinstitute.ac.in/assets/img/director_pic.jpeg",
+    "category": "admin"
+  },
+  {
+    "name": "Mr. Biswaranjan Sarangi",
+    "department": "CSE",
+    "position": "Asst.professor and HOD",
+    "phone_number": "9090536578",
+    "email": "Biswaranjansarangi429@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/20.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mrs.Tapasi Das",
+    "department": "CSE",
+    "position": "Professor",
+    "phone_number": "896523567",
+    "email": "Tapasidas946@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/50.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Miss. Sakti Swarupa Das",
+    "department": "CSE",
+    "position": "Associate Professor",
+    "phone_number": "9870535789",
+    "email": "saktiswarupadas452@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/ShaktiSworupa.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mr. Rasmi Ranjan Mohanty",
+    "department": "CSE",
+    "position": "Assistant Professor",
+    "phone_number": "8976432558",
+    "email": "Rasmiranjanmohanty34@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/Rasmi.jpeg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mr.soubhagya ranjan sahoo",
+    "department": "CSE",
+    "position": "Professor",
+    "phone_number": "9862466778",
+    "email": "Soubhagyaranjansahoo786@gmail.com",
+    "image": "base64EncodedImageString",
+    "category": "lecture"
+  },
+  {
+    "name": "Mr. Saroj",
+    "department": "CSE",
+    "position": "Associate Professor",
+    "phone_number": "8975465378",
+    "email": "Saroj678@gmail.com",
+    "image": "base64EncodedImageString",
+    "category": "lecture"
+  },
+  {
+    "name": "MRS.new mam",
+    "department": "CSE",
+    "position": "Assistant Professor",
+    "phone_number": "9090547675",
+    "email": "Newmam6776@gmail",
+    "image": "base64EncodedImageString",
+    "category": "lecture"
+  },
+  {
+    "name": "Mr.Vivekananda Pattnaik ",
+    "department": "EE",
+    "position": "Professor",
+    "phone_number": "9864435689",
+    "email": "Vivekanandapattnaik65@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/sw3.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mr. Subhakanta Bal",
+    "department": "EE",
+    "position": "Associate Professor",
+    "phone_number": "9895435678",
+    "email": "Subhakantbal34@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/103.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mr. Khirod Kumar Parija",
+    "department": "Math",
+    "position": "Assistant Professor",
+    "phone_number": "897553245",
+    "email":"Khirodkumarparija562gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/65.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mrs.Mamata Rani Swain",
+    "department": "EE",
+    "position": "Professor",
+    "phone_number": "78956457856",
+    "email": "Mamataraniswain56@gamil.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/12.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mrs. Smruti ranjan Mohanty",
+    "department": "CSE",
+    "position": "Associate Professor",
+    "phone_number": "8676376748",
+    "email": "Smrutiranjanmohanty38@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/7.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mrs. Priyabadini Biswal",
+    "department": "physics",
+    "position": "Assistant Professor",
+    "phone_number": "8976433478",
+    "email": "Priyabadinibiswal76@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/Priyabadini.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Mrs. Manisha Mohanty",
+    "department": "CE",
+    "position": "Professor",
+    "phone_number": "9876376625",
+    "email": "Manishamohanty67@gmail.com",
+    "image": "https://synergyinstitute.ac.in/photo/faculty/c1.jpg",
+    "category": "lecture"
+  },
+  {
+    "name": "Matthew Ramirez",
+    "department": "Environmental Science",
+    "position": "Associate Professor",
+    "phone_number": "+1 234 567 8916",
+    "email": "matthewramirez@example.com",
+    "image": "base64EncodedImageString",
+    "category": "staff"
+  },
+  {
+    "name": "Lauren Cruz",
+    "department": "Anthropology",
+    "position": "Assistant Professor",
+    "phone_number": "+1 234 567 8917",
+    "email": "laurencruz@example.com",
+    "image": "base64EncodedImageString",
+    "category": "lecture"
+  },
+  {
+    "name": "Kevin Scott",
+    "department": "Engineering",
+    "position": "Professor",
+    "phone_number": "+1 234 567 8918",
+    "email": "kevinscott@example.com",
+    "image": "base64EncodedImageString",
+    "category": "lecture"
+  },
+  {
+    "name": "Rachel King",
+    "department": "Computer Engineering",
+    "position": "Associate Professor",
+    "phone_number": "+1 234 567 8919",
+    "email": "rachelking@example.com",
+    "image": "base64EncodedImageString",
+    "category": "staff"
+  },
+  {
+    "name": "Eva Nguyen",
+    "department": "Linguistics",
+    "position": "Professor",
+    "phone_number": "+1 234 567 8924",
+    "email": "evanguyen@example.com",
+    "image": "base64EncodedImageString",
+    "category": "staff"
+  }
+]

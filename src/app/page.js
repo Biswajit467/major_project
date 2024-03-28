@@ -1,28 +1,43 @@
 "use client";
 
 import React from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Script from "next/script";
-
-import "./common.css";
-
+import ChooseLoginPopup from "./components/ChooseLoginPopup";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
   return (
     <div>
-      <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center">
+      {showPopup && <ChooseLoginPopup onClose={closePopup}/>}
+      <nav  className="bg-0a2351 h-19 p-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
             width="94"
             height="94"
             src="https://img.icons8.com/3d-fluency/94/graduation-cap.png"
             alt="graduation-cap"
-            className="w-24 h-24 transition-transform duration-300 transform hover:scale-110"
+            className="w-20 h-20 transition-transform duration-300 transform hover:scale-110"
           />
           <h1
-            id="n"
+          style={{
+            background: 'linear-gradient(120deg, #00f7ff, #ff00e6)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent'
+          }}
+           
             className="text-4xl font-inter font-extrabold text-white py-4  transform transition duration-300 ease-out hover:scale-105 hover:animate-shake"
           >
             CampusCanvas
@@ -31,16 +46,30 @@ export default function Home() {
 
         <div className="nav-buttons">
           <button
-            id="btn"
-            className="relative overflow-hidden transition-transform duration-300 transform hover:scale-110"
+          
+          style={{
+            boxShadow: '2px 2px 2px 2px black',
+            borderRadius: '100%',
+            transition: 'box-shadow 0.3s ease-in-out'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.boxShadow = '0px 3px 7px 0px rgba(163, 16, 255, 0.695)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.boxShadow = '2px 2px 2px 2px black';
+          }}
+        
+          Button Text
+      
+        
+            className="relative  transition-transform duration-300 transform hover:scale-110"
+            onClick={togglePopup}
           >
-            <a href="https://thank-you-two.vercel.app/">
-              <img
-                className="w-16 h-16"
-                src="https://img.icons8.com/nolan/64/toggl-app.png"
-                alt="toggl-app"
-              />
-            </a>
+            <img
+              className="w-16 h-16"
+              src="https://img.icons8.com/nolan/64/toggl-app.png"
+              alt="toggl-app"
+            />
           </button>
         </div>
       </nav>

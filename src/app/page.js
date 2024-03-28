@@ -5,9 +5,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import ChooseLoginPopup from "./components/ChooseLoginPopup";
-
-import "./common.css";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
@@ -23,9 +20,8 @@ export default function Home() {
   };
   return (
     <div>
-      {showPopup && <ChooseLoginPopup onClose={closePopup} />}
-      {/* <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center"> */}
-      <nav className="bg-0a2351 h-19 p-4 flex justify-between items-center">
+      {showPopup && <ChooseLoginPopup onClose={closePopup}/>}
+      <nav  className="bg-0a2351 h-19 p-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
             width="94"
@@ -35,7 +31,13 @@ export default function Home() {
             className="w-20 h-20 transition-transform duration-300 transform hover:scale-110"
           />
           <h1
-            id="n"
+          style={{
+            background: 'linear-gradient(120deg, #00f7ff, #ff00e6)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent'
+          }}
+           
             className="text-4xl font-inter font-extrabold text-white py-4  transform transition duration-300 ease-out hover:scale-105 hover:animate-shake"
           >
             CampusCanvas
@@ -44,7 +46,22 @@ export default function Home() {
 
         <div className="nav-buttons">
           <button
-            id="btn"
+          
+          style={{
+            boxShadow: '2px 2px 2px 2px black',
+            borderRadius: '100%',
+            transition: 'box-shadow 0.3s ease-in-out'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.boxShadow = '0px 3px 7px 0px rgba(163, 16, 255, 0.695)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.boxShadow = '2px 2px 2px 2px black';
+          }}
+        
+          Button Text
+      
+        
             className="relative  transition-transform duration-300 transform hover:scale-110"
             onClick={togglePopup}
           >

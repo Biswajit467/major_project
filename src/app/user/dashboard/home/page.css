@@ -32,7 +32,10 @@ body {
   }
 }
 
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
 
 
 .footer {
@@ -45,6 +48,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  
 }
 
 .social-icon,
@@ -100,7 +105,7 @@ body {
   top: -100px;
   left: 0;
   width: 100%;
-  background-color: linear-gradient(120deg, #00f7ff, #ff00e6);
+  background-color: linear-gradient(120deg,#00f7ff,#ff00e6);
   height: 100px;
   background: url("data:image/png;base64,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");
   background-size: 1000px 100px;
@@ -108,7 +113,7 @@ body {
 
 .wave#wave1 {
   z-index: 1000;
-  background-color: linear-gradient(120deg, #00f7ff, #ff00e6);
+  background-color: linear-gradient(120deg,#00f7ff,#ff00e6);
   opacity: 1;
   bottom: 0;
   animation: animateWaves 4s linear infinite;
@@ -116,7 +121,7 @@ body {
 
 .wave#wave2 {
   z-index: 999;
-  background-color: linear-gradient(120deg, #00f7ff, #ff00e6);
+  background-color: linear-gradient(120deg,#00f7ff,#ff00e6);
   opacity: 0.5;
   bottom: 10px;
 
@@ -125,7 +130,7 @@ body {
 
 .wave#wave3 {
   z-index: 1000;
-  background-color: linear-gradient(120deg, #00f7ff, #ff00e6);
+  background-color: linear-gradient(120deg,#00f7ff,#ff00e6);
   opacity: 0.2;
   bottom: 15px;
   animation: animateWaves 3s linear infinite;
@@ -134,7 +139,7 @@ body {
 .wave#wave4 {
   z-index: 999;
   opacity: 0.7;
-  background-color: linear-gradient(120deg, #00f7ff, #ff00e6);
+  background-color: linear-gradient(120deg,#00f7ff,#ff00e6);
   bottom: 20px;
   animation: animate 3s linear infinite;
 }
@@ -156,6 +161,8 @@ body {
     background-positon-x: 0px;
   }
 }
+
+
 
 body {
   background-color: black;
@@ -278,59 +285,83 @@ body {
   max-width: 470px;
 }
 
-.d {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.d{
   display: flex;
   flex-direction: row;
 
   justify-content: space-between;
 }
 .cardd {
+  
   width: 190px;
   height: 254px;
-  margin: 50px;
-  margin-bottom: 200px;
-  background: #1e1b4b;
+margin: 50px;
+margin-bottom: 200px;
+background: #1e1b4b;
   border-radius: 15px;
   box-shadow: 1px 5px 60px 0px #100a886b;
-}
-
-.cardd .card-border-topp {
+ }
+ 
+ .cardd .card-border-topp {
   width: 60%;
   height: 3%;
 
   background: #6b64f3;
   margin: auto;
   border-radius: 0px 0px 15px 15px;
-}
-
-.cardd span {
+ }
+ 
+ .cardd span {
   font-weight: 600;
   color: white;
   text-align: center;
   display: block;
   padding-top: 10px;
   font-size: 16px;
-}
-
-.cardd .job {
+ }
+ 
+ .cardd .job {
   font-weight: 400;
   color: white;
   display: block;
   text-align: center;
   padding-top: 3px;
   font-size: 12px;
-}
-
-.cardd .imgg {
+ }
+ 
+ .cardd .imgg {
   width: 70px;
   height: 80px;
   background: #6b64f3;
   border-radius: 15px;
   margin: auto;
   margin-top: 25px;
-}
-
-.cardd button {
+ }
+ 
+ .cardd button {
   padding: 8px 25px;
   display: block;
   margin: auto;
@@ -340,8 +371,9 @@ body {
   background: #6b64f3;
   color: white;
   font-weight: 600;
-}
-
-.cardd button:hover {
+ }
+ 
+ .cardd button:hover {
   background: #534bf3;
-}
+ }
+

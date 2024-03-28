@@ -4,19 +4,20 @@ import axios from "axios";
 import { MAIN_URL } from "@/app/common/urls";
 import Image from "next/image";
 import Link from "next/link";
+import { MdAdsClick } from "react-icons/md";
+import { FaUser } from "react-icons/fa6";
 
 const ViewPost = () => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [expandedIndex, setExpandedIndex] = useState(null);
-  const [selectedPostId, setSelectedPostId] = useState(null); // Track selected post ID
 
   useEffect(() => {
     async function fetchPosts() {
       try {
         const response = await axios.get(`${MAIN_URL}view-posts/?page=${page}`);
         const { data, total_pages } = response.data;
+        console.log("this is view-posts api response", response.data);
         setPosts(data);
         setTotalPages(total_pages);
       } catch (error) {
@@ -40,17 +41,15 @@ const ViewPost = () => {
     setPage(page - 1);
   };
 
-  const postDetails = async (postId) => {
-    setSelectedPostId(postId); // Set the selected post ID
-    console.log("this is postid ", postId);
-    console.log("this is selectedPostID : ", selectedPostId);
-  };
   return (
     <div
       style={{
-        backgroundColor: "#f4f4f4",
+        // background: "#2b2b2b",
+        background: "black",
         padding: "20px",
         scrollBehavior: "smooth",
+        color: "white",
+        fontFamily: "sans-serif",
       }}
     >
       <div
@@ -63,8 +62,11 @@ const ViewPost = () => {
           style={{
             textAlign: "center",
             marginBottom: "30px",
-            color: "#333",
             fontSize: "xx-large",
+            background: "linear-gradient(120deg, #00f7ff, #ff00e6)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
           }}
         >
           View Posts
@@ -79,9 +81,10 @@ const ViewPost = () => {
               marginBottom: "40px",
               padding: "20px",
               border: "1px solid #ddd",
-              borderRadius: "8px",
-              backgroundColor: "#fff",
+              borderRadius: "0% 10% 0% 10%",
               color: "#333",
+              background:
+                "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
             }}
           >
             <div
@@ -91,49 +94,82 @@ const ViewPost = () => {
                 marginLeft: index % 2 === 1 ? "20px" : "0",
               }}
             >
-              <h2 style={{ fontSize: "24px", marginBottom: "10px" }}>
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontFamily: "san-serif",
+                  marginBottom: "10px",
+                  // color: "white",
+                  letterSpacing: "1px",
+                  wordSpacing: "2px",
+                  fontWeight: "bold",
+                  color: "#a8bece",
+                }}
+              >
                 {post.title}
               </h2>
               <p
                 style={{
                   fontSize: "16px",
                   marginBottom: "10px",
-                  letterSpacing: "0.5px",
-                  wordSpacing: "1px",
+                  wordSpacing: "2px",
+                  color: "white",
+                  color: "#a8bece",
                 }}
               >
-                {expandedIndex === index
-                  ? post.desc
-                  : post.desc.slice(0, 400) + "..."}
-                {post.desc.length > 400 && (
-                  <button
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "blue",
-                      cursor: "pointer",
-                    }}
-                    onClick={() =>
-                      setExpandedIndex(expandedIndex === index ? null : index)
-                    }
-                  >
-                    {expandedIndex === index ? "Read Less" : "Read More"}
-                  </button>
-                )}
+                {post.desc.slice(0, 400) + ".........."}
               </p>
               <Link
-                href={{ pathname: `viewpost/${post.id}` }}
-                style={{ color: "blue", font: "icon" }}
-                onClick={() => postDetails(post.id)}
+                href={{
+                  pathname: `viewpost/${post.id}`,
+                  query: { uidDetails: JSON.stringify(post.uid) },
+                }}
+                style={{
+                  fontWeight: "normal",
+                  fontSize: "1.3rem",
+                  color: "orange",
+                }}
               >
-                view more
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  View more <MdAdsClick style={{ marginLeft: "5px" }} />
+                </div>
               </Link>
-              <p style={{ fontSize: "14px", marginBottom: "5px" }}>
+              <p
+                style={{
+                  fontSize: "14px",
+                  marginBottom: "5px",
+                  color: "white",
+                }}
+              >
                 Date: {formatDate(post.date)}
               </p>
-              <p style={{ fontSize: "14px", marginBottom: "20px" }}>
+              <p
+                style={{
+                  fontSize: "14px",
+                  marginBottom: "20px",
+                  color: "white",
+                }}
+              >
                 Category: {post.category}
               </p>
+              <div
+                style={{
+                  color: "white",
+                  fontFamily: " Cambria",
+                  display: "flex",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: "5px",
+                  }}
+                >
+                  <FaUser style={{ marginRight: "5px", fontSize: "20px" }} />
+                  {post.uid.name}{" "}
+                </div>
+              </div>
             </div>
             <div style={{ flex: "1" }}>
               <Image
@@ -155,15 +191,11 @@ const ViewPost = () => {
           <button
             onClick={handlePrevPage}
             disabled={page === 1}
-            style={{ marginRight: "10px", color: "black" }}
+            style={{ marginRight: "10px" }}
           >
             Previous
           </button>
-          <button
-            style={{ color: "black" }}
-            onClick={handleNextPage}
-            disabled={page === totalPages}
-          >
+          <button onClick={handleNextPage} disabled={page === totalPages}>
             Next
           </button>
         </div>

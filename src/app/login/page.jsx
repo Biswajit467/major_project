@@ -51,7 +51,7 @@ const LoginPage = ({ searchParams }) => {
   const sendUserData = () => {
     if (user_id && !isBanned) {
       if (isAdmin) {
-        console.log("isadmin value",isAdmin)
+        console.log("isadmin value", isAdmin);
         router.push("admin/dashboard/home");
       } else {
         router.push("user/dashboard/home");
@@ -61,7 +61,6 @@ const LoginPage = ({ searchParams }) => {
   useEffect(() => {
     sendUserData();
   }, [user_id, isAdmin]);
-
 
   return (
     <div>
@@ -179,6 +178,9 @@ const LoginPage = ({ searchParams }) => {
                     Application.
                   </div>
                 ) : null}
+              </div>
+              <div className="text-red-600 mt-4 font-bold text-center">
+                {message && <h3>{message}</h3>}
               </div>
             </div>
           </div>

@@ -2,7 +2,14 @@ import React from 'react'
 
 const notification = () => {
   return (
-    <div>here our notification will be shown that will be uploaded by admin </div>
+    <div  id='main-container' >
+
+      <h1>Notification Pannel</h1> 
+      
+      
+      
+      
+       </div>
   )
 }
 

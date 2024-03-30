@@ -144,11 +144,11 @@ const AddPost = () => {
               <option disabled value="">
                 Select a category
               </option>
-              <option value="Technology">Technology</option>
-              <option value="Travel">Travel</option>
-              <option value="Food">Food</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Health">Health</option>
+              <option value="Academic">Academic</option>
+              <option value="Tech">Tech</option>
+              <option value="Arts">Arts</option>
+              <option value="Sports">Sports</option>
+              <option value="ETC">ECA</option>
             </select>
           </div>
 

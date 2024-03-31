@@ -85,10 +85,10 @@ const NavBar = () => {
                 Sem: {userInfo?.user.sem}
               </p>
               <button class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
-                <CiSettings />
+                <CiSettings title="setting"  style={{height:'2rem', width:'2rem'}} />
               </button>
               <button class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700">
-                <MdLogout />
+                <MdLogout title="logout" style={{height:'2rem', width:'2rem'}} />
               </button>
             </div>
 

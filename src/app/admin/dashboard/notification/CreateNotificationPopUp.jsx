@@ -1,10 +1,26 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { MAIN_URL } from "@/app/common/urls";
 import { MdNotificationAdd } from "react-icons/md";
+import { useEffect } from "react";
 
-const CreateNotificationForm = () => {
+const CreateNotificationPopUp = ({ onClose }) => {
+  const popupRef = useRef(null);
   const [notification, setNotification] = useState("");
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,8 +57,22 @@ const CreateNotificationForm = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        // zIndex: 50,
+        backdropFilter: "blur(10px)",
+      }}
+    >
       <div
+        ref={popupRef}
         style={{
           position: "fixed",
           top: "50%",
@@ -114,4 +144,4 @@ const CreateNotificationForm = () => {
   );
 };
 
-export default CreateNotificationForm;
+export default CreateNotificationPopUp;

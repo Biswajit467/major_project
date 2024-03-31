@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
@@ -16,11 +16,17 @@ const Notification = () => {
     setNotifications(updatedNotifications);
   };
 
+  const toggleCollapse = (index) => {
+    const updatedNotifications = [...notifications];
+    updatedNotifications[index].expanded = false;
+    setNotifications(updatedNotifications);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${MAIN_URL}/get-notifications/`);
-        setNotifications(response.data);  
+        setNotifications(response.data.reverse());
       } catch (error) {
         console.log(error);
       }
@@ -43,137 +49,151 @@ const Notification = () => {
   };
 
   return (
-    <div style={{display:'block' , fontFamily: 'sans-serif',letterSpacing:'2px',wordSpacing:'0.5px'}}>
+    <div style={{ display: 'block', fontFamily: 'sans-serif', letterSpacing: '2px', wordSpacing: '0.5px', position: 'relative' }}>
       {/* Notifications */}
-      <div style={{alignItems:'center'}} className="w-3/4 p-4 flex flex-col justify-center">
-        <div className="flex flex-row">
-          <h1
+      <div style={{ alignItems: 'center' }} className="w-full mb-4 p-2 flex flex-col justify-center">
+        {/* Calendar */}
+        <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1 }}>
+          <h2
             style={{
-             
-            
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'flex-start',
-              overflow: 'hidden',
               color: 'orange',
-              marginLeft: '20rem',
-              marginBottom: '2rem',
+              marginTop: '0rem',
+              fontSize: '1.5rem',
+              textAlign: 'center',
+              marginBottom: '0.5rem',
             }}
-            className="text-4xl font-inter font-extrabold text-white py-4"
+            className="font-bold mb-1 text-white"
           >
-            Notifications
-          </h1>
-          {/* Calendar */}
-          <div style={{position:'absolute', marginLeft:'67rem'}} className="h-fit">
-            <h2
-              style={{
-              
-                color: 'orange',
-              }}
-              className="text-xl font-bold mb-4 text-white"
-            >
-              Select Date
-            </h2>
-            <DatePicker
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              className="bg-gray-800 p-2 rounded w-full text-white"
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                borderRadius: '8px',
-                backgroundColor: '#1a1a1a',
-                border: '1px solid #333',
-                color: '#fff',
-              }}
-              calendarStyle={{
-                borderRadius: '8px',
-                backgroundColor: '#1a1a1a',
-                color: '#fff',
-              }}
-              dayClassName={(date) => (date.getDay() === 0 || date.getDay() === 6) ? 'weekend' : undefined}
-              dayStyle={{
-                color: '#fff',
-              }}
-              selectedDayStyle={{
-                backgroundColor: '#444',
-                color: '#fff',
-              }}
-              navigationStyle={{
-                border: '1px solid #555',
-                backgroundColor: '#333',
-                color: '#fff',
-              }}
-              navigationPrevStyle={{
-                border: '1px solid #555',
-                backgroundColor: '#333',
-                color: '#fff',
-              }}
-              navigationNextStyle={{
-                border: '1px solid #555',
-                backgroundColor: '#333',
-                color: '#fff',
-              }}
-            />
-          </div>
+            Select Date
+          </h2>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            className="bg-gray-800 p-1 md:p-2 rounded w-[9rem] text-white"
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              borderRadius: '8px',
+              backgroundColor: '#1a1a1a',
+              border: '1px solid #333',
+              color: '#fff',
+            }}
+            calendarStyle={{
+              borderRadius: '8px',
+              backgroundColor: '#1a1a1a',
+              color: '#fff',
+            }}
+            dayClassName={(date) => (date.getDay() === 0 || date.getDay() === 6) ? 'weekend' : undefined}
+            dayStyle={{
+              color: '#fff',
+            }}
+            selectedDayStyle={{
+              backgroundColor: '#444',
+              color: '#fff',
+            }}
+            navigationStyle={{
+              border: '1px solid #555',
+              backgroundColor: '#333',
+              color: '#fff',
+            }}
+            navigationPrevStyle={{
+              border: '1px solid #555',
+              backgroundColor: '#333',
+              color: '#fff',
+            }}
+            navigationNextStyle={{
+              border: '1px solid #555',
+              backgroundColor: '#333',
+              color: '#fff',
+            }}
+          />
         </div>
-        <div className="w-auto h-full overflow-y-auto ">
-          {notifications.map((notification, index) => (
-            <div
-              ref={(ref) => {
-                if (isDateSelectedNotification(notification.created_at)) {
-                  setSelectedNotificationRef(ref);
-                }
-              }}
-              key={notification.id}
-              className={`text-xl font-inter flex flex-col items-center space-y-2 ${
-                isDateSelectedNotification(notification.created_at)
-                  ? 'bg-[#05223f]'
-                  : 'bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900'
-              }`}
-              style={{
-                borderRadius: '10px',
-                padding: '20px',
-                margin: '10px',
-                fontFamily: 'sans-serif',
-                marginLeft:'20rem',
-                width: '95rem', // Adjusted width
-                // maxWidth: '1200px', // Adjusted max width
-                height: notification.expanded ? 'auto' : 'fit-content',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-              }}
-            >
-              <div className="flex justify-between items-center w-full mb-4">
-                <div className="flex items-center space-x-2">
-                  {notification.senderImage && (
-                    <img
-                      src="https://icons8.com/icon/60960/administrator-male"
-                      alt="alt"
-                      className="w-14 h-12 rounded-full bg-blue-50"
-                    />
-                  )}
-                  <span style={{fontSize:'2rem'}}>{notification.user_name}</span>
-                </div>
-                <span>{new Date(notification.created_at).toLocaleString()}</span>
-              </div>
-              <div>
-                {notification.expanded ? (
-                  notification.notification
-                ) : (
-                  <>
-                    {`${notification.notification.length > 500 ? notification.notification.substring(0, 500) + '...' : notification.notification}`}
-                    {notification.notification.length > 500 && (
-                      <button 
-                        style={{color:'#76b4df'}}
-                        onClick={() => toggleExpand(index)}
-                      >
-                        Read more
-                      </button>
+        <h1
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            overflow: 'hidden',
+            color: 'orange',
+            width: '100%',
+            textAlign: 'center',
+            textDecoration:'underline',
+            fontFamily:'gillroy',
+            fontSize: '2.5rem',
+          }}
+          className="font-inter font-extrabold text-white py-2"
+        >
+         Notice Board 
+        </h1>
+        <div style={{ marginTop: '3rem', marginBottom: '1rem' }}>
+          {/* Rest of the code remains the same */}
+          <div style={{marginTop:''}} className="w-full overflow-y-auto">
+            {notifications.map((notification, index) => (
+              <div
+                ref={(ref) => {
+                  if (isDateSelectedNotification(notification.created_at)) {
+                    setSelectedNotificationRef(ref);
+                  }
+                }}
+                key={notification.id}
+                className={`text-lg md:text-xl font-inter flex flex-col items-center space-y-2 ${
+                  isDateSelectedNotification(notification.created_at)
+                    ? 'bg-[#05223f]'
+                    : 'bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900'
+                }`}
+                style={{
+                  borderRadius: '10px',
+                  padding: '15px',
+                  margin: '10px',
+                  marginLeft:'2rem',
+                  fontFamily: 'sans-serif',
+                  width: '100%',
+                  maxWidth: '88%',
+                  height: notification.expanded ? 'auto' : 'fit-content',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  fontSize: '1rem',
+                }}
+              >
+                <div className="flex justify-between items-center w-full mb-3 md:mb-4">
+                  <div className="flex items-center space-x-2">
+                    {notification.senderImage && (
+                      <img
+                        src="https://icons8.com/icon/60960/administrator-male"
+                        alt="alt"
+                        className="w-12 h-10 md:w-14 md:h-12 rounded-full bg-blue-50"
+                      />
                     )}
-                  </>
-                )}
+                    <span style={{ fontSize: '1.5rem', maxWidth: '80%' }}>{notification.user_name}</span>
+                  </div>
+                  <span style={{ fontSize: '0.9rem' }}>{new Date(notification.created_at).toLocaleString()}</span>
+                </div>
+                <div>
+                  {notification.expanded ? (
+                    <>
+                      {notification.notification}
+                      <button
+                        style={{ color: '#76b4df', fontSize: '1rem', marginLeft: '1rem' }}
+                        onClick={() => toggleCollapse(index)}
+                      >
+                      ... Read Less
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      {`${notification.notification.length > 400 ? notification.notification.substring(0, 400) + '...' : notification.notification}`}
+                      {notification.notification.length > 400 && (
+                        <button
+                          style={{ color: '#76b4df', fontSize: '1rem', marginLeft: '1rem' }}
+                          onClick={() => toggleExpand(index)}
+                        >
+                          Read More
+                        </button>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

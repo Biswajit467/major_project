@@ -205,7 +205,7 @@ export default function Home() {
         </div>
       </div>
 
-      <p class="container-title">our team</p>
+      <p class="container-title">Our Team</p>
      <div style={{display:'flex' , flexDirection:'row',justifyContent:'center',gap:'0rem' , marginBottom:'12rem'}} >
      <div class="flex h-fit bg-black  relative items-center justify-center w-full mb-8">
  
@@ -250,7 +250,7 @@ export default function Home() {
     </div>
     <div class="group-hover:pb-10 transition-all duration-500 delay-200">
       <h1 class="font-semibold text-gray-700">Hrushikesh Behera</h1>
-      <p class="text-gray-500 text-sm">Backend Developer</p>
+      <p class="text-gray-500 text-sm">Project Lead</p>
     </div>
     <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
       <div class="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
@@ -316,7 +316,7 @@ export default function Home() {
     </div>
     <div class="group-hover:pb-10 transition-all duration-500 delay-200">
       <h1 class="font-semibold text-gray-700">Subhashree Sahoo</h1>
-      <p class="text-gray-500 text-sm">Frontend Developer</p>
+      <p class="text-gray-500 text-sm">Designer</p>
     </div>
     <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
       <div class="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">

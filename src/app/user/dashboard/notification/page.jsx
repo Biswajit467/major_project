@@ -135,8 +135,8 @@ const Notification = () => {
                 padding: '20px',
                 margin: '10px',
                 fontFamily: 'sans-serif',
-                marginLeft:'20rem',
-                width: '95rem', // Adjusted width
+                marginLeft:'18rem',
+                width: '85rem', // Adjusted width
                 // maxWidth: '1200px', // Adjusted max width
                 height: notification.expanded ? 'auto' : 'fit-content',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',

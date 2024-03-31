@@ -3,7 +3,10 @@ import { MAIN_URL } from "../common/urls";
 
 export const createUser = async (userData) => {
   try {
-    const response = await axios.post(`${MAIN_URL}create-user/`, userData);
+    const response = await axios.post(
+      `${MAIN_URL}admins/create-user/`,
+      userData
+    );
 
     if (response.status !== 200) {
       throw new Error("Failed to register user");
@@ -18,7 +21,7 @@ export const createUser = async (userData) => {
 };
 
 export const loginUser = async (userData) => {
-  console.log("THIS IS USER DATA:-" ,userData)
+  console.log("THIS IS USER DATA:-", userData);
   try {
     const FD = new FormData();
     for (const key in userData) {
@@ -36,7 +39,7 @@ export const loginUser = async (userData) => {
     const token = response.data.student_id_token;
     console.log("this is token", token);
     localStorage.setItem("student_id_token", token);
-    localStorage.setItem('user_id',response.data?.user.id);
+    localStorage.setItem("user_id", response.data?.user.id);
 
     return { data: response.data };
   } catch (error) {

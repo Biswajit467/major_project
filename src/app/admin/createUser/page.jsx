@@ -10,6 +10,8 @@ const CreateUserPage = () => {
     password: "",
     name: "",
     sem: "",
+    branch: "",
+    registration_number: "",
   });
 
   const handleChange = (e) => {
@@ -31,6 +33,8 @@ const CreateUserPage = () => {
       password: "",
       name: "",
       sem: "",
+      branch: "", // Reset branch field
+      registration_number: "", // Reset registration number field
     });
 
     setMessage("User has been created successfully");
@@ -52,7 +56,7 @@ const CreateUserPage = () => {
             htmlFor="student_id"
             className="block text-sm font-medium text-gray-700 dark:text-white"
           >
-            Student_id:
+            Student ID:
           </label>
           <input
             type="text"
@@ -123,6 +127,38 @@ const CreateUserPage = () => {
             id="sem"
             name="sem"
             value={user.sem}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="branch"
+            className="block text-sm font-medium text-gray-700 dark:text-white"
+          >
+            Branch:
+          </label>
+          <input
+            type="text"
+            id="branch"
+            name="branch"
+            value={user.branch}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="registration_number"
+            className="block text-sm font-medium text-gray-700 dark:text-white"
+          >
+            Registration Number:
+          </label>
+          <input
+            type="text"
+            id="registration_number"
+            name="registration_number"
+            value={user.registration_number}
             onChange={handleChange}
             className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
           />

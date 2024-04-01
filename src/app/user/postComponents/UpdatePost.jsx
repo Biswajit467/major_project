@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MAIN_URL } from "@/app/common/urls";
 import Image from "next/image";
-import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import DeleteConfirmationPopUp from "./DeleteConfirmationPopUp";
+import { useRouter } from "next/navigation";
 
 const UpdatePost = ({ postId, postDetails }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [index, setIndex] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const router = useRouter();
 
   const [postData, setPostData] = useState({
     title: "",
@@ -58,7 +60,7 @@ const UpdatePost = ({ postId, postDetails }) => {
         category: "",
       });
       // Reloading the page
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error("Error updating post:", error);
     }
@@ -72,7 +74,7 @@ const UpdatePost = ({ postId, postDetails }) => {
         },
       });
       console.log("Post deleted:", response);
-      // Implement logic to handle success message or navigate to another page
+      router.back();
     } catch (error) {
       console.error("Error deleting post:", error);
     }
@@ -81,24 +83,17 @@ const UpdatePost = ({ postId, postDetails }) => {
   return (
     <div
       style={{
-        backgroundColor: "#f4f4f4",
-        // background:"red",
         padding: "20px",
         scrollBehavior: "smooth",
         maxHeight: "100%",
+        background: "#2b2b2b",
+        fontFamily: "sans-serif",
+        color: "#C7C7D1",
+        wordSpacing: "2px",
+        letterSpacing: "0.4px",
       }}
     >
       <div style={{ maxWidth: "70%", margin: "0 auto" }}>
-        <h1
-          style={{
-            textAlign: "center",
-            marginBottom: "30px",
-            color: "#333",
-            fontSize: "xx-large",
-          }}
-        >
-          Update Your Post
-        </h1>
         <div
           key={postDetails.id}
           style={{
@@ -108,8 +103,8 @@ const UpdatePost = ({ postId, postDetails }) => {
             padding: "20px",
             border: "1px solid #ddd",
             borderRadius: "8px",
-            backgroundColor: "#fff",
-            color: "#333",
+            // backgroundColor: "#fff",
+            // color: "#333",
           }}
         >
           <div style={{ flex: "1", marginRight: "20px", marginLeft: "20px" }}>
@@ -120,8 +115,6 @@ const UpdatePost = ({ postId, postDetails }) => {
               style={{
                 fontSize: "16px",
                 marginBottom: "10px",
-                letterSpacing: "0.5px",
-                wordSpacing: "1px",
               }}
             >
               {expandedIndex === true
@@ -169,14 +162,15 @@ const UpdatePost = ({ postId, postDetails }) => {
       </div>
 
       <div>
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-          Update Post
-        </h2>
         <form
           onSubmit={handleSubmit}
           style={{ maxWidth: "70%", margin: "0 auto" }}
         >
-          <div style={{ marginBottom: "20px", color: "black" }}>
+          <div
+            style={{
+              marginBottom: "20px",
+            }}
+          >
             <label
               htmlFor="title"
               style={{ display: "block", marginBottom: "5px" }}
@@ -195,13 +189,18 @@ const UpdatePost = ({ postId, postDetails }) => {
                 fontSize: "16px",
                 borderRadius: "5px",
                 border: "1px solid #ddd",
+                color: "black",
               }}
             />
           </div>
-          <div style={{ marginBottom: "20px", color: "black" }}>
+          <div
+            style={{
+              marginBottom: "20px",
+            }}
+          >
             <label
               htmlFor="desc"
-              style={{ display: "block", marginBottom: "5px" }}
+              style={{ display: "block", marginBottom: "5px", color: "white" }}
             >
               Description:
             </label>
@@ -216,10 +215,16 @@ const UpdatePost = ({ postId, postDetails }) => {
                 fontSize: "16px",
                 borderRadius: "5px",
                 border: "1px solid #ddd",
+                color: "black",
+                height: "20vh",
               }}
             ></textarea>
           </div>
-          <div style={{ marginBottom: "20px", color: "black" }}>
+          <div
+            style={{
+              marginBottom: "20px",
+            }}
+          >
             <label
               htmlFor="category"
               style={{ display: "block", marginBottom: "5px" }}
@@ -243,11 +248,11 @@ const UpdatePost = ({ postId, postDetails }) => {
               <option disabled value="">
                 Select a category
               </option>
-              <option value="Technology">Technology</option>
-              <option value="Travel">Travel</option>
-              <option value="Food">Food</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Health">Health</option>
+              <option value="Academic">Academic</option>
+              <option value="Tech">Tech</option>
+              <option value="Arts">Arts</option>
+              <option value="Sports">Sports</option>
+              <option value="ETC">ECA</option>
             </select>
           </div>
           <div
@@ -261,32 +266,38 @@ const UpdatePost = ({ postId, postDetails }) => {
               style={{
                 padding: "10px 20px",
                 fontSize: "16px",
-                backgroundColor: "#333",
+                backgroundColor: "#004e98",
+                // background:"#008000 ",
                 color: "#fff",
                 border: "none",
                 borderRadius: "5px",
                 cursor: "pointer",
-                marginRight: "10px",
+                marginRight: "1rem",
+                letterSpacing: "1px",
               }}
             >
               Update
             </button>
             <button
-              onClick={() => setIsDeleteModalOpen(true)}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsDeleteModalOpen(true);
+              }}
               style={{
                 padding: "10px 20px",
                 fontSize: "16px",
-                backgroundColor: "red",
+                backgroundColor: "crimson",
                 color: "#fff",
                 border: "none",
                 borderRadius: "5px",
                 cursor: "pointer",
+                letterSpacing: "1px",
               }}
             >
               Delete
             </button>
           </div>
-          <DeleteConfirmationModal
+          <DeleteConfirmationPopUp
             isOpen={isDeleteModalOpen}
             onClose={() => setIsDeleteModalOpen(false)}
             onDelete={handleDelete}

@@ -8,10 +8,20 @@ import Link from "next/link";
 import { MdLogout } from "react-icons/md";
 import Typewriter from "typewriter-effect";
 import { CiSettings } from "react-icons/ci";
+import SettingPopUp from "./settings/SettingPopUp";
 
 const NavBar = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userScores, setUserScores] = useState(null);
+  const [sohwPopUp, setSohwPopUp] = useState(false);
+
+  const closePopup = () => {
+    setSohwPopUp(false);
+  };
+
+  const toggleOptionsForSettingBtn = () => {
+    setSohwPopUp(!sohwPopUp);
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -50,7 +60,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div style={{ padding:'2%'}}>
+      <div style={{ padding: "2%" }}>
         {userInfo ? (
           <div
             style={{
@@ -85,11 +95,17 @@ const NavBar = () => {
               <p style={{ margin: "0", fontSize: "14px" }}>
                 Sem: {userInfo?.user.sem}
               </p>
-              <button class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
-                <CiSettings />
-              </button>
+              <div style={{ position: "relative", display: "inline-block" }}>
+                <button
+                  className="ml-8 mr-2 text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700"
+                  onClick={toggleOptionsForSettingBtn}
+                >
+                  <CiSettings title="setting"  style={{height:'2rem', width:'2rem'}} />
+                </button>
+                {sohwPopUp && <SettingPopUp onClose={closePopup} />}
+              </div>
               <button class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700">
-                <MdLogout />
+                <MdLogout title="logout" style={{height:'2rem', width:'2rem'}} />
               </button>
             </div>
 

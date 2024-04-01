@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { get_user_data } from "@/app/user_apis/route";
 import { user_stats } from "../../adminapi/route";
 import { MdLogout } from "react-icons/md";
+import { RiUserAddFill } from "react-icons/ri";
+import { MdNotificationAdd } from "react-icons/md";
 import Typewriter from "typewriter-effect";
 import { CiSettings } from "react-icons/ci";
 import { RadialMultiBarChart } from "../../adminComponents/RadialMultiBarChart";
@@ -85,8 +87,11 @@ const Home = () => {
               <button class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
                 <CiSettings />
               </button>
-              <button class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700">
-                <MdLogout />
+              <button title="logout"
+                className="text-red-000 hover:text-red-900 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
+              >
+                <MdLogout style={{ height: '2rem', width: '2rem' }} />
+
               </button>
             </div>
 
@@ -125,6 +130,7 @@ const Home = () => {
                 </h1>
               </div>
             </div>
+
           </div>
         ) : (
           <p style={{ margin: "0", fontSize: "14px", fontWeight: "bold" }}>

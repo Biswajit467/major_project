@@ -10,16 +10,23 @@ const AddPost = () => {
     desc: "",
     category: "",
     token: "",
-    uid: 6, // we set the uid dynamically letter on, for now, it is 6 and 6 is holla user's uid.
+    uid: null, // we set the uid dynamically letter on, for now, it is 6 and 6 is holla user's uid.
   });
 
   useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
     const tokenFromStorage = localStorage.getItem("student_id_token");
     if (tokenFromStorage) {
       setPostData((prevData) => ({
         ...prevData,
         token: tokenFromStorage,
       }));
+      if (user_id) {
+        setPostData((prevData) => ({
+          ...prevData,
+          uid: user_id,
+        }));
+      }
     }
     console.log("this is token from add post component", tokenFromStorage);
   }, []);
@@ -137,11 +144,11 @@ const AddPost = () => {
               <option disabled value="">
                 Select a category
               </option>
-              <option value="Technology">Technology</option>
-              <option value="Travel">Travel</option>
-              <option value="Food">Food</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Health">Health</option>
+              <option value="Academic">Academic</option>
+              <option value="Tech">Tech</option>
+              <option value="Arts">Arts</option>
+              <option value="Sports">Sports</option>
+              <option value="ETC">ECA</option>
             </select>
           </div>
 

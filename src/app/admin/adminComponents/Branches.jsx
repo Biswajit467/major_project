@@ -8,7 +8,6 @@ const Branches = ({ branchName, quantity }) => {
     civil: "Civil Engineering",
   };
 
-  console.log(branch_name?.branchName);
   return (
     <div
       style={{

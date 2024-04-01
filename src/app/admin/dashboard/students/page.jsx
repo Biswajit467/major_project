@@ -5,7 +5,7 @@ import { get_users_by_branch } from "../../adminapi/route";
 import StudentCard from "../../adminComponents/StudentCard";
 
 const page = ({ searchParams }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const [allstudents, setAllstudents] = useState(null);
 
   useEffect(() => {
@@ -23,18 +23,11 @@ const page = ({ searchParams }) => {
     fetch_students_by_branch();
   }, []);
 
-  // console.log(
-  //   "value form search params",
-  //   searchParams.branch,
-  //   searchParams.sem
-  // );
-
-  // console.log("students ", allstudents);
   return (
     <div>
       {allstudents &&
         allstudents.map((item) => {
-          return <StudentCard data={item} />;
+          return <StudentCard data={item}  />;
         })}
     </div>
   );

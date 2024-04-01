@@ -1,7 +1,8 @@
 import React from "react";
+import Link from "next/link";
 
 const StudentCard = (props) => {
-  console.log(" data from student card", props.data);
+  console.log("props from student card", props);
   return (
     <div>
       <div
@@ -20,12 +21,13 @@ const StudentCard = (props) => {
           boxSizing: "border-box",
         }}
       >
-        <div style={{ width: "10%", textAlign: "left" }}>{props.data?.img ? props.data?.img : 'x'}</div>
+        <div style={{ width: "10%", textAlign: "left" }}>
+          {props.data?.img ? props.data?.img : "x"}
+        </div>
         <div
           style={{
             textAlign: "center",
             width: "20%",
-            // backgroundColor: "#FF6B6B",
             borderRadius: "8px",
             padding: "8px",
             paddingRight: "5%",
@@ -37,14 +39,13 @@ const StudentCard = (props) => {
           style={{
             textAlign: "center",
             width: "15%",
-            // backgroundColor: "#6BFFA4",
             borderRadius: "8px",
             padding: "8px",
           }}
         >
           {props.data?.registration_number}
         </div>
-        <button
+        {/* <button
           style={{
             backgroundColor: "#8C6BFF",
             color: "#FFFFFF",
@@ -60,7 +61,18 @@ const StudentCard = (props) => {
           // onClick={}
         >
           Details
-        </button>
+        </button> */}
+        <Link
+          href={{
+            pathname: `studentinfo/`,
+            query: {
+              student_details: JSON.stringify(props.data),
+            },
+          }}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mr-2 w-80 flex items-center justify-center"
+        >
+          Details
+        </Link>
         <button
           style={{
             backgroundColor: "#8C6BFF",
@@ -76,10 +88,10 @@ const StudentCard = (props) => {
           onMouseOut={(e) => (e.target.style.backgroundColor = "#8C6BFF")}
           // onClick={}
         >
-          update Academic Marks
+          Current Sem Marks
         </button>
 
-        <button
+        {/* <button
           style={{
             backgroundColor: "rgb(255 0 26)",
             color: "#FFFFFF",
@@ -95,7 +107,7 @@ const StudentCard = (props) => {
           // onClick={}
         >
         { props.data?.ban == true ? "Unban" : "Ban"}
-        </button>
+        </button> */}
       </div>
     </div>
   );

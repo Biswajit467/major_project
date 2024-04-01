@@ -26,7 +26,7 @@ export const user_stats = async () => {
   }
 };
 
-export const get_users_by_branch = async (branch , sem) => {
+export const get_users_by_branch = async (branch, sem) => {
   try {
     const response = await axios.get(
       `${MAIN_URL}admins/users-by-branch/${branch}/${sem}/`
@@ -37,3 +37,36 @@ export const get_users_by_branch = async (branch , sem) => {
     return null;
   }
 };
+
+export const update_student_info = async (user_id, data) => {
+  try {
+    const response = await axios.patch(
+      `${MAIN_URL}admins/update-student-info/${user_id}/`,
+      data
+    );
+    console.log("reponse data from update_student_info" , response.data)
+    return response.data; // Return the response data if needed
+  } catch (error) {
+    console.error("Error updating student info:", error);
+    throw error; // Rethrow the error for handling in the caller
+  }
+};
+
+export const update_user_scores = async (data) => {
+  try {
+    const response = await axios.post(
+      `${MAIN_URL}admins/update-scores/`,
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json' // Set Content-Type header
+        }
+      }
+    );
+    console.log("response data from update_student_info", response.data);
+    return response; // Return the response data if needed
+  } catch (error) {
+    console.error("Error updating student info:", error);
+    throw error; 
+  }
+}

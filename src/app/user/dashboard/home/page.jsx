@@ -27,7 +27,8 @@ const NavBar = () => {
     fetchUserData();
   }, []);
 
-  console.log("userInfo from home page", userInfo);
+  // console.log("userInfo from home page", userInfo);
+  console.log("user scores from home page", userScores);
 
   useEffect(() => {
     const fetchUserScores = async () => {
@@ -188,7 +189,7 @@ const NavBar = () => {
                 padding: "2%",
               }}
             >
-              <ColumnGraph props={userScores && userScores?.bar_graph} />
+              <ColumnGraph props={userScores && userScores?.scores} />
               <div
                 style={{
                   display: "flex",

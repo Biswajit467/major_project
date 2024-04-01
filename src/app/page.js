@@ -78,7 +78,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <Carousel
+      {/* <Carousel
         autoPlay
         infiniteLoop
         interval={3000}
@@ -381,7 +381,7 @@ export default function Home() {
       <Script
         nomodule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-      ></Script>
+      ></Script> */}
     </div>
   );
 }

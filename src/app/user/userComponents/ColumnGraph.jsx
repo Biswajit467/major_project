@@ -1,26 +1,23 @@
 "user client";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import'./apexchart.css'
+import "./apexchart.css";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const ColumnGraph = (props) => {
-  console.log("props from column graph :", props);
   const [formattedData, setFormattedData] = useState(null);
   useEffect(() => {
     if (props?.props) {
       const data_fromatation = props?.props.map((item) => ({
-        x: `sem ${item.semester}`,
-        y: Math.ceil(item.percentage_overall),
+        x: `sem ${item.sem}`,
+        y: Math.ceil(item.overall),
       }));
       setFormattedData(data_fromatation);
     } else {
       null;
     }
   }, [props]);
-
-  console.log("formatted Data", formattedData);
 
   const options = {
     chart: {

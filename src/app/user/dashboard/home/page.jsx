@@ -189,7 +189,7 @@ const NavBar = () => {
         </div>
 
         <div>
-          {userScores?.bar_graph ? (
+          {userScores?.scores ? (
             <div
               style={{
                 display: "flex",

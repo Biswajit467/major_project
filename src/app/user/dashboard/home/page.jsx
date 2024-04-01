@@ -146,7 +146,8 @@ const NavBar = () => {
                 width: "100%",
                 backgroundColor: "transparent",
                 borderRadius: "10px",
-                boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
+                // boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
+                boxShadow: '15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)',
                 margin: "2%",
                 padding: "2%",
               }}
@@ -180,7 +181,9 @@ const NavBar = () => {
                 width: "100%",
                 backgroundColor: "transparent",
                 borderRadius: "10px",
-                boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
+                // boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
+                boxShadow: '15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)',
+                marginTop:'5%',
                 margin: "2%",
                 padding: "2%",
               }}

@@ -4,7 +4,8 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
 import { SiGooglemessages } from "react-icons/si";
 import Link from "next/link";
-
+import Image from "next/image";
+import Cap from '../images/cap.png';
 const ChooseLoginPopup = ({ onClose }) => {
   const popupRef = useRef(null);
 
@@ -40,15 +41,24 @@ const ChooseLoginPopup = ({ onClose }) => {
         className="bg-slate-900 rounded-lg shadow-lg p-8 w-96"
       >
         <div className="flex items-center mb-4 justify-center">
-          <img
-            width="94"
-            height="94"
-            src="https://img.icons8.com/3d-fluency/94/graduation-cap.png"
+        <Image
+            // width="94"
+            // height="94"
+            src={Cap}
             alt="graduation-cap"
             className="w-20 h-20 transition-transform duration-300 transform hover:scale-110"
           />
           <h1
-            id="n"
+          style={{
+            fontFamily: 'sans-serif',
+            backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent'
+          }}
             className="text-4xl font-inter font-extrabold text-white py-4 transform transition duration-300 ease-out hover:scale-105 hover:animate-shake"
           >
             CampusCanvas

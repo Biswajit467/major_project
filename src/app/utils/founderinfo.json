@@ -1,0 +1,21 @@
+[
+   
+    {
+        "name": "Hrushikesh Behera",
+        "work": "Project Lead"
+    },
+    {
+        "name":"Biswajit Behera" , 
+        "work":"Backend Developer"
+    },
+    {
+        "name": "Sahil Sahoo",
+        "work": "Frontend Developer"
+    },
+
+    {
+        "name":"Subhashree Sahoo",
+        "work":"UI/UX Specialist"
+    }
+    
+]

@@ -5,11 +5,15 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import ChooseLoginPopup from "./components/ChooseLoginPopup";
-
-
-
+import { motion } from "framer-motion";
+import { cn } from "./utils/cn";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { Star } from "./components/ui/Star";
+import Founder from "../../src/app/components/Founder"
+import offBtn from './images/offbtn.png'; 
+import Cap from './images/cap.png';
+
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -21,27 +25,37 @@ export default function Home() {
   const closePopup = () => {
     setShowPopup(false);
   };
+
+
+
+
   return (
     <div>
+
+
       {showPopup && <ChooseLoginPopup onClose={closePopup} />}
       {/* <nav className="bg-gradient-to-r h-19 from-purple-950 to-indigo-950 p-4 flex justify-between items-center"> */}
-      <nav  className="bg-0a2351 h-19 p-4 flex justify-between items-center">
+      <nav className="bg-0a2351 h-19 p-4 flex justify-between items-center">
         <div className="flex items-center">
-          <img
+          <Image
             // width="94"
             // height="94"
-            src="https://img.icons8.com/3d-fluency/94/graduation-cap.png"
+            src={Cap}
             alt="graduation-cap"
             className="w-20 h-20 transition-transform duration-300 transform hover:scale-110"
           />
           <h1
-          style={{
-            background: 'linear-gradient(120deg, #00f7ff, #ff00e6)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent'
-          }}
-           
+            style={{
+              fontFamily: 'sans-serif',
+              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent'
+            }}
+
             className="text-4xl font-inter font-extrabold text-white py-4  transform transition duration-300 ease-out hover:scale-105 hover:animate-shake"
           >
             CampusCanvas
@@ -50,89 +64,52 @@ export default function Home() {
 
         <div className="nav-buttons">
           <button
-          
-          style={{
-            boxShadow: '2px 2px 2px 2px black',
-            borderRadius: '100%',
-            transition: 'box-shadow 0.3s ease-in-out'
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.boxShadow = '0px 3px 7px 0px rgba(163, 16, 255, 0.695)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.boxShadow = '2px 2px 2px 2px black';
-          }}
-        
-          Button Text
-      
-        
+
+            style={{
+              boxShadow: '2px 2px 2px 2px black',
+              borderRadius: '100%',
+              transition: 'box-shadow 0.3s ease-in-out'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.boxShadow = '0px 3px 7px 0px rgba(163, 16, 255, 0.695)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.boxShadow = '2px 2px 2px 2px black';
+            }}
+
+            Button Text
+
+
             className="relative  transition-transform duration-300 transform hover:scale-110"
             onClick={togglePopup}
           >
-            <img
+            <Image
+            style={{
+              fontFamily: 'sans-serif',
+              backgroundImage: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent'
+            }}
               className="w-16 h-16"
-              src="https://img.icons8.com/nolan/64/toggl-app.png"
+              src={offBtn}
               alt="toggl-app"
             />
           </button>
         </div>
       </nav>
 
-      <Carousel
-        autoPlay
-        infiniteLoop
-        interval={3000}
-        showStatus={false}
-        showThumbs={false}
-        showArrows={false}
-        width={"100%"}
-      >
-        <div>
-          <img
-            className=" h-screen"
-            src="https://plus.unsplash.com/premium_photo-1683887034491-f58b4c4fca72?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
-          <button className="absolute bottom-0 left-0 mb-4 ml-9 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-            <div className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-            <div className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-            <div className="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-            <div className="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-            <div className="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-            <p className="z-10">Discover More</p>
-          </button>
-        </div>
-        <div>
-          <img
-            className=" h-screen"
-            src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
-          <button className="absolute bottom-0 left-0 mb-4 ml-4 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-            <div className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-            <div className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-            <div className="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-            <div className="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-            <div className="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-            <p className="z-10">Discover More</p>
-          </button>
-        </div>
-        <div className="relative h-screen">
-          <img
-            className="h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
-          <button className="absolute bottom-0 left-0 mb-4 ml-4 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-            <div className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-            <div className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-            <div className="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-            <div className="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-            <div className="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-            <p className="z-10">Discover More</p>
-          </button>
-        </div>
-      </Carousel>
 
-      <div class="container">
-        <p class="container-title">
+      <Star />
+
+
+
+
+      <div class="container" style={{ marginBottom: '18rem' }}>
+        <p class="container-title ">
           Here are the features
           <br />
           we’re proud of
@@ -206,182 +183,89 @@ export default function Home() {
       </div>
 
       <p class="container-title">Our Team</p>
-     <div style={{display:'flex' , flexDirection:'row',justifyContent:'center',gap:'0rem' , marginBottom:'12rem'}} >
-     <div class="flex h-fit bg-black  relative items-center justify-center w-full mb-8">
- 
-  <div class="rounded-xl overflow-hidden relative text-center p-1 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
-    <div class="text-gray-500 group-hover:scale-105 transition-all">
-      <svg class="w-16 h-16" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round"></path>
-      </svg>
-    </div>
-    <div class="group-hover:pb-10 transition-all duration-500 delay-200">
-      <h1 class="font-semibold text-gray-700">Biswajit Behera</h1>
-      <p class="text-gray-500 text-sm">Backend Developer</p>
-    </div>
-    <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
-      <div class="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">
-            <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 960 1000">
-            <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div><div class="flex h-fit bg-black  relative items-center justify-center w-full mb-8">
- 
-  <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
-    <div class="text-gray-500 group-hover:scale-105 transition-all">
-      <svg class="w-16 h-16" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round"></path>
-      </svg>
-    </div>
-    <div class="group-hover:pb-10 transition-all duration-500 delay-200">
-      <h1 class="font-semibold text-gray-700">Hrushikesh Behera</h1>
-      <p class="text-gray-500 text-sm">Project Lead</p>
-    </div>
-    <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
-      <div class="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">
-            <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 960 1000">
-            <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div><div class="flex h-fit bg-black  relative items-center justify-center w-full mb-8">
- 
-  <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
-    <div class="text-gray-500 group-hover:scale-105 transition-all">
-      <svg class="w-16 h-16" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round"></path>
-      </svg>
-    </div>
-    <div class="group-hover:pb-10 transition-all duration-500 delay-200">
-      <h1 class="font-semibold text-gray-700">Sahil Sahoo</h1>
-      <p class="text-gray-500 text-sm">Frontend Developer</p>
-    </div>
-    <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
-      <div class="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">
-            <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 960 1000">
-            <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div><div class="flex h-fit bg-black  relative items-center justify-center w-full mb-8">
- 
-  <div class="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl">
-    <div class="text-gray-500 group-hover:scale-105 transition-all">
-      <svg class="w-16 h-16" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" stroke-linejoin="round" stroke-linecap="round"></path>
-      </svg>
-    </div>
-    <div class="group-hover:pb-10 transition-all duration-500 delay-200">
-      <h1 class="font-semibold text-gray-700">Subhashree Sahoo</h1>
-      <p class="text-gray-500 text-sm">Designer</p>
-    </div>
-    <div class="flex items-center transition-all duration-500 delay-200 group-hover:bottom-3 -bottom-full absolute gap-2 justify-evenly w-full">
-      <div class="flex gap-3 text-2xl bg-gray-700 text-white p-1 hover:p-2 transition-all duration-500 delay-200 rounded-full shadow-sm">
-        <a href="https://react-icons.github.io/react-icons/" class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">
-            <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <path d="M22 6l-10 7L2 6"></path>
-          </svg>
-        </a>
-        <a class="hover:scale-110 transition-all duration-500 delay-200">
-          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 960 1000">
-            <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-     </div>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', gap: '0rem', marginBottom: '12rem' }} >
+       
+        <Founder/>
+       
 
-      <footer class="footer">
-        <div class="waves">
-          <div class="wave" id="wave1"></div>
-          <div class="wave" id="wave2"></div>
-          <div class="wave" id="wave3"></div>
-          <div class="wave" id="wave4"></div>
+
+      </div>
+
+      <section class="bg-gray-900">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+            <div class="px-5 py-2">
+                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    About
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Blog
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Team
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Pricing
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Contact
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Terms
+                </a>
+            </div>
+        </nav>
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Instagram</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Twitter</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">GitHub</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Dribbble</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" />
+                </svg>
+            </a>
         </div>
-        <ul class="social-icon">
-          <li class="social-icon__item">
-            <a class="social-icon__link" href="#">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-          <li class="social-icon__item">
-            <a class="social-icon__link" href="#">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-          <li class="social-icon__item">
-            <a class="social-icon__link" href="#">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-          <li class="social-icon__item">
-            <a class="social-icon__link" href="#">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-        </ul>
-     
-        <p>&copy;2024 BSSH group | All Rights Reserved</p>
-      </footer>
-      <Script
-        type="module"
-        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-      ></Script>
-      <Script
-        nomodule
-        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-      ></Script>
+        <p class="mt-8 text-base leading-6 text-center text-gray-400">
+            &copy; 2021 SomeCompany, Inc. All rights reserved.
+        </p>
+    </div>
+</section>
+
+
+
+
     </div>
   );
 }

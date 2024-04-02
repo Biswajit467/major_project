@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { MAIN_URL } from "@/app/common/urls";
+import { MAIN_URL } from "../../../../common/urls";
 import UpdatePost from "../../../postComponents/UpdatePost";
 import RelatedPosts from "../../../postComponents/RelatedPosts";
 
@@ -22,7 +22,7 @@ const PostPage = ({ params, searchParams }) => {
       console.error("Error parsing JSON:", error);
     }
   }
-
+console.log("userpost:>",)
   useEffect(() => {
     const fetchPost = async () => {
       try {

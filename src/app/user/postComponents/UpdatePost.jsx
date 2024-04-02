@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { MAIN_URL } from "@/app/common/urls";
+import { MAIN_URL } from "../../common/urls";
 import Image from "next/image";
 import DeleteConfirmationPopUp from "./DeleteConfirmationPopUp";
 import { useRouter } from "next/navigation";

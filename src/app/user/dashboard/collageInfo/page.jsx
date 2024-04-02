@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import './card.css';
-import Card from '@/app/components/Card'; 
-import clginfo from '@/app/utils/clginfo.json'; 
+import Card from '../../../components/Card'; 
+import clginfo from '../../../utils/clginfo.json'; 
 
 
 // 学院信息数据

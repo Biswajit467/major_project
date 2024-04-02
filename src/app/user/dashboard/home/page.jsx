@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { get_user_data } from "@/app/user_apis/route";
+import { get_user_data } from "../../../user_apis/route";
 import { get_user_scores } from "../../user_apis/route";
 import { RadarChart } from "../../userComponents/RadarChart";
 import { ColumnGraph } from "../../userComponents/ColumnGraph";

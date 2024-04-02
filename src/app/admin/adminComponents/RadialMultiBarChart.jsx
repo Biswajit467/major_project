@@ -4,6 +4,7 @@ import React from "react";
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const RadialMultiBarChart = (props) => {
+  console.log("prosp from radial multi bart", props)
   const options = {
     chart: {
       dataLabels: {
@@ -13,12 +14,12 @@ export const RadialMultiBarChart = (props) => {
         },
       },
       title: {
-        text: 'full overview', 
-        align: 'center', 
+        text: 'full overview',
+        align: 'center',
         margin: 10,
         style: {
-          fontSize: '20px', 
-          fontWeight: 'bold', 
+          fontSize: '20px',
+          fontWeight: 'bold',
           color: '#ffffff'
         }
       }
@@ -45,13 +46,18 @@ export const RadialMultiBarChart = (props) => {
     props?.data?.total_students_by_branch[3]?.total_students,
   ];
 
+  console.log("series ", series)
   return (
-    <ApexChart
-      type="donut"
-      options={options}
-      series={series}
-      height={400}
-      width={400}
-    />
+    <>
+      {props.data ?
+        <ApexChart
+          type="donut"
+          options={options}
+          series={series}
+          height={400}
+          width={400}
+        /> : null}
+    </>
+
   );
 };

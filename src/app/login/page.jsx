@@ -115,8 +115,17 @@ const LoginPage = ({ searchParams }) => {
             <div class="max-w-md mx-auto text-white ">
               <div class="flex items-center space-x-5 justify-center">
                 <h1
-                  id="n"
-                  className="text-4xl font-inter font-extrabold text-white py-4  transform transition duration-300 ease-out hover:scale-105 hover:animate-shake"
+              style={{
+              fontFamily: 'serif',
+              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              fontSize: '2.75rem', 
+            }}
                 >
                   CampusCanvas
                 </h1>
@@ -160,9 +169,11 @@ const LoginPage = ({ searchParams }) => {
                 <div></div>
               </div>
               <div id="bb" class="mt-5 flrx align-center">
-                <button  onClick={handleSubmit}
-    className="overflow-hidden w-32 h-12 bg-gradient-to-r from-blue-400 to-pink-500 text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group" >
-                  Login
+              <button onClick={handleSubmit}
+  className="overflow-hidden w-32 h-12 bg-gradient-to-b from-blue-400 to-blue-900 text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group">
+  Login
+
+
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-indigo-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-indigo-600 rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>

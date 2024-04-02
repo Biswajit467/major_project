@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import { MAIN_URL } from "@/app/common/urls";
+import { MAIN_URL } from "../../../../common/urls";
 
 const UpdatePersonalInfoForm = () => {
   const [formData, setFormData] = useState({

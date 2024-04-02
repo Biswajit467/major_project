@@ -1,6 +1,6 @@
-"use client";
+'use client'
 import React, { useEffect, useState } from "react";
-import { get_user_data } from "@/app/user_apis/route";
+import { get_user_data } from "../../../user/user_apis/route";
 import { user_stats } from "../../adminapi/route";
 import { MdLogout } from "react-icons/md";
 import { RiUserAddFill } from "react-icons/ri";
@@ -154,7 +154,7 @@ const Home = () => {
             "15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)",
         }}
       >
-        <div>{userStats ? <RadialMultiBarChart data={userStats} /> : null}</div>
+        <div>{userStats ? userStats && <RadialMultiBarChart data={userStats} /> : null}</div>
         <div>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum id
           nobis numquam possimus voluptatem sunt laboriosam, culpa provident

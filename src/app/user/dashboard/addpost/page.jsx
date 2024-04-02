@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { addPost } from "@/app/auth_api/route";
+import { addPost } from "../../../auth_api/route";
 
 const AddPost = () => {
   const [postData, setPostData] = useState({

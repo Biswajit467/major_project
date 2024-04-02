@@ -1,9 +1,11 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { addPost } from "@/app/auth_api/route";
+import { useRouter } from "next/navigation";
 
 const AddPost = () => {
+  const router = useRouter();
+
   const [postData, setPostData] = useState({
     title: "",
     img: "",
@@ -60,6 +62,7 @@ const AddPost = () => {
         desc: "",
         category: "",
       });
+      router.push("viewpost");
     } catch (error) {
       console.log(error);
     }
@@ -146,7 +149,7 @@ const AddPost = () => {
               </option>
               <option value="Academic">Academic</option>
               <option value="Tech">Tech</option>
-              <option value="Arts">Arts</option>
+              <option value="Art">Arts</option>
               <option value="Sports">Sports</option>
               <option value="ETC">ECA</option>
             </select>

@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdAdsClick } from "react-icons/md";
 import { FaUser } from "react-icons/fa6";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 const ViewPost = () => {
   const [posts, setPosts] = useState([]);
@@ -81,7 +83,8 @@ const ViewPost = () => {
               marginBottom: "40px",
               padding: "20px",
               border: "1px solid #ddd",
-              borderRadius: "0% 10% 0% 10%",
+              // borderRadius: "0% 10% 0% 10%",
+              borderRadius: "10px ",
               color: "#333",
               background:
                 "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
@@ -187,16 +190,20 @@ const ViewPost = () => {
             </div>
           </div>
         ))}
-        <div style={{ textAlign: "center" }}>
-          <button
-            onClick={handlePrevPage}
-            disabled={page === 1}
-            style={{ marginRight: "10px" }}
-          >
-            Previous
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "3rem",
+            cursor: "pointer",
+          }}
+        >
+          <button onClick={handlePrevPage} disabled={page === 1}>
+            <IoIosArrowDropleftCircle style={{ marginRight: "3rem" }} />
           </button>
           <button onClick={handleNextPage} disabled={page === totalPages}>
-            Next
+            <IoIosArrowDroprightCircle />
           </button>
         </div>
       </div>

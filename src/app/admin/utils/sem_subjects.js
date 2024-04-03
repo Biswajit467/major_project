@@ -1,0 +1,43 @@
+export const branch_sem_wise_subjects = {
+  cse: {
+    sem1: ["basic electrical engineering" , "basic mechanical enginerring" , "communicative english" , "mathematics" , "physics"],
+    sem2: ["electronics" , "mechanics" , "math" , "civil" , "chemistry"],
+    sem3: ["mathematics-2" , "object oriented programming using java" , "organizational behaviour" ,"digital logic designing" , "data structures"],
+    sem4: ["constitution of india" ,"discrete mathematics" , "design and analysis algorithm" , "computer organization and artitechture" , "microprocessor and Microcontroller" , "digital signal processing" , "engineering economics"],
+    sem5: ["formal language and automata theory" , "database managament system" , "operating system" ,"artificial intelligence and machine learning" , "computer graphics"],
+    sem6: ["softwear engineering" , "compiler design" ,"real time system" , "essence of indial knowladge and tradition - 1" ,"optimization engineering"],
+    sem7: ["enterprenueurship development" , "green technology"  ,"cyber laws and ethics" , "softwear project management" , "embedded system" , "digital VSLI design"],
+    sem8: ["project "],
+  },
+  ee: {
+    sem1: ["basic electrical engineering" , "basic mechanical enginerring" , "communicative english" , "mathematics" , "physics"],
+    sem2: ["electronics" , "mechanics" , "math" , "civil" , "chemistry"],
+    sem3: ["analogous electronics circuit network theory" , "environmental science" ,"mathematics-3" , "organization behaviour" , "object oriented programming using java"],
+    sem4: ["constitution of india" ,"digital electronics" , "electrical machine - 1" , "power electronics"  ,"electro magnetic theory" ,"engineering economics",'digital signal processing'],
+    sem5: ["electric power transmission","control system" ,"electrical mechanics-2" , "electrical machine design" , "renewable power generation systems" ],
+    sem6: ["artificial interlligence and machine learing" , "microprocessor" , "power system operation and controll" , "electric power system protection" , "optimization in engineering" , "essence of indian knowladge tradition-1"],
+    sem7: ["enterpreneruship development" ,"green technology" ,"smart grid" , "advance control system" ,"embedded system" , "digital vlsi design"],
+    sem8: ["project "],
+  },
+  me: {
+    sem1: ["basic electrical engineering" , "basic mechanical enginerring" , "communicative english" , "mathematics" , "physics"],
+    sem2: ["electronics" , "mechanics" , "math" , "civil" , "chemistry"],
+    sem3: ["mathematics-3" , "mechanics of solid" , "fluid mechanics and hydraulic machine" , "organization behaviour" , "object oriented programming using java" , "environmental science"],
+    sem4: ["machanical measurments metrology and realiability" ,"engineering thermodynamics" , "introduction to physical metallurgy enginering material" , "kinemetics and dynamics of machine" , "constitution of india" , " engineering economics" ],
+    sem5: ["basic manufacturing process mechanism and machines" , "heater transfer" , "automobile" ,"rapid manufacturing process" , "universal human values"],
+    sem6: ["artificial inteligence and machine learning" , "design of mechanic elements meching science and technology" , "smart and composite materails" ,"essence fo inidian knowladge and tradition-1" , "optimization engineering" ,"future ready contributor program"],
+    sem7: ["enterprenuership development" , "green technology" ,"industrial seafty engineering" , "refriferation and air conditioning" , "power plant engineering" , "digital VLSI design"],
+    sem8: ["project"],
+  },
+  civil: {
+    sem1: ["basic electrical engineering" , "basic mechanical enginerring" , "communicative english" , "mathematics" , "physics"],
+    sem2: ["electronics" , "mechanics" , "math" , "civil" , "chemistry"],
+    sem3: ["mathematics-33" ,"mechanics of solid" , "fluid mechnics and hydraulic machine" , "organizational behaviour" , "object oriented programing using java" , "environmental science"] ,
+    sem4: ["surving" , "transportation enginerring"  , "structural analysis-1" , "concrete technology"  , "introduction to physical metallurgy and engineering materails" ,"constitution of india " , "enginering economics"],
+    sem5: ["designer concerete structure" , "wather and waster waters engineering" ,"geo technical engineering" , "structural analysis" ,"railway and airport engineering" , "universal human values"],
+    sem6: ["desgin of steel structure" ,"hydrology and irrigation engineering" , "artificial interliigence"  ,"foundation engineering" , "essence of indian knowladge tradition-1"  ,"optimization engineering"] ,
+    sem7: ["enterpreneurship devlopment" , "green technology"  ,"disaster management"  , "water reource engineering" , "prestressed concrete"  ,"E-commerce & ERP"],
+    sem8: ["porject"],
+  },
+};
+ 

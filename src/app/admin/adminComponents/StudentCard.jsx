@@ -2,7 +2,19 @@ import React from "react";
 import Link from "next/link";
 
 const StudentCard = (props) => {
+  let clickedstudent_data = {
+    id:props.data.id,
+    name: props.data.name,
+    sem: props.data.sem,
+    registration_number: props.data.registration_number,
+    branch: props.data.branch,
+  };
+
   console.log("props from student card", props);
+  const handleCurrentStudentClick = () => {
+    props.currentStudentsData(clickedstudent_data);
+    props.currentsemclicked(true)
+  };
   return (
     <div>
       <div
@@ -86,7 +98,7 @@ const StudentCard = (props) => {
           }}
           onMouseOver={(e) => (e.target.style.backgroundColor = "#6B8CFF")}
           onMouseOut={(e) => (e.target.style.backgroundColor = "#8C6BFF")}
-          // onClick={}
+          onClick={handleCurrentStudentClick}
         >
           Current Sem Marks
         </button>

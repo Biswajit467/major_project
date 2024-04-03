@@ -6,7 +6,7 @@ import { get_leader_board } from "../../user_apis/route";
 // import { List, ListItem, ListItemText } from '@material-ui/core';
 import { List, ListItem, ListItemText } from "@mui/material";
 
-const leaderBoard = () => {
+const LeaderBoard = () => {
   const [leaderboardData, setLeaderboardData] = useState(null);
   const [currentUserData, setCurrentUserData] = useState(null);
   const [isCompareClicked, setIsCompareClicked] = useState(false);
@@ -154,4 +154,4 @@ const leaderBoard = () => {
   );
 };
 
-export default leaderBoard;
+export default LeaderBoard;

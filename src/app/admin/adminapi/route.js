@@ -44,7 +44,7 @@ export const update_student_info = async (user_id, data) => {
       `${MAIN_URL}admins/update-student-info/${user_id}/`,
       data
     );
-    console.log("reponse data from update_student_info" , response.data)
+    console.log("reponse data from update_student_info", response.data);
     return response.data; // Return the response data if needed
   } catch (error) {
     console.error("Error updating student info:", error);
@@ -59,14 +59,47 @@ export const update_user_scores = async (data) => {
       data,
       {
         headers: {
-          'Content-Type': 'application/json' // Set Content-Type header
-        }
+          "Content-Type": "application/json", // Set Content-Type header
+        },
       }
     );
     console.log("response data from update_student_info", response.data);
     return response; // Return the response data if needed
   } catch (error) {
     console.error("Error updating student info:", error);
-    throw error; 
+    throw error;
   }
-}
+};
+
+export const get_records_by_student_id = async (data) => {
+  try {
+    const response = await axios.post(
+      `${MAIN_URL}get-records-by-student-id/`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json", // Set Content-Type header
+        },
+      }
+    );
+    console.log("response data from update_student_info", response.data);
+    return response; // Return the response data if needed
+  } catch (error) {
+    console.error("Error updating student info:", error);
+    throw error;
+  }
+};
+
+export const insert_semester_marks = async (data) => {
+  try {
+    const response = await axios.post(
+      `${MAIN_URL}insert-semester-marks/`,
+      data
+    );
+    console.log("response data from update_student_info", response);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating student info:", error);
+    throw error;
+  }
+};

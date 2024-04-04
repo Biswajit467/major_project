@@ -40,10 +40,10 @@ export const RadialMultiBarChart = (props) => {
   };
   // const series = [44, 55, 41, 17, 15];
   const series = [
-    props?.data?.total_students_by_branch[0]?.total_students,
-    props?.data?.total_students_by_branch[1]?.total_students,
-    props?.data?.total_students_by_branch[2]?.total_students,
-    props?.data?.total_students_by_branch[3]?.total_students,
+    props?.data?.total_students_by_branch[0]?.total_students ? props?.data?.total_students_by_branch[0]?.total_students : 0,
+    props?.data?.total_students_by_branch[1]?.total_students ? props?.data?.total_students_by_branch[1]?.total_students : 0,
+    props?.data?.total_students_by_branch[2]?.total_students ? props?.data?.total_students_by_branch[2]?.total_students : 0,
+    props?.data?.total_students_by_branch[3]?.total_students  ? props?.data?.total_students_by_branch[3]?.total_students : 0,
   ];
 
   console.log("series ", series)

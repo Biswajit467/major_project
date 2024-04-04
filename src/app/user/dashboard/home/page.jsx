@@ -24,6 +24,7 @@ const NavBar = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userScores, setUserScores] = useState(null);
   const [sohwPopUp, setSohwPopUp] = useState(false);
+  const [dataTillCurrentSem, setDataTillCurrentSem] = useState(null);
 
   const closePopup = () => {
     setSohwPopUp(false);
@@ -47,6 +48,12 @@ const NavBar = () => {
     fetchUserData();
   }, []);
 
+  useEffect(() => {
+    setDataTillCurrentSem(
+      userScores?.scores.filter((item) => item.sem <= userInfo?.user.sem)
+    );
+  }, [userScores]);
+
   // console.log("userInfo from home page", userInfo);
   console.log("user scores from home page", userScores);
 
@@ -67,6 +74,8 @@ const NavBar = () => {
       userInfo ? fetchUserScores() : null;
     }
   }, [userInfo]);
+
+  console.log("user scores : ", userScores);
 
   return (
     <>
@@ -223,7 +232,7 @@ const NavBar = () => {
                 padding: "2%",
               }}
             >
-              <ColumnGraph props={userScores && userScores?.scores} />
+              <ColumnGraph props={dataTillCurrentSem && dataTillCurrentSem} />
               <div
                 style={{
                   display: "flex",

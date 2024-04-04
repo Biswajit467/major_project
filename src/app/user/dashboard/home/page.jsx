@@ -75,6 +75,27 @@ const NavBar = () => {
     }
   }, [userInfo]);
 
+  const handleLogout = async () => {
+    console.log("button clicked");
+    try {
+      // Call the logout API endpoint
+      // const response = await axios.post(`${MAIN_URL}logout/`);
+      // console.log(
+      //   "this is response from handleLogout function",
+      //   response.data.message
+      // ); // Log success message
+      // Clear local storage or perform any other client-side logout actions
+      localStorage.removeItem("student_id_token");
+      localStorage.removeItem("user_id");
+      // Redirect or update UI as needed after logout
+      // For example, you can redirect the user to the login page
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Error logging out user:", error.message);
+      // Handle errors if needed
+    }
+  };
+
   console.log("user scores : ", userScores);
 
   return (
@@ -126,7 +147,10 @@ const NavBar = () => {
                 </button>
                 {sohwPopUp && <SettingPopUp onClose={closePopup} />}
               </div>
-              <button class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700">
+              <button
+                class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
+                onClick={handleLogout}
+              >
                 <MdLogout
                   title="logout"
                   style={{ height: "2rem", width: "2rem" }}

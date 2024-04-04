@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { addPost } from "../../../auth_api/route";
 import { useRouter } from "next/navigation";

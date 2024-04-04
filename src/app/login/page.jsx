@@ -5,6 +5,9 @@ import "./login.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Logo from ".././images/a.jpg";
+
 import Loading from "../user/userComponents/Loading";
 
 const LoginPage = ({ searchParams }) => {
@@ -100,47 +103,14 @@ const LoginPage = ({ searchParams }) => {
 
   return (
     <div>
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
       <div id="c">
-        <div id="k">
-          <Carousel
-            autoPlay
-            infiniteLoop
-            interval={3000}
-            showStatus={false}
-            showThumbs={false}
-            showArrows={false}
-            width={"100%"}
-          >
-            <div>
-              <img
-                className=" h-screen"
-                src="https://plus.unsplash.com/premium_photo-1683887034491-f58b4c4fca72?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
-              <button class="absolute bottom-0 left-0 mb-4 ml-9 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-                <div class="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-                <div class="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-                <div class="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-                <div class="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-                <div class="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-                <p class="z-10">Discover More</p>
-              </button>
-            </div>
-            <div>
-              <img
-                className=" h-screen"
-                src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
-              <button class="absolute bottom-0 left-0 mb-4 ml-4 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-                <div class="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-                <div class="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-                <div class="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-                <div class="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-                <div class="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-                <p class="z-10">Discover More</p>
-              </button>
-            </div>
-          </Carousel>
+        <div style={{ height: "100vh", width: "80rem", backgroundColor: "" }}>
+          <Image
+            alt="logo"
+            style={{ height: "100vh", width: "100%", objectFit: "cover" }}
+            src={Logo}
+          />
         </div>
         <div class="relative py-3  sm:max-w-xl sm:mx-auto ">
           <div

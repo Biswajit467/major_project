@@ -74,11 +74,15 @@ const LeaderBoard = () => {
           corporis. Maxime vero rerum tempora temporibus repellendus vitae
           placeat eaque?
         </div>
-        <div
-          style={{ textAlign: "center", fontSize: "40px", fontWeight: "bold" }}
-        >
-          Students Leader Board
-        </div>
+        <div style={{textAlign:'center' , fontSize:'40px' , fontWeight:'bold' ,
+              background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              marginTop: '0rem',
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+              marginTop:'2rem',
+              fontSize: '2.5rem',
+              textAlign: 'center',}}>Students Leader Board</div>
 
         <div style={{ padding: "2%" }}>
           <div

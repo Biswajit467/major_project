@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import {
   update_student_info,
   update_user_scores,
-} from "../../adminapi/route";
+  get_records_by_student_id
+} from "../../adminapi/route"; // in this we will only call the api in which we can see and update semister marks of previous semister
 import { FaEdit } from 'react-icons/fa';
 
 const Page = ({ searchParams }) => {

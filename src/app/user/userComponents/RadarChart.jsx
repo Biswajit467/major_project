@@ -63,11 +63,11 @@ const options = {
     {
       name: "Overall Performance",
       data: props?.props && [
-        props?.props.percentage_academic,
-        props?.props.percentage_art,
-        props?.props.percentage_etc,
-        props?.props.percentage_sports,
-        props?.props.percentage_tech,
+        props?.props.percentage_academic ? props?.props.percentage_academic : 0,
+        props?.props.percentage_art ?  props?.props.percentage_art : 0,
+        props?.props.percentage_etc ? props?.props.percentage_etc : 0,
+        props?.props.percentage_sports ? props?.props.percentage_sports : 0,
+        props?.props.percentage_tech ? props?.props.percentage_tech : 0 ,
       ],
     },
   ];

@@ -56,8 +56,14 @@ const Notification = () => {
         <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1 }}>
           <h2
             style={{
-              color: 'orange',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+           
+              background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
               marginTop: '0rem',
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
               fontSize: '1.5rem',
               textAlign: 'center',
               marginBottom: '0.5rem',
@@ -113,8 +119,13 @@ const Notification = () => {
             alignItems: 'flex-start',
             justifyContent: 'center',
             overflow: 'hidden',
-            color: 'orange',
+            background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
             width: '100%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
             textAlign: 'center',
             textDecoration:'underline',
             fontFamily:'gillroy',

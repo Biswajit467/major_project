@@ -124,10 +124,9 @@ export default function Home() {
                 src="https://img.icons8.com/dotty/80/40C057/networking-manager.png"
                 alt="networking-manager"
               />
-              <p className="card-title">Zero-cost Possibilities</p>
+              <p className="card-title">Semester-wise Growth Tracking:</p>
               <p className="card-description">
-                Hubble lets users borrow USDH for a one-time 0.5% fee. No
-                variable rates. No interest charged, ever.
+              Students can visualize their progress in various domains such as technology, arts, sports, academics, and extracurricular activities.
               </p>
             </div>
           </div>
@@ -140,10 +139,10 @@ export default function Home() {
                 src="https://img.icons8.com/sf-black-filled/64/EBEBEB/engineering.png"
                 alt="engineering"
               />
-              <p className="card-title">Multi-Asset Collateral</p>
+              <p className="card-title">Leaderboard Comparison</p>
               <p className="card-description">
-                Deposit a variety of assets on Hubble, raise your collateral
-                ratio, and unlock the liquidity in your wallet.
+              Users can explore the top-performing students across the campus and compare their own scores through a radar chart graph, providing valuable insights into their standing relative to their peers.
+
               </p>
             </div>
           </div>
@@ -156,10 +155,11 @@ export default function Home() {
                 src="https://img.icons8.com/ios-filled/50/FAB005/student-male--v1.png"
                 alt="student-male--v1"
               />
-              <p className="card-title">Get Yield on Deposits</p>
+              <p className="card-title">Notice Board</p>
               <p className="card-description">
-                While your collateral is deposited, delegate it to earn the
-                highest yield available in the Solana ecosystem.
+              Important announcements and notices from the administration are easily accessible, ensuring students stay informed about relevant updates and events.
+
+  
               </p>
             </div>
           </div>
@@ -171,11 +171,13 @@ export default function Home() {
                 height="50"
                 src="https://img.icons8.com/ios-filled/50/228BE6/university.png"
                 alt="university"
-              />
-              <p className="card-title">Get up to 11x Leverage</p>
+              /> 
+
+
+              <p className="card-title">Achievement Showcase</p>
               <p className="card-description">
-                Hubbles capital-efficient 110% collateral ratio lets users
-                leverage up to 11x on their deposits.
+              The platform allows students to share their accomplishments through images and blog posts, fostering a sense of community and recognition.
+
               </p>
             </div>
           </div>

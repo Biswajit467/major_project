@@ -60,11 +60,17 @@ const LeaderBoard = () => {
 
       <div style={{ width:'92%' } }>
         <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis reiciendis doloremque ad, mollitia saepe, blanditiis minima corrupti recusandae, error architecto eveniet porro quae nam non in distinctio voluptatum id hic.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, nulla? Alias repellat culpa quam ut dolorum perspiciatis nemo quisquam praesentium, odio facilis voluptatum laboriosam id illum? Iste modi nihil sapiente?
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam voluptates aperiam aspernatur unde, consequatur cum perferendis labore molestiae incidunt a corporis. Maxime vero rerum tempora temporibus repellendus vitae placeat eaque?
+       
         </div>
-        <div style={{textAlign:'center' , fontSize:'40px' , fontWeight:'bold'}}>Students Leader Board</div>
+        <div style={{textAlign:'center' , fontSize:'40px' , fontWeight:'bold' ,
+              background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              marginTop: '0rem',
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+              marginTop:'2rem',
+              fontSize: '2.5rem',
+              textAlign: 'center',}}>Students Leader Board</div>
 
         <div style={{ padding:'2%'} }>
         <div

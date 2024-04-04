@@ -5,19 +5,72 @@ import "./login.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { useRouter } from "next/navigation";
+import Loading from "../user/userComponents/Loading";
 
 const LoginPage = ({ searchParams }) => {
   // console.log("searchParams", searchParams.isAdmin);
+  // const [studentId, setStudentId] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [user_id, setUser_id] = useState(null);
+  // const [isAdmin, setIsAdmin] = useState(false);
+  // const [isBanned, setIsBanned] = useState(false);
+  // const [loading, setLoading] = useState(false);
+
+  // const router = useRouter();
+  // const handleSubmit = async (e) => {
+  //   try {
+  //     setLoading(true);
+  //     const userData = {
+  //       student_id: studentId,
+  //       password: password,
+  //     };
+  //     const response = await loginUser(userData);
+  //     setUser_id(response?.data?.user?.id);
+  //     setIsAdmin(response?.data?.user?.is_admin);
+  //     setIsBanned(response?.data?.user?.is_banned);
+  //     setStudentId("");
+  //     setPassword("");
+  //     console.log(
+  //       "This is login response from LoginPage component : ",
+  //       response
+  //     );
+  //   } catch (error) {
+  //     setLoading(false);
+  //     setMessage(error.response?.data?.error);
+
+  //     setTimeout(() => {
+  //       setMessage("");
+  //     }, 4000);
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const sendUserData = () => {
+  //   if (user_id && !isBanned) {
+  //     if (isAdmin) {
+  //       console.log("isadmin value", isAdmin);
+  //       router.push("admin/dashboard/home");
+  //     } else {
+  //       router.push("user/dashboard/home");
+  //     }
+  //   }
+  // };
+  // useEffect(() => {
+  //   sendUserData();
+  // }, [user_id, isAdmin]);
+
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [user_id, setUser_id] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isBanned, setIsBanned] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       setLoading(true);
       const userData = {
@@ -25,46 +78,29 @@ const LoginPage = ({ searchParams }) => {
         password: password,
       };
       const response = await loginUser(userData);
-      setUser_id(response?.data?.user?.id);
-      setIsAdmin(response?.data?.user?.is_admin);
-      setIsBanned(response?.data?.user?.is_banned);
-      setStudentId("");
-      setPassword("");
-      console.log(
-        "This is login response from LoginPage component : ",
-        response
-      );
+      const { id, is_admin, is_banned } = response?.data?.user || {};
+      if (id && !is_banned) {
+        if (is_admin) {
+          router.push("/admin/dashboard/home");
+        } else {
+          router.push("/user/dashboard/home");
+        }
+      } else if (is_banned) {
+        setMessage(
+          "Sorry you can't Log-in. You are Banned From Using This Application."
+        );
+      }
     } catch (error) {
-      setLoading(false);
-      setMessage(error.response?.data?.error);
-
-      setTimeout(() => {
-        setMessage("");
-      }, 4000);
-      console.log(error);
+      setMessage(error.response?.data?.error || "An error occurred");
     } finally {
       setLoading(false);
     }
   };
-
-  const sendUserData = () => {
-    if (user_id && !isBanned) {
-      if (isAdmin) {
-        console.log("isadmin value", isAdmin);
-        router.push("admin/dashboard/home");
-      } else {
-        router.push("user/dashboard/home");
-      }
-    }
-  };
-  useEffect(() => {
-    sendUserData();
-  }, [user_id, isAdmin]);
-
-  console.log("user_id and isbanned", user_id, isBanned);
+  // console.log("user_id and isbanned", user_id, isBanned);
 
   return (
     <div>
+      {loading && <Loading />}
       <div id="c">
         <div id="k">
           <Carousel
@@ -182,14 +218,7 @@ const LoginPage = ({ searchParams }) => {
                   </span>
                 </button>
               </div>
-              <div>
-                {isBanned ? (
-                  <div className="text-red-600 font-bold">
-                    Sorry you can't Log-in. You are Banned From Using This
-                    Application.
-                  </div>
-                ) : null}
-              </div>
+
               <div className="text-red-600 mt-4 font-bold text-center">
                 {message && <h3>{message}</h3>}
               </div>

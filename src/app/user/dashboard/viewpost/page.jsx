@@ -124,6 +124,7 @@ const ViewPost = () => {
                   pathname: `viewpost/${post.id}`,
                   query: { uidDetails: JSON.stringify(post.uid) },
                 }}
+                prefetch={false}
                 style={{
                   fontWeight: "normal",
                   fontSize: "1.3rem",

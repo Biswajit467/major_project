@@ -1,14 +1,18 @@
 "use client";
-import React from "react";
-import NavBar from "../userComponents/NavBar";
+import React, { useMemo } from "react";
+import dynamic from "next/dynamic";
+// import NavBar from "../userComponents/NavBar";
+const NavBar = dynamic(() => import("../userComponents/NavBar"));
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
+  const MemoizedNavBar = useMemo(() => <NavBar />, []);
+
   return (
     <>
-      <NavBar/>
+      {MemoizedNavBar}
       <div>{children}</div>
     </>
   );
 };
 
-export default layout;
+export default Layout;

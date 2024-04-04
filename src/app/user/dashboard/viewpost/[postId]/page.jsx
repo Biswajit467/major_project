@@ -2,9 +2,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { MAIN_URL } from "../../../../common/urls";
-import UpdatePost from "../../../postComponents/UpdatePost";
-import RelatedPosts from "../../../postComponents/RelatedPosts";
+// import UpdatePost from "../../../postComponents/UpdatePost";
+// import RelatedPosts from "../../../postComponents/RelatedPosts";
+const UpdatePost = dynamic(() => import("../../../postComponents/UpdatePost"), {
+  ssr: false,
+});
+const RelatedPosts = dynamic(
+  () => import("../../../postComponents/RelatedPosts"),
+  { ssr: false }
+);
 
 const PostPage = ({ params, searchParams }) => {
   const [post, setPost] = useState(null);
@@ -22,7 +30,7 @@ const PostPage = ({ params, searchParams }) => {
       console.error("Error parsing JSON:", error);
     }
   }
-console.log("userpost:>",)
+  console.log("userpost:>");
   useEffect(() => {
     const fetchPost = async () => {
       try {

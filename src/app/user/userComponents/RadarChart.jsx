@@ -1,24 +1,23 @@
-
 "user client";
 import dynamic from "next/dynamic";
-import'./apexchart.css'
+import "./apexchart.css";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export const RadarChart = (props) => {
-const options = {
+const RadarChart = (props) => {
+  const options = {
     chart: {
       id: "apexchart-example",
       title: {
-        text: 'full overview', 
-        align: 'center', 
+        text: "full overview",
+        align: "center",
         margin: 10,
         style: {
-          fontSize: '20px', 
-          fontWeight: 'bold', 
-          color: '#ffffff'
-        }
-      }
+          fontSize: "20px",
+          fontWeight: "bold",
+          color: "#ffffff",
+        },
+      },
     },
     xaxis: {
       categories: ["Academic", "Arts", "ECA", "Sports", "Tech"],
@@ -46,17 +45,17 @@ const options = {
       fillSeriesColor: true,
       theme: true,
       style: {
-        fontSize: '12px',
-        color: 'black',
+        fontSize: "12px",
+        color: "black",
       },
       onDatasetHover: {
-          highlightDataSeries: true,
+        highlightDataSeries: true,
       },
       style: {
-        backgroundColor: 'white',
-        color: 'black',
+        backgroundColor: "white",
+        color: "black",
       },
-  },
+    },
   };
 
   const series = [
@@ -82,3 +81,5 @@ const options = {
     />
   ) : null;
 };
+
+export default RadarChart;

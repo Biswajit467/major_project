@@ -1,23 +1,79 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { loginUser, registerUser } from "../auth_api/route";
+import { loginUser } from "../auth_api/route";
 import "./login.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Logo from ".././images/a.jpg";
+
+import Loading from "../user/userComponents/Loading";
 
 const LoginPage = ({ searchParams }) => {
   // console.log("searchParams", searchParams.isAdmin);
+  // const [studentId, setStudentId] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [user_id, setUser_id] = useState(null);
+  // const [isAdmin, setIsAdmin] = useState(false);
+  // const [isBanned, setIsBanned] = useState(false);
+  // const [loading, setLoading] = useState(false);
+
+  // const router = useRouter();
+  // const handleSubmit = async (e) => {
+  //   try {
+  //     setLoading(true);
+  //     const userData = {
+  //       student_id: studentId,
+  //       password: password,
+  //     };
+  //     const response = await loginUser(userData);
+  //     setUser_id(response?.data?.user?.id);
+  //     setIsAdmin(response?.data?.user?.is_admin);
+  //     setIsBanned(response?.data?.user?.is_banned);
+  //     setStudentId("");
+  //     setPassword("");
+  //     console.log(
+  //       "This is login response from LoginPage component : ",
+  //       response
+  //     );
+  //   } catch (error) {
+  //     setLoading(false);
+  //     setMessage(error.response?.data?.error);
+
+  //     setTimeout(() => {
+  //       setMessage("");
+  //     }, 4000);
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const sendUserData = () => {
+  //   if (user_id && !isBanned) {
+  //     if (isAdmin) {
+  //       console.log("isadmin value", isAdmin);
+  //       router.push("admin/dashboard/home");
+  //     } else {
+  //       router.push("user/dashboard/home");
+  //     }
+  //   }
+  // };
+  // useEffect(() => {
+  //   sendUserData();
+  // }, [user_id, isAdmin]);
+
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [user_id, setUser_id] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isBanned, setIsBanned] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       setLoading(true);
       const userData = {
@@ -25,87 +81,36 @@ const LoginPage = ({ searchParams }) => {
         password: password,
       };
       const response = await loginUser(userData);
-      setUser_id(response?.data?.user?.id);
-      setIsAdmin(response?.data?.user?.is_admin);
-      setIsBanned(response?.data?.user?.is_banned);
-      setStudentId("");
-      setPassword("");
-      console.log(
-        "This is login response from LoginPage component : ",
-        response
-      );
+      const { id, is_admin, is_banned } = response?.data?.user || {};
+      if (id && !is_banned) {
+        if (is_admin) {
+          router.push("/admin/dashboard/home");
+        } else {
+          router.push("/user/dashboard/home");
+        }
+      } else if (is_banned) {
+        setMessage(
+          "Sorry you can't Log-in. You are Banned From Using This Application."
+        );
+      }
     } catch (error) {
-      setLoading(false);
-      setMessage(error.response?.data?.error);
-
-      setTimeout(() => {
-        setMessage("");
-      }, 4000);
-      console.log(error);
+      setMessage(error.response?.data?.error || "An error occurred");
     } finally {
       setLoading(false);
     }
   };
-
-  const sendUserData = () => {
-    if (user_id && !isBanned) {
-      if (isAdmin) {
-        console.log("isadmin value", isAdmin);
-        router.push("admin/dashboard/home");
-      } else {
-        router.push("user/dashboard/home");
-      }
-    }
-  };
-  useEffect(() => {
-    sendUserData();
-  }, [user_id, isAdmin]);
-
-  console.log("user_id and isbanned" , user_id , isBanned); 
-
+  // console.log("user_id and isbanned", user_id, isBanned);
 
   return (
     <div>
+      {/* {loading && <Loading />} */}
       <div id="c">
-        <div id="k">
-          <Carousel
-            autoPlay
-            infiniteLoop
-            interval={3000}
-            showStatus={false}
-            showThumbs={false}
-            showArrows={false}
-            width={"100%"}
-          >
-            <div>
-              <img
-                className=" h-screen"
-                src="https://plus.unsplash.com/premium_photo-1683887034491-f58b4c4fca72?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
-              <button class="absolute bottom-0 left-0 mb-4 ml-9 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-                <div class="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-                <div class="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-                <div class="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-                <div class="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-                <div class="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-                <p class="z-10">Discover More</p>
-              </button>
-            </div>
-            <div>
-              <img
-                className=" h-screen"
-                src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
-              <button class="absolute bottom-0 left-0 mb-4 ml-4 border hover:border-sky-600 duration-500 group cursor-pointer text-sky-50 overflow-hidden h-14 w-56 rounded-md bg-sky-800 p-2 flex justify-center items-center font-extrabold">
-                <div class="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-900 delay-150 group-hover:delay-75"></div>
-                <div class="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-800 delay-150 group-hover:delay-100"></div>
-                <div class="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-700 delay-150 group-hover:delay-150"></div>
-                <div class="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-600 delay-150 group-hover:delay-200"></div>
-                <div class="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-sky-500 delay-150 group-hover:delay-300"></div>
-                <p class="z-10">Discover More</p>
-              </button>
-            </div>
-          </Carousel>
+        <div style={{ height: "100vh", width: "80rem", backgroundColor: "" }}>
+          <Image
+            alt="logo"
+            style={{ height: "100vh", width: "100%", objectFit: "cover" }}
+            src={Logo}
+          />
         </div>
         <div class="relative py-3  sm:max-w-xl sm:mx-auto ">
           <div
@@ -115,17 +120,18 @@ const LoginPage = ({ searchParams }) => {
             <div class="max-w-md mx-auto text-white ">
               <div class="flex items-center space-x-5 justify-center">
                 <h1
-              style={{
-              fontFamily: 'serif',
-              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-              fontSize: '2.75rem', 
-            }}
+                  style={{
+                    fontFamily: "serif",
+                    backgroundImage:
+                      'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                    fontSize: "2.75rem",
+                  }}
                 >
                   CampusCanvas
                 </h1>
@@ -169,11 +175,11 @@ const LoginPage = ({ searchParams }) => {
                 <div></div>
               </div>
               <div id="bb" class="mt-5 flrx align-center">
-              <button onClick={handleSubmit}
-  className="overflow-hidden w-32 h-12 bg-gradient-to-b from-blue-400 to-blue-900 text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group">
-  Login
-
-
+                <button
+                  onClick={handleSubmit}
+                  className="overflow-hidden w-32 h-12 bg-gradient-to-b from-blue-400 to-blue-900 text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
+                >
+                  Login
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-indigo-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
                   <span class="absolute w-36 h-32 -top-8 -left-2 bg-indigo-600 rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
@@ -182,14 +188,7 @@ const LoginPage = ({ searchParams }) => {
                   </span>
                 </button>
               </div>
-              <div>
-                {isBanned ? (
-                  <div className="text-red-600 font-bold">
-                    Sorry you can't Log-in. You are Banned From Using This
-                    Application.
-                  </div>
-                ) : null}
-              </div>
+
               <div className="text-red-600 mt-4 font-bold text-center">
                 {message && <h3>{message}</h3>}
               </div>

@@ -1,16 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { MdLogout } from "react-icons/md";
+import { CiSettings } from "react-icons/ci";
+import dynamic from "next/dynamic";
 import { get_user_data } from "../../../user_apis/route";
 import { get_user_scores } from "../../user_apis/route";
-import { RadarChart } from "../../userComponents/RadarChart";
-import { ColumnGraph } from "../../userComponents/ColumnGraph";
-import Link from "next/link";
-import { MdLogout } from "react-icons/md";
-import Typewriter from "typewriter-effect";
-import { CiSettings } from "react-icons/ci";
-import SettingPopUp from "./settings/SettingPopUp";
+const Typewriter = dynamic(() => import("typewriter-effect"));
+const ColumnGraph = dynamic(() => import("../../userComponents/ColumnGraph"), {
+  ssr: false,
+});
+const RadarChart = dynamic(() => import("../../userComponents/RadarChart"), {
+  ssr: false,
+});
+const SettingPopUp = dynamic(() => import("./settings/SettingPopUp"), {
+  ssr: false,
+});
 
-const NavBar = () => {
+const HomePage = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userScores, setUserScores] = useState(null);
   const [sohwPopUp, setSohwPopUp] = useState(false);
@@ -65,6 +71,20 @@ const NavBar = () => {
     }
   }, [userInfo]);
 
+  const handleLogout = async () => {
+    console.log("button clicked");
+    try {
+      localStorage.removeItem("student_id_token");
+      localStorage.removeItem("user_id");
+      // Redirect or update UI as needed after logout
+      // For example, you can redirect the user to the login page
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Error logging out user:", error.message);
+      // Handle errors if needed
+    }
+  };
+
   console.log("user scores : ", userScores);
 
   return (
@@ -116,7 +136,10 @@ const NavBar = () => {
                 </button>
                 {sohwPopUp && <SettingPopUp onClose={closePopup} />}
               </div>
-              <button class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700">
+              <button
+                class="  text-red-000 hover:text-red-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
+                onClick={handleLogout}
+              >
                 <MdLogout
                   title="logout"
                   style={{ height: "2rem", width: "2rem" }}
@@ -259,4 +282,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default HomePage;

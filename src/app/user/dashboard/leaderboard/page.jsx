@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-// import ListCard from "../../userComponents/ListCard";
-// import CompareRadarChart  from "../../userComponents/CompareRadarChart";
 import { get_leader_board } from "../../user_apis/route";
 const ListCard = dynamic(() => import("../../userComponents/ListCard"), {
   ssr: false,
@@ -21,7 +19,6 @@ const LeaderBoard = () => {
   const [isCompareClicked, setIsCompareClicked] = useState(false);
   const [tobeComparedstudent, setTobeComparedstudent] = useState(null);
 
-  // console.log("leaderboard data" , leaderboardData )
   useEffect(() => {
     const fetch_leaderboard_data = async () => {
       try {
@@ -39,8 +36,6 @@ const LeaderBoard = () => {
       leaderboardData && setCurrentUserData(leaderboardData?.user);
     }
   }, [leaderboardData]);
-
-  // console.log("studetnt to be compared data" , tobeComparedstudent )
 
   const handleCompareClick = () => {
     setIsCompareClicked(true);
@@ -74,15 +69,23 @@ const LeaderBoard = () => {
           corporis. Maxime vero rerum tempora temporibus repellendus vitae
           placeat eaque?
         </div>
-        <div style={{textAlign:'center' , fontSize:'40px' , fontWeight:'bold' ,
-              background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
-              marginTop: '0rem',
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              marginTop:'2rem',
-              fontSize: '2.5rem',
-              textAlign: 'center',}}>Students Leader Board</div>
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: "40px",
+            fontWeight: "bold",
+            background: "linear-gradient(to bottom, #FFFFFF, #3B82F6)",
+            marginTop: "0rem",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            marginTop: "2rem",
+            fontSize: "2.5rem",
+            textAlign: "center",
+          }}
+        >
+          Students Leader Board
+        </div>
 
         <div style={{ padding: "2%" }}>
           <div

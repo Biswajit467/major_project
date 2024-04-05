@@ -4,8 +4,6 @@ import axios from "axios";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { MAIN_URL } from "../../../../common/urls";
-// import UpdatePost from "../../../postComponents/UpdatePost";
-// import RelatedPosts from "../../../postComponents/RelatedPosts";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 const UpdatePost = dynamic(() => import("../../../postComponents/UpdatePost"), {
   ssr: false,

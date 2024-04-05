@@ -1,14 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { MdLogout } from "react-icons/md";
-// import Typewriter from "typewriter-effect";
 import { CiSettings } from "react-icons/ci";
 import dynamic from "next/dynamic";
 import { get_user_data } from "../../../user_apis/route";
 import { get_user_scores } from "../../user_apis/route";
-// import SettingPopUp from "./settings/SettingPopUp";
-// import RadarChart from "../../userComponents/RadarChart";
-// import ColumnGraph from "../../userComponents/ColumnGraph";
 const Typewriter = dynamic(() => import("typewriter-effect"));
 const ColumnGraph = dynamic(() => import("../../userComponents/ColumnGraph"), {
   ssr: false,
@@ -20,7 +16,7 @@ const SettingPopUp = dynamic(() => import("./settings/SettingPopUp"), {
   ssr: false,
 });
 
-const NavBar = () => {
+const HomePage = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userScores, setUserScores] = useState(null);
   const [sohwPopUp, setSohwPopUp] = useState(false);
@@ -78,13 +74,6 @@ const NavBar = () => {
   const handleLogout = async () => {
     console.log("button clicked");
     try {
-      // Call the logout API endpoint
-      // const response = await axios.post(`${MAIN_URL}logout/`);
-      // console.log(
-      //   "this is response from handleLogout function",
-      //   response.data.message
-      // ); // Log success message
-      // Clear local storage or perform any other client-side logout actions
       localStorage.removeItem("student_id_token");
       localStorage.removeItem("user_id");
       // Redirect or update UI as needed after logout
@@ -293,4 +282,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default HomePage;

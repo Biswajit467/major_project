@@ -4,7 +4,6 @@ import axios from "axios";
 import { MAIN_URL } from "../../common/urls";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-// import DeleteConfirmationPopUp from "./DeleteConfirmationPopUp";
 import { useRouter } from "next/navigation";
 const DeleteConfirmationPopUp = dynamic(
   () => import("./DeleteConfirmationPopUp"),

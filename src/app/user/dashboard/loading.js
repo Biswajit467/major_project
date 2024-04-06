@@ -1,22 +1,12 @@
-export default function Loading() {
-    // Or a custom loading skeleton component
-    return (
-      <div
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          backgroundColor: "blue",
-          color: "white",
-          padding: "20px",
-          borderRadius: "8px",
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-        }}
-      >
-        {/* Add your loading icon or text here */}
-        <p>Loading...</p>
-      </div>
-    );
-  }
-  
+import React from "react";
+
+const Loading = () => {
+  return (
+    <div className="flex flex-col items-center justify-center h-screen w-screen">
+      <div className="border-8 border-gray-300 border-t-8 border-blue-500 rounded-full w-16 h-16 animate-spin"></div>
+      <p className="mt-4 text-lg text-gray-600">Loading...</p>
+    </div>
+  );
+};
+
+export default Loading;

@@ -2,13 +2,21 @@
 
 import React from "react";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import ChooseLoginPopup from "./components/ChooseLoginPopup";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Star } from "./components/ui/Star";
-import Founder from "../../src/app/components/Founder";
 import offBtn from "./images/offbtn.png";
 import Cap from "./images/cap.png";
+const ChooseLoginPopup = dynamic(
+  () => import("../../src/app/components/ChooseLoginPopup"),
+  { ssr: false }
+);
+const Founder = dynamic(() => import("../../src/app/components/Founder"), {
+  ssr: false,
+});
+const Star = dynamic(() => import("./components/ui/Star"), {
+  ssr: true,
+});
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -110,7 +118,9 @@ export default function Home() {
               />
               <p className="card-title">Semester-wise Growth Tracking:</p>
               <p className="card-description">
-              Students can visualize their progress in various domains such as technology, arts, sports, academics, and extracurricular activities.
+                Students can visualize their progress in various domains such as
+                technology, arts, sports, academics, and extracurricular
+                activities.
               </p>
             </div>
           </div>
@@ -125,8 +135,10 @@ export default function Home() {
               />
               <p className="card-title">Leaderboard Comparison</p>
               <p className="card-description">
-              Users can explore the top-performing students across the campus and compare their own scores through a radar chart graph, providing valuable insights into their standing relative to their peers.
-
+                Users can explore the top-performing students across the campus
+                and compare their own scores through a radar chart graph,
+                providing valuable insights into their standing relative to
+                their peers.
               </p>
             </div>
           </div>
@@ -141,9 +153,9 @@ export default function Home() {
               />
               <p className="card-title">Notice Board</p>
               <p className="card-description">
-              Important announcements and notices from the administration are easily accessible, ensuring students stay informed about relevant updates and events.
-
-  
+                Important announcements and notices from the administration are
+                easily accessible, ensuring students stay informed about
+                relevant updates and events.
               </p>
             </div>
           </div>
@@ -155,13 +167,13 @@ export default function Home() {
                 height="50"
                 src="https://img.icons8.com/ios-filled/50/228BE6/university.png"
                 alt="university"
-              /> 
-
+              />
 
               <p className="card-title">Achievement Showcase</p>
               <p className="card-description">
-              The platform allows students to share their accomplishments through images and blog posts, fostering a sense of community and recognition.
-
+                The platform allows students to share their accomplishments
+                through images and blog posts, fostering a sense of community
+                and recognition.
               </p>
             </div>
           </div>

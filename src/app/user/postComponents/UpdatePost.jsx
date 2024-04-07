@@ -93,6 +93,23 @@ const UpdatePost = ({ postId, postDetails }) => {
         letterSpacing: "0.4px",
       }}
     >
+<div style={{
+    fontFamily: 'sans-serif',
+    backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundClip: 'text',
+    marginBottom:'2rem',
+    WebkitBackgroundClip: 'text',
+    color: 'transparent',
+    fontSize: '3em',          
+    textAlign: 'center',       
+    display: 'flex',           
+    justifyContent: 'center',  
+    alignItems: 'center'       
+}}>Edit your post</div>
+
       <div style={{ maxWidth: "70%", margin: "0 auto" }}>
         <div
           key={postDetails.id}

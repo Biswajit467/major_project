@@ -187,6 +187,7 @@ const NavBar = () => {
             >
               <RadarChart props={userScores && userScores?.radar_chart} />
               <div>
+                
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Adipisci ducimus rem iusto sapiente iure aliquam quam, fugit
                 dolor, recusandae sunt cum doloribus ullam voluptate illo, vitae

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import axios from "axios";
-import { MAIN_URL } from "../../../../common/urls";
+import { MAIN_URL } from "../../../common/urls";
 import { MdNotificationAdd } from "react-icons/md";
 import { useEffect } from "react";
 

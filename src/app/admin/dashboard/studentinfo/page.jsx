@@ -136,11 +136,29 @@ const Page = ({ searchParams }) => {
     justifyContent: "center",
     zIndex: "1000",
   };
+  const x = {
+    position: "fixed",
+    
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    color:"black",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    display: "flex",
+    flexDirection:'column',
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: "1000",
+  };
 
   const popupContentStyle = {
     backgroundColor: "#1a1a1a",
     borderRadius: "0.5rem",
     padding: "3rem",
+    display: "flex",
+    flexDirection:'column',
+    color:'white',
     width: "110%", // Changed width
     maxWidth: "550px", // Added max width
     fontFamily: "'Roboto', sans-serif",
@@ -221,7 +239,7 @@ const Page = ({ searchParams }) => {
    
       </div>
       <div style={dangerZoneStyle}>
-        <p>Do you want to ban {name}?</p>
+        <p style={{color:"white"}}>Do you want to ban {name}?</p>
         <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
           <button
             style={{ ...buttonStyle, backgroundColor: "#e53e3e" }}
@@ -234,6 +252,7 @@ const Page = ({ searchParams }) => {
         </div>
       </div>
       {showBanPopup && (
+
         <div style={popupStyle}>
           <div style={popupContentStyle}>
             <p>Are you sure you want to ban {name}?</p>
@@ -256,6 +275,7 @@ const Page = ({ searchParams }) => {
               </button>
             </div>
           </div>
+          
         </div>
       )}
       {showEditPopup && (

@@ -42,7 +42,7 @@ const SemResults = (props) => {
       }}
     >
       {editSemMarks ? (
-        <UpdateSemResults data={tobeInserted} onClose={closePopup} />
+        <UpdateSemResults data={tobeInserted} onClose={closePopup} dorefresh = {props.dorefresh} />
       ) : null}
       <div>
         {data && (

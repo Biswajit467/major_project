@@ -3,7 +3,7 @@ import { insert_semester_marks } from "../adminapi/route";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { MdSmsFailed } from "react-icons/md";
 
-const UpdateSemResults = ({ data, onClose }) => {
+const UpdateSemResults = ({ data, onClose, dorefresh }) => {
   const [subjectMarks, setSubjectMarks] = useState(data.subject_marks);
   const [examType, setExamType] = useState("");
   const [unit, setUnit] = useState("marks");
@@ -56,6 +56,7 @@ const UpdateSemResults = ({ data, onClose }) => {
       setSuccessMessage("Data updated successfully.");
       setShowMessage(true);
 
+      dorefresh((prev) => prev + 1);
       setTimeout(() => {
         setShowMessage(false);
         onClose();

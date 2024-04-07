@@ -4,12 +4,12 @@ import {
   update_student_info,
   update_user_scores,
   get_user_sem_marks,
-} from "../../adminapi/route"; // in this we will only call the api in which we can see and update semister marks of previous semister
+} from "../../adminapi/route";
 import { FaEdit } from "react-icons/fa";
-import SemResults from "../../adminComponents/SemResults";
 import dynamic from "next/dynamic";
-// const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-
+const SemResults = dynamic(() => import("../../adminComponents/SemResults"), {
+  ssr: false,
+});
 
 const Page = ({ searchParams }) => {
   let student_personal_details = null;
@@ -25,6 +25,7 @@ const Page = ({ searchParams }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const [showBanPopup, setShowBanPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
+  const [refresh , setRefresh] = useState(0)
 
   const [editedInfo, setEditedInfo] = useState({});
 
@@ -83,7 +84,7 @@ const Page = ({ searchParams }) => {
     if (id) {
       sem_results();
     }
-  }, []);
+  }, [refresh]);
   console.log("sem marks", semMarks);
 
   const containerStyle = {
@@ -251,7 +252,9 @@ const Page = ({ searchParams }) => {
         {name}'s Semester Results
       </div>
       {semMarks != null &&
-        semMarks.records.map((item, index) => <SemResults data={item} id ={id} branch={branch} />)}
+        semMarks.records.map((item, index) => (
+          <SemResults data={item} id={id} branch={branch}  dorefresh ={setRefresh}/>
+        ))}
       <div style={dangerZoneStyle}>
         <p>Do you want to ban {name}?</p>
         <div

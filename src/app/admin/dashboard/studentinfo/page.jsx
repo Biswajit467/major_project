@@ -7,6 +7,9 @@ import {
 } from "../../adminapi/route"; // in this we will only call the api in which we can see and update semister marks of previous semister
 import { FaEdit } from "react-icons/fa";
 import SemResults from "../../adminComponents/SemResults";
+import dynamic from "next/dynamic";
+// const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
+
 
 const Page = ({ searchParams }) => {
   let student_personal_details = null;
@@ -248,7 +251,7 @@ const Page = ({ searchParams }) => {
         {name}'s Semester Results
       </div>
       {semMarks != null &&
-        semMarks.records.map((item, index) => <SemResults data={item} />)}
+        semMarks.records.map((item, index) => <SemResults data={item} id ={id} branch={branch} />)}
       <div style={dangerZoneStyle}>
         <p>Do you want to ban {name}?</p>
         <div

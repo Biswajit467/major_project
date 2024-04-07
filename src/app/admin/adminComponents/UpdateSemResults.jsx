@@ -1,23 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
-import { branch_sem_wise_subjects } from "../utils/sem_subjects";
 import { insert_semester_marks } from "../adminapi/route";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { MdSmsFailed } from "react-icons/md";
 
-const CurrentSemMarkPopUP = ({ data, onClose }) => {
-  const branch_name = {
-    cse: "Computer Science & Engineering",
-    me: "Mechanical Engineering",
-    ee: "Electrical Engineering",
-    civil: "Civil Engineering",
-  };
-
-  const subjects =
-    branch_sem_wise_subjects[data.branch]?.[`sem${data.sem}`] || [];
-
-  const [subjectMarks, setSubjectMarks] = useState({});
+const UpdateSemResults = ({ data, onClose }) => {
+  const [subjectMarks, setSubjectMarks] = useState(data.subject_marks);
   const [examType, setExamType] = useState("");
-  const [unit, setUnit] = useState("Marks");
+  const [unit, setUnit] = useState("marks");
   const [showMessage, setShowMessage] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -45,10 +34,6 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
     }));
   };
 
-  const handleExamTypeChange = (value) => {
-    setExamType(value);
-  };
-
   const handleUnitChange = (value) => {
     setUnit(value);
   };
@@ -56,10 +41,10 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
   const handleSubmit = async () => {
     try {
       const data_for_Input = {
-        student_id: data.id,
+        student_id: data.student_id,
         sem: data.sem,
         branch: `${data.branch}`,
-        exam_type: `${examType}`,
+        exam_type: `${data.exam_type}`,
         unit: `${unit}`,
         subject_marks: subjectMarks,
       };
@@ -74,7 +59,7 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
       setTimeout(() => {
         setShowMessage(false);
         onClose();
-      }, 5000); // Close the success message popup after 5 seconds
+      }, 5000);
     } catch (error) {
       console.error("Error in API call:", error);
       setErrorMessage("Something went wrong. Please try again later.");
@@ -83,7 +68,7 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
       setTimeout(() => {
         setShowMessage(false);
         onClose();
-      }, 5000); // Close the error message popup after 5 seconds
+      }, 5000);
     }
   };
 
@@ -133,21 +118,11 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
           </div>
           <div className="flex flex-col justify-center items-center">
             <h2 className="text-xl font-semibold mb-1 text-white">
-              {data.name}, Branch: {branch_name[data.branch]}, Sem: {data.sem}
+              Branch: {data.branch}, Sem: {data.sem}
             </h2>
             <div className="flex flex-row justify-around ">
               <div className="mb-2 text-white flex items-center">
-                <label className="mr-2">Exam Type:</label>
-                <select
-                  className="bg-gray-950 py-2 px-3 rounded"
-                  value={examType}
-                  onChange={(e) => handleExamTypeChange(e.target.value)}
-                >
-                  <option value="">Select Exam Type</option>
-                  <option value="internal1">Internal 1</option>
-                  <option value="internal2">Internal 2</option>
-                  <option value="final">Final</option>
-                </select>
+                <label className="mr-2">Exam Type: {data.exam_type}</label>
               </div>
               <div className="mb-2 ml-2 text-white flex items-center">
                 <label className="mr-2">Unit:</label>
@@ -156,26 +131,25 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
                   value={unit}
                   onChange={(e) => handleUnitChange(e.target.value)}
                 >
+                  <option value="">Select Unit</option>
                   <option value="grade">Grade</option>
                   <option value="sgpa">SGPA</option>
                   <option value="marks">Marks</option>
                 </select>
               </div>
             </div>
-
-            {/* Render input fields for each subject */}
-            {subjects.map((subject, index) => (
+            {Object.entries(data.subject_marks).map(([key, value]) => (
               <div
-                key={index}
+                // key={index}
                 className="mb-4 text-white flex flex-col items-center"
               >
-                <label className="mb-2">{subject}</label>
+                <label className="mb-2">{key}</label>
                 <input
                   type="number"
                   className="bg-gray-950 py-2 px-3 rounded"
-                  placeholder={`Enter marks for ${subject}`}
-                  value={subjectMarks[subject] || ""}
-                  onChange={(e) => handleInputChange(subject, e.target.value)}
+                  placeholder={`${value}`}
+                  value={subjectMarks[key] || ""}
+                  onChange={(e) => handleInputChange(key, e.target.value)}
                 />
               </div>
             ))}
@@ -192,4 +166,4 @@ const CurrentSemMarkPopUP = ({ data, onClose }) => {
   );
 };
 
-export default CurrentSemMarkPopUP;
+export default UpdateSemResults;

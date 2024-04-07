@@ -1,11 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { MAIN_URL } from "@/app/common/urls";
+import { MAIN_URL } from "../../../common/urls";
 import Image from "next/image";
 import Link from "next/link";
 import { MdAdsClick } from "react-icons/md";
+import { BiSolidImageAdd } from "react-icons/bi";
 import { FaUser } from "react-icons/fa6";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 const ViewPost = () => {
   const [posts, setPosts] = useState([]);
@@ -51,25 +54,44 @@ const ViewPost = () => {
         color: "white",
         fontFamily: "sans-serif",
       }}
-    >
+    > 
+    <Link  style={{
+      display: "inline-block",
+      background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',// Blue color
+      color: "white",
+      padding: "10px 20px",
+      borderRadius: "5px",
+      textDecoration: "none",
+      fontWeight: "bold",
+      textAlign: "center",
+      cursor: "pointer",
+      transition: "background-color 0.3s ease",
+      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    }} href="/user/dashboard/addpost">
+ 
+    
+  <BiSolidImageAdd style={{color:"black"}} />
+</Link>
+
       <div
         style={{
           maxWidth: "70%",
           margin: "0 auto",
         }}
       >
+        
         <h1
           style={{
             textAlign: "center",
             marginBottom: "30px",
             fontSize: "xx-large",
-            background: "linear-gradient(120deg, #00f7ff, #ff00e6)",
+            background: "linear-gradient(to bottom, #FFFFFF, #3B82F6)",
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             color: "transparent",
           }}
         >
-          View Posts
+          View Posts 
         </h1>
 
         {posts.map((post, index) => (
@@ -81,7 +103,8 @@ const ViewPost = () => {
               marginBottom: "40px",
               padding: "20px",
               border: "1px solid #ddd",
-              borderRadius: "0% 10% 0% 10%",
+              // borderRadius: "0% 10% 0% 10%",
+              borderRadius: "10px ",
               color: "#333",
               background:
                 "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
@@ -124,6 +147,7 @@ const ViewPost = () => {
                   pathname: `viewpost/${post.id}`,
                   query: { uidDetails: JSON.stringify(post.uid) },
                 }}
+                prefetch={false}
                 style={{
                   fontWeight: "normal",
                   fontSize: "1.3rem",
@@ -187,16 +211,20 @@ const ViewPost = () => {
             </div>
           </div>
         ))}
-        <div style={{ textAlign: "center" }}>
-          <button
-            onClick={handlePrevPage}
-            disabled={page === 1}
-            style={{ marginRight: "10px" }}
-          >
-            Previous
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "3rem",
+            cursor: "pointer",
+          }}
+        >
+          <button onClick={handlePrevPage} disabled={page === 1}>
+            <IoIosArrowDropleftCircle style={{ marginRight: "3rem" }} />
           </button>
           <button onClick={handleNextPage} disabled={page === totalPages}>
-            Next
+            <IoIosArrowDroprightCircle />
           </button>
         </div>
       </div>

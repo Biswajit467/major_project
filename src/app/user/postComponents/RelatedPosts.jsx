@@ -18,7 +18,7 @@ const RelatedPosts = ({ posts }) => {
       <h1 style={{ width: "100%", textAlign: "center", fontSize: "2rem" }}>
         All Posts by: {username}
       </h1>
-      {posts.map((post) => (
+      {posts && posts.map((post) => (
         <div
           key={post.id}
           className="card"

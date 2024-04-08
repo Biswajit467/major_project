@@ -2,14 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { get_user_data } from "../../../user_apis/route";
 import { user_stats } from "../../adminapi/route";
+import Link from "next/link";
 import { MdLogout } from "react-icons/md";
 import { RiUserAddFill } from "react-icons/ri";
+
 import { MdNotificationAdd } from "react-icons/md";
 import Typewriter from "typewriter-effect";
 import { CiSettings } from "react-icons/ci";
 import { RadialMultiBarChart } from "../../adminComponents/RadialMultiBarChart";
 import Branches from "../../adminComponents/Branches";
 import ShowSemPopUp from "../../adminComponents/ShowSemPopUp";
+import { IoPersonAddSharp } from "react-icons/io5";
 import "./page.css";
 const Home = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -133,8 +136,55 @@ const Home = () => {
 
           </div>
         ) : (
-          <p style={{ margin: "0", fontSize: "14px", fontWeight: "bold" }}>
-            No user data available
+          <p style={{ margin: "0", fontSize: "14px", fontWeight: "bold" , display:'flex', flexDirection:'row',gap:'2rem' , right:'0' }}>
+            
+            <Link 
+  href="/admin/createUser" 
+  style={{
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',  // Align items vertically in the center
+    width: '8rem',
+    padding: '10px 20px',
+    backgroundColor: '#3B82F6',  // Blue background color
+    color: '#FFFFFF',            // White text color
+    borderRadius: '5px',
+    textDecoration: 'none',      // Remove default underline
+    textAlign: 'center',
+    transition: 'background-color 0.3s ease-in-out',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow
+    cursor: 'pointer',
+  }}
+  onMouseOver={(e) => e.target.style.backgroundColor = '#1E3A8A'} // Darker blue on hover
+  onMouseOut={(e) => e.target.style.backgroundColor = '#3B82F6'}  // Return to original color on hover out
+>
+<IoPersonAddSharp style={{ fontSize: '3.2em', marginLeft: '1px' }} /> Create User 
+</Link>
+
+  
+<Link 
+  href="/admin/dashboard/notification" 
+  style={{
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',  // Align items vertically in the center
+    width: '8rem',
+    padding: '10px 20px',
+    backgroundColor: '#3B82F6',  // Blue background color
+    color: '#FFFFFF',            // White text color
+    borderRadius: '5px',
+    textDecoration: 'none',      // Remove default underline
+    textAlign: 'center',
+    transition: 'background-color 0.3s ease-in-out',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Optional shadow
+    cursor: 'pointer',
+  }}
+  onMouseOver={(e) => e.target.style.backgroundColor = '#1E3A8A'} // Darker blue on hover
+  onMouseOut={(e) => e.target.style.backgroundColor = '#3B82F6'}  // Return to original color on hover out
+>
+ Add Notification
+</Link>
+
           </p>
         )}
       </div>

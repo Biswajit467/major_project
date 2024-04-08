@@ -57,23 +57,7 @@ const StudentCard = (props) => {
         >
           {props.data?.registration_number}
         </div>
-        {/* <button
-          style={{
-            backgroundColor: "#8C6BFF",
-            color: "#FFFFFF",
-            fontWeight: "bold",
-            borderRadius: "10px",
-            padding: "8px 16px",
-            border: "none",
-            cursor: "pointer",
-            transition: "background-color 0.3s",
-          }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#6B8CFF")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#8C6BFF")}
-          // onClick={}
-        >
-          Details
-        </button> */}
+        {/** */}
         <Link
           href={{
             pathname: `studentinfo/`,

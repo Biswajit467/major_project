@@ -1,21 +1,16 @@
 export default function Loading() {
   // Or a custom loading skeleton component
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        backgroundColor: "blue",
-        color: "white",
-        padding: "20px",
-        borderRadius: "8px",
-        boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-      }}
-    >
-      {/* Add your loading icon or text here */}
-      <p>Loading...</p>
+    <div style={{
+      marginTop:"30rem",
+      marginLeft:"50rem"
+    }}>
+ <div class="flex flex-row gap-2">
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+</div>
     </div>
+   
   );
 }

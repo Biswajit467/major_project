@@ -165,19 +165,22 @@ const HomePage = () => {
                   marginLeft: "8rem",
                 }}
               >
-                <Image
-                  width="94"
-                  height="94"
-                  loading="lazy"
-                  src={userInfo?.user.img}
-                  alt="user Image"
-                  style={{
-                    height: "7rem",
-                    width: "7rem",
-                    border: "1px solid white",
-                    borderRadius: "100%",
-                  }}
-                />
+                {userInfo != null ? (
+                  <Image
+                    width="94"
+                    height="94"
+                    loading="lazy"
+                    src={userInfo?.user.img == null ? "" : userInfo?.user.img}
+                    alt="user Image"
+                    priority={false}
+                    style={{
+                      height: "7rem",
+                      width: "7rem",
+                      border: "1px solid white",
+                      borderRadius: "100%",
+                    }}
+                  />
+                ) : null}
 
                 <h1
                   style={{
@@ -236,7 +239,6 @@ const HomePage = () => {
             >
               <RadarChart props={userScores && userScores?.radar_chart} />
               <div>
-                
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Adipisci ducimus rem iusto sapiente iure aliquam quam, fugit
                 dolor, recusandae sunt cum doloribus ullam voluptate illo, vitae

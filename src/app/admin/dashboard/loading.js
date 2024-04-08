@@ -1,4 +1,5 @@
-import "../../../../components/ui/hamster.css";
+// import "../../../../components/ui/hamster.css";
+import '../../components/hamster.css'
 export default function Loading() {
   return (
     <div

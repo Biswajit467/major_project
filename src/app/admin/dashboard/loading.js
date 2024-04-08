@@ -1,25 +1,35 @@
+import "../../../../components/ui/hamster.css"
 export default function Loading() {
   return (
-    <div
-    class="mx-auto w-[500px] bg-gray-950 rounded-xl overflow-hidden drop-shadow-xl"
-  >
-    <div class="bg-[#333] flex items-center p-[5px] text-whitec relative">
-      <div class="flex absolute left-3">
-        <span class="h-3.5 w-3.5 bg-[#ff605c] rounded-xl mr-2"></span>
-        <span class="h-3.5 w-3.5 bg-[#ffbd44] rounded-xl mr-2"></span>
-        <span class="h-3.5 w-3.5 bg-[#00ca4e] rounded-xl"></span>
+
+    <div style={{
+      marginTop: "20rem",
+      marginLeft: "50rem"
+
+    }}>
+
+      <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster  ">
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
+            </div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
+        </div>
+        <div class="spoke"></div>
       </div>
-      <div class="flex-1 text-center text-white">status</div>
+
+
     </div>
-    <div class="p-2.5 text-[#0f0]">
-      <div>
-        <span class="mr-2">Loading</span>
-        <span class="animate-[ping_1.5s_0.5s_ease-in-out_infinite]">.</span>
-        <span class="animate-[ping_1.5s_0.7s_ease-in-out_infinite]">.</span>
-        <span class="animate-[ping_1.5s_0.9s_ease-in-out_infinite]">.</span>
-      </div>
-    </div>
-  </div>
-  
+
+
   );
 }

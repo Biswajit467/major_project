@@ -1,12 +1,37 @@
-import React from "react";
-
-const Loading = () => {
+import "../../../../components/ui/hamster.css";
+export default function Loading() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-screen">
-      <div className="border-8 border-gray-300 border-t-8 border-blue-500 rounded-full w-16 h-16 animate-spin"></div>
-      <p className="mt-4 text-lg text-gray-600">Loading...</p>
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        aria-label="Orange and tan hamster running in a metal wheel"
+        role="img"
+        class="wheel-and-hamster  "
+      >
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
+            </div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
+        </div>
+        <div class="spoke"></div>
+      </div>
     </div>
   );
-};
-
-export default Loading;
+}

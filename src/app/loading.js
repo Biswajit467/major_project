@@ -2,10 +2,17 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-screen">
-      <div className="border-8 border-gray-300 border-t-8 border-blue-500 rounded-full w-16 h-16 animate-spin"></div>
-      <p className="mt-4 text-lg text-gray-600">Loading...</p>
+    <div style={{
+      marginTop:"30rem",
+      marginLeft:"50rem"
+    }}>
+ <div class="flex flex-row gap-2">
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+  <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+</div>
     </div>
+   
   );
 };
 

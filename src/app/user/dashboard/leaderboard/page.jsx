@@ -80,7 +80,6 @@ const LeaderBoard = () => {
             WebkitBackgroundClip: "text",
             color: "transparent",
             marginTop: "2rem",
-            fontSize: "2.5rem",
             textAlign: "center",
           }}
         >

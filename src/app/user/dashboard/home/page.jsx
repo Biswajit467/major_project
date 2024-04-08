@@ -5,6 +5,7 @@ import { CiSettings } from "react-icons/ci";
 import dynamic from "next/dynamic";
 import { get_user_data } from "../../../user_apis/route";
 import { get_user_scores } from "../../user_apis/route";
+import Image from "next/image";
 const Typewriter = dynamic(() => import("typewriter-effect"));
 const ColumnGraph = dynamic(() => import("../../userComponents/ColumnGraph"), {
   ssr: false,
@@ -155,14 +156,19 @@ const HomePage = () => {
                   marginLeft: "8rem",
                 }}
               >
-                <div
+                <Image
+                  width="94"
+                  height="94"
+                  loading="lazy"
+                  src={userInfo?.user.img}
+                  alt="user Image"
                   style={{
                     height: "7rem",
                     width: "7rem",
                     border: "1px solid white",
                     borderRadius: "100%",
                   }}
-                ></div>
+                />
 
                 <h1
                   style={{

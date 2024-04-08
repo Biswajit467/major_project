@@ -103,3 +103,24 @@ export const insert_semester_marks = async (data) => {
     throw error;
   }
 };
+export const get_user_sem_marks = async (userId) => {
+  if (!userId) {
+    console.error("User ID is missing.");
+    return null;
+  }
+
+  const data = {
+    student_id: userId,
+  };
+
+  try {
+    const response = await axios.post(
+      `${MAIN_URL}get-records-by-student-id/`,
+      data
+    );
+    return response.data;
+  } catch (error) {
+    console.error("API call failed:", error);
+    return null;
+  }
+};

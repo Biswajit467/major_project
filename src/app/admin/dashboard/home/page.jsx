@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import { get_user_data } from "../../../user_apis/route";
 import { user_stats } from "../../adminapi/route";
@@ -20,7 +20,7 @@ const Home = () => {
   const [branch, setBranch] = useState("");
   const [showSempopup, setShowSempopup] = useState(false);
 
-  console.log("userStats", userStats)
+  console.log("userStats", userStats);
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -55,7 +55,7 @@ const Home = () => {
 
   console.log("userStats", userStats);
   return (
-    <div style={{ padding: "10px", backgroundColor: "", height: "5rem" }}>
+    <div style={{ padding: "10px",  }}>
       {showSempopup ? (
         <ShowSemPopUp onClose={closePopup} branch={branch} />
       ) : null}
@@ -97,11 +97,11 @@ const Home = () => {
               REG: {userInfo?.user.registration_number}
             </p>
 
-            <Link href={"/admin/createUser"} class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
+            <Link href={"/admin/createUser"} class=" ml-8 mr-2  text-blue-000 hover:text-[#dbff00] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#dbff00] duration-700">
               <IoPersonAddSharp   title="add user"      style={{ height: "2rem", width: "2rem" }} />
             </Link>
             <Link href={"/admin/dashboard/notification"} title="logout"
-              className="text-red-000 hover:text-red-900 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
+              className="text-red-000 hover:text-[#00d53c] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#00d53c] duration-700"
             >
               <MdNotificationAdd  title="add notification"    style={{ height: "2rem", width: "2rem" }} />
 
@@ -174,7 +174,11 @@ const Home = () => {
             "15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)",
         }}
       >
-        <div>{userStats ? userStats && <RadialMultiBarChart data={userStats} /> : null}</div>
+        <div>
+          {userStats
+            ? userStats && <RadialMultiBarChart data={userStats} />
+            : null}
+        </div>
         <div>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum id
           nobis numquam possimus voluptatem sunt laboriosam, culpa provident
@@ -214,7 +218,7 @@ const Home = () => {
         >
           {
             userStats.total_students_by_branch.map((item) =>
-            (<button
+              (<button
               className="button-hover"
               onClick={() => {
                 handleBranchClick();
@@ -225,9 +229,8 @@ const Home = () => {
                 branchName={`${item.branch}`}
                 quantity={`${item.total_students} / ${userStats?.total_records} `}
               />
-            </button>)
-            )
-          }
+            </button>
+          ))}
         </div>
       ) : null}
     </div>

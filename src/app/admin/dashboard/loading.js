@@ -1,14 +1,20 @@
-import "../../../../components/ui/hamster.css"
+import "../../components/ui/hamster.css"
 export default function Loading() {
   return (
-
-    <div style={{
-      marginTop: "20rem",
-      marginLeft: "50rem"
-
-    }}>
-
-      <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster  ">
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        aria-label="Orange and tan hamster running in a metal wheel"
+        role="img"
+        class="wheel-and-hamster  "
+      >
         <div class="wheel"></div>
         <div class="hamster">
           <div class="hamster__body">
@@ -29,7 +35,5 @@ export default function Loading() {
 
 
     </div>
-
-
   );
 }

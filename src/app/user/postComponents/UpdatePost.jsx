@@ -3,8 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MAIN_URL } from "../../common/urls";
 import Image from "next/image";
-import DeleteConfirmationPopUp from "./DeleteConfirmationPopUp";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+const DeleteConfirmationPopUp = dynamic(
+  () => import("./DeleteConfirmationPopUp"),
+  { ssr: false }
+);
 
 const UpdatePost = ({ postId, postDetails }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);

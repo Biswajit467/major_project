@@ -2,9 +2,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { MAIN_URL } from "../../../../common/urls";
-import UpdatePost from "../../../postComponents/UpdatePost";
-import RelatedPosts from "../../../postComponents/RelatedPosts";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+const UpdatePost = dynamic(() => import("../../../postComponents/UpdatePost"), {
+  ssr: false,
+});
+const RelatedPosts = dynamic(
+  () => import("../../../postComponents/RelatedPosts"),
+  { ssr: false }
+);
 
 const PostPage = ({ params, searchParams }) => {
   const [post, setPost] = useState(null);
@@ -12,6 +19,8 @@ const PostPage = ({ params, searchParams }) => {
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [userId, setUserId] = useState(null);
+
+  console.log("search params", searchParams);
 
   let parsedUserDetails = null;
   if (searchParams.uidDetails) {
@@ -22,7 +31,7 @@ const PostPage = ({ params, searchParams }) => {
       console.error("Error parsing JSON:", error);
     }
   }
-console.log("userpost:>",)
+  console.log("userpost:>");
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -72,6 +81,19 @@ console.log("userpost:>",)
       default:
         return "th";
     }
+  };
+  // Function to generate keyframe animation
+  const generateKeyframeAnimation = () => {
+    return `
+      @keyframes moveLeftRight {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(15px);
+        }
+      }
+    `;
   };
 
   return (
@@ -229,19 +251,25 @@ console.log("userpost:>",)
                 </button>
               ) : null}
 
-              <a
-                onClick={navigateBack}
-                style={{
-                  fontSize: "16px",
-                  color: "#007bff",
-                  cursor: "pointer",
-                  marginRight: "auto",
-                  marginTop: "-2rem",
-                  padding: "0 1rem",
-                }}
-              >
-                <h2>Back to View Posts</h2>
-              </a>
+              <div className="container">
+                <style>{generateKeyframeAnimation()}</style>
+                <a
+                  // title="go back"
+                  onClick={navigateBack}
+                  style={{
+                    fontSize: "3rem",
+                    color: "#007bff",
+                    cursor: "pointer",
+                    padding: "0 1rem",
+                    position: "fixed",
+                    top: "50%",
+                    left: "0",
+                    animation: "moveLeftRight 2s infinite alternate", // Animation applied
+                  }}
+                >
+                  <IoArrowBackCircleOutline />
+                </a>
+              </div>
             </div>
           ) : (
             <p>Loading...</p>

@@ -7,6 +7,8 @@ import Link from "next/link";
 import { MdAdsClick } from "react-icons/md";
 import { BiSolidImageAdd } from "react-icons/bi";
 import { FaUser } from "react-icons/fa6";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 const ViewPost = () => {
   const [posts, setPosts] = useState([]);
@@ -46,7 +48,7 @@ const ViewPost = () => {
     <div
       style={{
         // background: "#2b2b2b",
-        background: "black",
+        background: "#030439",
         padding: "20px",
         scrollBehavior: "smooth",
         color: "white",
@@ -101,10 +103,11 @@ const ViewPost = () => {
               marginBottom: "40px",
               padding: "20px",
               border: "1px solid #ddd",
-              borderRadius: "0% 10% 0% 10%",
+              // borderRadius: "0% 10% 0% 10%",
+              borderRadius: "10px ",
               color: "#333",
               background:
-                "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
+                " linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)",
             }}
           >
             <div
@@ -144,6 +147,7 @@ const ViewPost = () => {
                   pathname: `viewpost/${post.id}`,
                   query: { uidDetails: JSON.stringify(post.uid) },
                 }}
+                prefetch={false}
                 style={{
                   fontWeight: "normal",
                   fontSize: "1.3rem",
@@ -207,16 +211,20 @@ const ViewPost = () => {
             </div>
           </div>
         ))}
-        <div style={{ textAlign: "center" }}>
-          <button
-            onClick={handlePrevPage}
-            disabled={page === 1}
-            style={{ marginRight: "10px" }}
-          >
-            Previous
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "3rem",
+            cursor: "pointer",
+          }}
+        >
+          <button onClick={handlePrevPage} disabled={page === 1}>
+            <IoIosArrowDropleftCircle style={{ marginRight: "3rem" }} />
           </button>
           <button onClick={handleNextPage} disabled={page === totalPages}>
-            Next
+            <IoIosArrowDroprightCircle />
           </button>
         </div>
       </div>

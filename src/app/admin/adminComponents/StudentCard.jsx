@@ -23,7 +23,7 @@ const StudentCard = (props) => {
           flexDirection: "row",
           justifyContent: "space-evenly",
           alignItems: "center",
-          backgroundColor: "#31363F",
+          backgroundColor: "#030439",
           margin: "0.3%",
           width: "100%", // Update width to match parent component
           height: "10%",

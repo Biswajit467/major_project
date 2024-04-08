@@ -18,7 +18,7 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
-export const SparklesCore = (props: ParticlesProps) => {
+const SparklesCore = (props: ParticlesProps) => {
   const {
     id,
     className,
@@ -41,7 +41,7 @@ export const SparklesCore = (props: ParticlesProps) => {
 
   const particlesLoaded = async (container?: Container) => {
     if (container) {
-      console.log(container);
+      // console.log(container);
       controls.start({
         opacity: 1,
         transition: {
@@ -432,3 +432,5 @@ export const SparklesCore = (props: ParticlesProps) => {
     </motion.div>
   );
 };
+
+export default SparklesCore;

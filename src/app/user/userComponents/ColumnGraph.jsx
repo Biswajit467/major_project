@@ -5,7 +5,7 @@ import "./apexchart.css";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export const ColumnGraph = (props) => {
+const ColumnGraph = (props) => {
   const [formattedData, setFormattedData] = useState(null);
   useEffect(() => {
     if (props?.props) {
@@ -90,3 +90,5 @@ export const ColumnGraph = (props) => {
     </div>
   );
 };
+
+export default ColumnGraph;

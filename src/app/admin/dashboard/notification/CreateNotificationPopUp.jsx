@@ -7,6 +7,7 @@ import { useEffect } from "react";
 const CreateNotificationPopUp = ({ onClose }) => {
   const popupRef = useRef(null);
   const [notification, setNotification] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,10 +46,15 @@ const CreateNotificationPopUp = ({ onClose }) => {
       );
 
       console.log("Notification created:", response.data);
-      // You can perform additional actions after successful notification creation, such as showing a success message or redirecting the user.
+      setSuccessMessage("Notification created successfully!");
+      setNotification("");
+
+      setTimeout(() => {
+        onClose();
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.error("Error creating notification:", error);
-      // Handle error scenarios, such as displaying an error message to the user.
     }
   };
 
@@ -108,6 +114,18 @@ const CreateNotificationPopUp = ({ onClose }) => {
           >
             Notification:
           </label>
+          {successMessage && (
+            <div
+              style={{
+                color: "green",
+                textAlign: "center",
+                margin: "10px 0",
+                fontSize: "1rem",
+              }}
+            >
+              {successMessage}
+            </div>
+          )}
           <textarea
             id="notification"
             name="notification"

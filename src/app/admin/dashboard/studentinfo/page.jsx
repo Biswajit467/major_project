@@ -3,9 +3,13 @@ import React, { useState, useEffect } from "react";
 import {
   update_student_info,
   update_user_scores,
-  get_records_by_student_id
-} from "../../adminapi/route"; // in this we will only call the api in which we can see and update semister marks of previous semister
-import { FaEdit } from 'react-icons/fa';
+  get_user_sem_marks,
+} from "../../adminapi/route";
+import { FaEdit } from "react-icons/fa";
+import dynamic from "next/dynamic";
+const SemResults = dynamic(() => import("../../adminComponents/SemResults"), {
+  ssr: false,
+});
 
 const Page = ({ searchParams }) => {
   let student_personal_details = null;
@@ -21,6 +25,7 @@ const Page = ({ searchParams }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const [showBanPopup, setShowBanPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
+  const [refresh , setRefresh] = useState(0)
 
   const [editedInfo, setEditedInfo] = useState({});
 
@@ -41,18 +46,18 @@ const Page = ({ searchParams }) => {
     const update_student_score_values = async () => {
       try {
         const new_score_values = {
-          "student_id": student_personal_details.id,
-          "semester": sem,
+          student_id: student_personal_details.id,
+          semester: sem,
           //   tech: tech,
           //   etc: etc,
           //   art: art,
           //   sports: sports,
           //   academic: academic,
-          "tech": 30,
-          "etc": 50,
-          "art": 55,
-          "sports": 90,
-          "academic": 55,
+          tech: 30,
+          etc: 50,
+          art: 55,
+          sports: 90,
+          academic: 55,
         };
         const response = await update_user_scores(new_score_values);
         setResponseMessage(response);
@@ -61,16 +66,32 @@ const Page = ({ searchParams }) => {
       }
     };
     if (updateScores) {
-        update_student_score_values();
-      }
+      update_student_score_values();
+    }
   }, [updateScores]);
+
+  const [semMarks, setSemMarks] = useState(null);
+  useEffect(() => {
+    const sem_results = async () => {
+      try {
+        const fetch_sem__marks = await get_user_sem_marks(id);
+        setSemMarks(fetch_sem__marks);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    if (id) {
+      sem_results();
+    }
+  }, [refresh]);
+  console.log("sem marks", semMarks);
 
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height: "100vh",
     backgroundColor: "black",
     color: "white",
     fontFamily: "'Roboto', sans-serif",
@@ -129,7 +150,7 @@ const Page = ({ searchParams }) => {
     left: "0",
     width: "100%",
     height: "100%",
-    color:"black",
+    color: "black",
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     display: "flex",
     alignItems: "center",
@@ -152,7 +173,8 @@ const Page = ({ searchParams }) => {
     padding: "0.7rem 1.5rem",
     borderRadius: "0.25rem",
     cursor: "pointer",
-    transition: "background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease",
+    transition:
+      "background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease",
     border: "none",
     fontFamily: "'Roboto', sans-serif",
     fontSize: "1rem",
@@ -195,7 +217,7 @@ const Page = ({ searchParams }) => {
     }
   };
 
-  console.log(student_personal_details)
+  console.log(student_personal_details);
 
   return (
     <div style={containerStyle}>
@@ -210,24 +232,43 @@ const Page = ({ searchParams }) => {
           <button
             style={{ ...buttonStyle, backgroundColor: "#3182ce" }}
             onClick={handleEditClick}
-            onMouseOver={(e) => e.target.style.backgroundColor = "#2563eb"}
-            onMouseOut={(e) => e.target.style.backgroundColor = "#3182ce"}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#2563eb")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#3182ce")}
           >
             Edit Info
           </button>
         </div>
       </div>
-      <div style={contentStyle}>
-   
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "40px",
+          fontWeight: "bold",
+          marginTop: "0rem",
+          textAlign: "center",
+        }}
+      >
+        {" "}
+        {name}'s Semester Results
       </div>
+      {semMarks != null &&
+        semMarks.records.map((item, index) => (
+          <SemResults data={item} id={id} branch={branch}  dorefresh ={setRefresh}/>
+        ))}
       <div style={dangerZoneStyle}>
         <p>Do you want to ban {name}?</p>
-        <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <button
             style={{ ...buttonStyle, backgroundColor: "#e53e3e" }}
             onClick={handleBanClick}
-            onMouseOver={(e) => e.target.style.backgroundColor = "#c53030"}
-            onMouseOut={(e) => e.target.style.backgroundColor = "#e53e3e"}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#c53030")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#e53e3e")}
           >
             Yes
           </button>
@@ -237,20 +278,34 @@ const Page = ({ searchParams }) => {
         <div style={popupStyle}>
           <div style={popupContentStyle}>
             <p>Are you sure you want to ban {name}?</p>
-            <div style={{ marginTop: "1rem", display: "flex", justifyContent: "flex-end" }}>
+            <div
+              style={{
+                marginTop: "1rem",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
               <button
                 style={{ ...buttonStyle, backgroundColor: "#e53e3e" }}
                 onClick={confirmBan}
-                onMouseOver={(e) => e.target.style.backgroundColor = "#c53030"}
-                onMouseOut={(e) => e.target.style.backgroundColor = "#e53e3e"}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = "#c53030")
+                }
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#e53e3e")}
               >
                 Yes
               </button>
               <button
-                style={{ ...buttonStyle, backgroundColor: "#718096", marginLeft: "0.5rem" }}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: "#718096",
+                  marginLeft: "0.5rem",
+                }}
                 onClick={() => setShowBanPopup(false)}
-                onMouseOver={(e) => e.target.style.backgroundColor = "#5a6b7d"}
-                onMouseOut={(e) => e.target.style.backgroundColor = "#718096"}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = "#5a6b7d")
+                }
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#718096")}
               >
                 No
               </button>
@@ -261,90 +316,137 @@ const Page = ({ searchParams }) => {
       {showEditPopup && (
         <div style={popupStyle}>
           <div style={popupContentStyle}>
-            <p style={{ color: 'white', marginBottom: '1rem' }}>Edit student info:</p>
-            
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <p style={{ color: "white", marginBottom: "1rem" }}>
+              Edit student info:
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <input
                 type="text"
                 placeholder="Original Name"
                 value={name}
                 readOnly
-                style={{ flex: '1', marginRight: '1rem', padding: '0.5rem' }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
               <input
                 type="text"
                 placeholder="New Name"
-                value={editedInfo.name || ''}
-                onChange={(e) => setEditedInfo({ ...editedInfo, name: e.target.value })}
-                style={{ flex: '1', padding: '0.5rem' }}
+                value={editedInfo.name || ""}
+                onChange={(e) =>
+                  setEditedInfo({ ...editedInfo, name: e.target.value })
+                }
+                style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <input
                 type="text"
                 placeholder="Original Email"
                 value={email}
                 readOnly
-                style={{ flex: '1', marginRight: '1rem', padding: '0.5rem' }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
               <input
                 type="text"
                 placeholder="New Email"
-                value={editedInfo.email || ''}
-                onChange={(e) => setEditedInfo({ ...editedInfo, email: e.target.value })}
-                style={{ flex: '1', padding: '0.5rem' }}
+                value={editedInfo.email || ""}
+                onChange={(e) =>
+                  setEditedInfo({ ...editedInfo, email: e.target.value })
+                }
+                style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <input
                 type="text"
                 placeholder="Original Branch"
                 value={branch}
                 readOnly
-                style={{ flex: '1', marginRight: '1rem', padding: '0.5rem' }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
               <input
                 type="text"
                 placeholder="New Branch"
-                value={editedInfo.branch || ''}
-                onChange={(e) => setEditedInfo({ ...editedInfo, branch: e.target.value })}
-                style={{ flex: '1', padding: '0.5rem' }}
+                value={editedInfo.branch || ""}
+                onChange={(e) =>
+                  setEditedInfo({ ...editedInfo, branch: e.target.value })
+                }
+                style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <input
                 type="text"
                 placeholder="Original Semester"
                 value={sem}
                 readOnly
-                style={{ flex: '1', marginRight: '1rem', padding: '0.5rem' }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
               <input
                 type="text"
                 placeholder="New Semester"
-                value={editedInfo.sem || ''}
-                onChange={(e) => setEditedInfo({ ...editedInfo, sem: e.target.value })}
-                style={{ flex: '1', padding: '0.5rem' }}
+                value={editedInfo.sem || ""}
+                onChange={(e) =>
+                  setEditedInfo({ ...editedInfo, sem: e.target.value })
+                }
+                style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <button
-                style={{ ...buttonStyle, backgroundColor: "#38a169", marginTop: "1rem", marginRight: '1rem' }}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: "#38a169",
+                  marginTop: "1rem",
+                  marginRight: "1rem",
+                }}
                 onClick={handleEditSubmit}
-                onMouseOver={(e) => e.target.style.backgroundColor = "#2d8e61"}
-                onMouseOut={(e) => e.target.style.backgroundColor = "#38a169"}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = "#2d8e61")
+                }
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#38a169")}
               >
                 Save Changes
               </button>
               <button
-                style={{ ...buttonStyle, backgroundColor: "#718096", marginTop: "1rem" }}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: "#718096",
+                  marginTop: "1rem",
+                }}
                 onClick={() => setShowEditPopup(false)}
-                onMouseOver={(e) => e.target.style.backgroundColor = "#5a6b7d"}
-                onMouseOut={(e) => e.target.style.backgroundColor = "#718096"}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = "#5a6b7d")
+                }
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#718096")}
               >
                 Cancel
               </button>

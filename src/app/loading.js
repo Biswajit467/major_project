@@ -1,5 +1,6 @@
-export default function Loading() {
-  // Or a custom loading skeleton component
+import React from "react";
+
+const Loading = () => {
   return (
     <div style={{
       marginTop:"30rem",
@@ -13,4 +14,6 @@ export default function Loading() {
     </div>
    
   );
-}
+};
+
+export default Loading;

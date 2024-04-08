@@ -8,31 +8,45 @@ const UpdatePersonalInfoForm = () => {
     name: "",
     email: "",
     password: "",
-    img: null,
+    img: "",
   });
 
   const userId = localStorage.getItem("user_id");
   console.log("this is userId", userId);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
   // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   if (name === "email" || name === "password") {
-  //     if (!value.trim()) {
-  //       return;
-  //     }
-  //   }
-  //   setFormData({ ...formData, [name]: value });
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
+
+  const handleChange = (e) => {
+    if (e.target.name === "img") {
+      setFormData({ ...formData, img: e.target.files[0] }); // Update the img field with the selected file
+    } else {
+      setFormData({ ...formData, [e.target.name]: e.target.value }); // Update other fields as usual
+    }
+  };
+  console.log("this is form data", formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const FD = new FormData();
+      FD.append("name", formData.name);
+      FD.append("email", formData.email);
+      FD.append("password", formData.password);
+      FD.append("img", formData.img); // Append the file object
+
+      console.log("chiga bhuuurrr", formData);
+      console.log("bala", FD);
+
       const response = await axios.patch(
         `${MAIN_URL}user/update-personal-info/${userId}/`,
-        formData
+        FD, // Send FormData instead of JSON
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Ensure correct content type
+          },
+        }
       );
       console.log("Updated personal info:", response.data);
       // Handle success, maybe show a success message or redirect
@@ -41,6 +55,21 @@ const UpdatePersonalInfoForm = () => {
       // Handle error, maybe show an error message
     }
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.patch(
+  //       `${MAIN_URL}user/update-personal-info/${userId}/`,
+  //       formData
+  //     );
+  //     console.log("Updated personal info:", response.data);
+  //     // Handle success, maybe show a success message or redirect
+  //   } catch (error) {
+  //     console.error("Error updating personal info:", error);
+  //     // Handle error, maybe show an error message
+  //   }
+  // };
 
   return (
     <div

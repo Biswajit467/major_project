@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import { get_user_data } from "../../../user_apis/route";
 import { user_stats } from "../../adminapi/route";
@@ -20,7 +20,7 @@ const Home = () => {
   const [branch, setBranch] = useState("");
   const [showSempopup, setShowSempopup] = useState(false);
 
-  console.log("userStats" , userStats)
+  console.log("userStats", userStats);
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -90,11 +90,11 @@ const Home = () => {
               <button class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
                 <CiSettings />
               </button>
-              <button title="logout"
+              <button
+                title="logout"
                 className="text-red-000 hover:text-red-900 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
               >
-                <MdLogout style={{ height: '2rem', width: '2rem' }} />
-
+                <MdLogout style={{ height: "2rem", width: "2rem" }} />
               </button>
             </div>
 
@@ -133,7 +133,6 @@ const Home = () => {
                 </h1>
               </div>
             </div>
-
           </div>
         ) : (
           <p style={{ margin: "0", fontSize: "14px", fontWeight: "bold" , display:'flex', flexDirection:'row',gap:'2rem' , right:'0' }}>
@@ -204,7 +203,11 @@ const Home = () => {
             "15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)",
         }}
       >
-        <div>{userStats ? userStats && <RadialMultiBarChart data={userStats} /> : null}</div>
+        <div>
+          {userStats
+            ? userStats && <RadialMultiBarChart data={userStats} />
+            : null}
+        </div>
         <div>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum id
           nobis numquam possimus voluptatem sunt laboriosam, culpa provident
@@ -242,9 +245,8 @@ const Home = () => {
             justifyContent: "space-around",
           }}
         >
-          {
-            userStats.total_students_by_branch.map((item) =>
-              (<button
+          {userStats.total_students_by_branch.map((item) => (
+            <button
               className="button-hover"
               onClick={() => {
                 handleBranchClick();
@@ -255,9 +257,8 @@ const Home = () => {
                 branchName={`${item.branch}`}
                 quantity={`${item.total_students} / ${userStats?.total_records} `}
               />
-            </button>)
-            )
-          }
+            </button>
+          ))}
         </div>
       ) : null}
     </div>

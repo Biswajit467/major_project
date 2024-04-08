@@ -1,17 +1,19 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { addPost } from "../../../auth_api/route";
+import { useRouter } from "next/navigation";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 
 const AddPost = () => {
+  const router = useRouter();
+
   const [postData, setPostData] = useState({
     title: "",
     img: "",
     desc: "",
     category: "",
     token: "",
-    uid: null,
+    uid: null, // we set the uid dynamically letter on, for now, it is 6 and 6 is holla user's uid.
   });
 
   useEffect(() => {
@@ -61,35 +63,41 @@ const AddPost = () => {
         desc: "",
         category: "",
       });
+      router.push("viewpost");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div 
+    <div
       className="container mx-auto mt-8"
       style={{
-        background: "linear-gradient(90deg, rgba(81,81,81,1) 0%, rgba(98,98,98,1) 50%, rgba(79,79,79,1) 100%)",
-        borderRadius: '2rem',
+        background:
+          "linear-gradient(90deg, rgba(81,81,81,1) 0%, rgba(98,98,98,1) 50%, rgba(79,79,79,1) 100%)",
+        borderRadius: "2rem",
         color: "white",
         padding: "20px",
-        
-      
-      
       }}
     >
-      <div 
+      <div
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         style={{
           background: "rgba(0, 0, 0, 0.8)",
-         
+
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <h2 className="text-2xl font-bold mb-4 text-gray-800" style={{ color: "white" ,gap:'1rem', display:'flex',
-          flexDirection:'row', }}>
-         <HiOutlinePencilSquare />  Create a New Blog Post 
+        <h2
+          className="text-2xl font-bold mb-4 text-gray-800"
+          style={{
+            color: "white",
+            gap: "1rem",
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <HiOutlinePencilSquare /> Create a New Blog Post
         </h2>
         <form onSubmit={handleSubmit} className="mb-4">
           <div className="mb-4">
@@ -165,7 +173,7 @@ const AddPost = () => {
               </option>
               <option value="Academic">Academic</option>
               <option value="Tech">Tech</option>
-              <option value="Arts">Arts</option>
+              <option value="Art">Arts</option>
               <option value="Sports">Sports</option>
               <option value="ETC">ECA</option>
             </select>
@@ -173,13 +181,15 @@ const AddPost = () => {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            style={{ 
+            style={{
               backgroundColor: "#002347",
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
               transition: "transform 0.2s ease-in-out",
             }}
-            onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-            onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.transform = "scale(1.05)")
+            }
+            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             Submit Post
           </button>

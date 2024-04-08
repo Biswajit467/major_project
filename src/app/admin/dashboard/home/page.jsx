@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import { get_user_data } from "../../../user/user_apis/route";
+import { get_user_data } from "../../../user_apis/route";
 import { user_stats } from "../../adminapi/route";
 import Link from "next/link";
 import { MdLogout } from "react-icons/md";

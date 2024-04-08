@@ -1,11 +1,11 @@
 "user client";
 import dynamic from "next/dynamic";
-import React, { useRef, useEffect, useState } from "react";
-import'./apexchart.css'
+import React, { useRef, useEffect } from "react";
+import "./apexchart.css";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export const CompareRadarChart = ({
+const CompareRadarChart = ({
   onClose,
   current_user_score,
   tobeCompared_student_score,
@@ -49,9 +49,9 @@ export const CompareRadarChart = ({
           zoomout: true,
           pan: true,
           reset: true | '<img src="/static/icons/reset.png" width="20">',
-          customIcons: []
+          customIcons: [],
         },
-      }
+      },
     },
     xaxis: {
       categories: ["Academic", "Arts", "ECA", "Sports", "Tech"],
@@ -91,11 +91,11 @@ export const CompareRadarChart = ({
       },
     },
     legend: {
-        position: "bottom",
-        labels: {
-          colors: "#ffffff",
-        },
+      position: "bottom",
+      labels: {
+        colors: "#ffffff",
       },
+    },
   };
 
   const series = [
@@ -136,7 +136,7 @@ export const CompareRadarChart = ({
         />
         <div>
           {tobeCompared_student_score?.overall > current_user_score?.overall ? (
-            <div style={{textAlign:'center'}}>
+            <div style={{ textAlign: "center" }}>
               You are{" "}
               {tobeCompared_student_score?.overall -
                 current_user_score?.overall +
@@ -145,7 +145,7 @@ export const CompareRadarChart = ({
               {tobeCompared_student_score?.student_details.name}
             </div>
           ) : (
-            <div style={{textAlign: "center"}}>
+            <div style={{ textAlign: "center" }}>
               {" "}
               you have already beated{" "}
               {tobeCompared_student_score?.student_details.name}{" "}
@@ -156,3 +156,5 @@ export const CompareRadarChart = ({
     </div>
   );
 };
+
+export default CompareRadarChart;

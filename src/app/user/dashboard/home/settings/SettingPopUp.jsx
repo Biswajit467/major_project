@@ -1,8 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
-import { MdAdminPanelSettings } from "react-icons/md";
-import { PiStudentBold } from "react-icons/pi";
-import { SiGooglemessages } from "react-icons/si";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { FaUserEdit } from "react-icons/fa";
 import { BiSolidDetail } from "react-icons/bi";
@@ -46,6 +43,7 @@ const SettingPopUp = ({ onClose }) => {
               href={{
                 pathname: "home/settings",
               }}
+              prefetch={false}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mr-2 w-80 flex items-center justify-center"
               onClick={handleUpdateProfileInfo}
             >

@@ -45,6 +45,7 @@ export default function Home() {
           <h1
             style={{
               fontFamily: "sans-serif",
+              backgroundImage: "linear-gradient(to bottom, #FFFFFF, #3B82F6)",
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",

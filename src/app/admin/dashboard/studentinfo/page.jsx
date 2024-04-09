@@ -255,7 +255,7 @@ const Page = ({ searchParams }) => {
             style={{ ...buttonStyle, backgroundColor: "green" }}
             onClick={handleEditClick}
             onMouseOver={(e) => (e.target.style.backgroundColor = "#2563eb")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#00ff00")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "green")}
           >
             Edit Info
           </button>

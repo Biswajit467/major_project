@@ -58,13 +58,9 @@ const Notification = () => {
             style={{
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
-           
-              background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              color:'#00ff00',
               marginTop: '0rem',
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              fontSize: '1.5rem',
+              fontSize: '1rem',
               textAlign: 'center',
               marginBottom: '0.5rem',
             }}
@@ -146,23 +142,11 @@ const Notification = () => {
                   }
                 }}
                 key={notification.id}
-                className={`text-lg md:text-xl font-inter flex flex-col items-center space-y-2 ${
-                  isDateSelectedNotification(notification.created_at)
-                    ? 'bg-[#05223f]'
-                    : 'bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900'
-                }`}
-                style={{
-                  borderRadius: '10px',
-                  padding: '15px',
-                  margin: '10px',
-                  marginLeft:'2rem',
-                  fontFamily: 'sans-serif',
-                  width: '100%',
-                  maxWidth: '88%',
-                  height: notification.expanded ? 'auto' : 'fit-content',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  fontSize: '1rem',
-                }}
+                className={`text-xs md:text-xl font-inter flex flex-col items-center space-y-2 p-1 m-1 w-full h-auto ${
+                  isDateSelectedNotification(notification.created_at) ? 'bg-[#05223f]' : 'bg-gradient-to-b from-indigo-900 via-indigo-700 to-indigo-900'
+                } rounded-lg p-4 m-4 ml-8 font-sans max-w-[88%] ${
+                  notification.expanded ? 'h-auto' : 'h-fit-content'
+                } shadow-lg text-base`}
               >
                 <div className="flex justify-between items-center w-full mb-3 md:mb-4">
                   <div className="flex items-center space-x-2">
@@ -175,7 +159,7 @@ const Notification = () => {
                     )}
                     <span style={{ fontSize: '1.5rem', maxWidth: '80%' }}>{notification.user_name}</span>
                   </div>
-                  <span style={{ fontSize: '0.9rem' }}>{new Date(notification.created_at).toLocaleString()}</span>
+                  <span style={{ fontSize: '0.rem' }}>{new Date(notification.created_at).toLocaleString()}</span>
                 </div>
                 <div>
                   {notification.expanded ? (

@@ -26,17 +26,13 @@ const Home = () => {
       try {
         const userData = await get_user_data();
         setUserInfo(userData);
-
-
       } catch (error) {
         console.error("Error fetching user data in home page:", error);
       }
     };
 
     fetchUserData();
-
   }, []);
-
 
   useEffect(() => {
     const fetch_student_quantity = async () => {
@@ -55,18 +51,11 @@ const Home = () => {
 
   console.log("userStats", userStats);
   return (
-    <div style={{ padding: "10px",  }}>
+    <div style={{ padding: "10px" , backgroundColor: "#030439"  }}>
       {showSempopup ? (
         <ShowSemPopUp onClose={closePopup} branch={branch} />
       ) : null}
       <div>
-
-
-
-
-
-
-
         <div
           style={{
             display: "flex",
@@ -80,6 +69,7 @@ const Home = () => {
               justifyContent: "flex-end",
               alignItems: "center",
               marginTop: "1rem",
+              marginRight:'1%'
             }}
           >
             <p
@@ -97,26 +87,38 @@ const Home = () => {
               REG: {userInfo?.user.registration_number}
             </p>
 
-            <Link href={"/admin/createUser"} class=" ml-8 mr-2  text-blue-000 hover:text-[#dbff00] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#dbff00] duration-700">
-              <IoPersonAddSharp   title="add user"      style={{ height: "2rem", width: "2rem" }} />
+            <Link
+              href={"/admin/createUser"}
+              class=" ml-8 mr-2  text-blue-000 hover:text-[#00ff00] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#00ff00] duration-700"
+            >
+              <IoPersonAddSharp
+                title="add user"
+                style={{ height: "2rem", width: "2rem" }}
+              />
             </Link>
-            <Link href={"/admin/dashboard/notification"} title="logout"
+            <Link
+              href={"/admin/dashboard/notification"}
+              title="logout"
               className="text-red-000 hover:text-[#00d53c] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#00d53c] duration-700"
             >
-              <MdNotificationAdd  title="add notification"    style={{ height: "2rem", width: "2rem" }} />
-
+              <MdNotificationAdd
+                title="add notification"
+                style={{ height: "2rem", width: "2rem" }}
+              />
             </Link>
-            <Link href={"/"} class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
+            {/* <Link href={"/"} class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
               <CiSettings  title="setting" style={{ height: "2rem", width: "2rem" }} />
-            </Link>
-            <Link href={"/"} title="logout"
+            </Link> */}
+            <Link
+              href={"/"}
+              title="logout"
               className="text-red-000 hover:text-red-900 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
             >
-              <MdLogout  title="logout" style={{ height: "2rem", width: "2rem" }} />
-
+              <MdLogout
+                title="logout"
+                style={{ height: "2rem", width: "2rem" }}
+              />
             </Link>
-
-
           </div>
 
           <div style={{ display: "flex", justifyContent: "flex-start" }}>
@@ -154,8 +156,6 @@ const Home = () => {
               </h1>
             </div>
           </div>
-
-
         </div>
       </div>
 
@@ -204,7 +204,7 @@ const Home = () => {
       </div>
 
       <div>
-        <h2 style={{ margin: "0", fontSize: "1.5rem", textAlign: "center" }}>
+        <h2 style={{ marginTop: "3%", fontSize: "1.5rem", fontWeight:'bold', color:'#00ff00', textAlign: "center" }}>
           Go For Students By Branches
         </h2>
       </div>
@@ -216,9 +216,8 @@ const Home = () => {
             justifyContent: "space-around",
           }}
         >
-          {
-            userStats.total_students_by_branch.map((item) =>
-              (<button
+          {userStats.total_students_by_branch.map((item) => (
+            <button
               className="button-hover"
               onClick={() => {
                 handleBranchClick();

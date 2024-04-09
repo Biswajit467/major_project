@@ -20,8 +20,8 @@ const Branches = ({ branchName, quantity }) => {
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         transition: "transform 0.3s ease-in-out",
         background: "rgb(0,0,0)",
-        background: "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(136,11,186,1) 51%, rgba(0,0,0,1) 100%)",
-        // background:
+        background: "linear-gradient(90deg, rgba(5,2,56,1) 0%, rgba(13,34,154,1) 50%, rgba(2,0,43,1) 100%)"    
+          // background:
         //   "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
       }}
       className="branch-card"

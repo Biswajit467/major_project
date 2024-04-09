@@ -49,11 +49,11 @@ const Notification = () => {
   };
 
   return (
-    <div style={{ display: 'block', fontFamily: 'sans-serif', letterSpacing: '2px', wordSpacing: '0.5px', position: 'relative' }}>
+    <div style={{ display: 'block', fontFamily: 'sans-serif', letterSpacing: '2px', wordSpacing: '0.5px', position: 'relative' , backgroundColor: "#030439" }}>
       {/* Notifications */}
       <div style={{ alignItems: 'center' }} className="w-full mb-4 p-2 flex flex-col justify-center">
         {/* Calendar */}
-        <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1 }}>
+        <div style={{ position: 'absolute', top: '10px', left:'1rem' }}>
           <h2
             style={{
               backgroundSize: 'cover',

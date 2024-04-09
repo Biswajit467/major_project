@@ -6,6 +6,7 @@ import { CiSettings } from "react-icons/ci";
 import dynamic from "next/dynamic";
 import { get_user_data } from "../../../user_apis/route";
 import { get_user_scores, get_user_sem_marks } from "../../user_apis/route";
+import Image from "next/image";
 const Typewriter = dynamic(() => import("typewriter-effect"));
 const ColumnGraph = dynamic(() => import("../../userComponents/ColumnGraph"), {
   ssr: false,
@@ -164,14 +165,22 @@ const HomePage = () => {
                   marginLeft: "8rem",
                 }}
               >
-                <div
-                  style={{
-                    height: "7rem",
-                    width: "7rem",
-                    border: "1px solid white",
-                    borderRadius: "100%",
-                  }}
-                ></div>
+                {userInfo != null ? (
+                  <Image
+                    width="94"
+                    height="94"
+                    loading="lazy"
+                    src={userInfo?.user.img == null ? "" : userInfo?.user.img}
+                    alt="user Image"
+                    priority={false}
+                    style={{
+                      height: "7rem",
+                      width: "7rem",
+                      border: "1px solid white",
+                      borderRadius: "100%",
+                    }}
+                  />
+                ) : null}
 
                 <h1
                   style={{
@@ -223,7 +232,7 @@ const HomePage = () => {
                 borderRadius: "10px",
                 // boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
                 boxShadow:
-                  "15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)",
+                  "5px 5px 10px rgb(77,81,83),-5px -5px 10px rgb(77,81,83)",
                 margin: "2%",
                 padding: "2%",
               }}
@@ -270,7 +279,7 @@ const HomePage = () => {
                 borderRadius: "10px",
                 // boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
                 boxShadow:
-                  "15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)",
+                "5px 5px 10px rgb(77,81,83),-5px -5px 10px rgb(77,81,83)",
                 marginTop: "5%",
                 margin: "2%",
                 padding: "2%",

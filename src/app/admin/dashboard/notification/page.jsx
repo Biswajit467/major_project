@@ -79,7 +79,7 @@ const Page = () => {
           alignItems: "center",
         }}
       >
-        {showComponent && <CreateNotificationPopUp onClose={closePopup} />}
+        {showComponent && <CreateNotificationPopUp style={{   background:"linear-gradient(to bottom, #FFFFFF, #3B82F6)"}} onClose={closePopup} />}
         <div
           style={{
             fontSize: "1.5rem",
@@ -95,6 +95,7 @@ const Page = () => {
               style={{
                 fontSize: "2rem",
                 marginLeft: "2rem",
+                color:"blue"
               }}
             />
           </button>{" "}
@@ -108,7 +109,16 @@ const Page = () => {
               color: "orange",
               paddingTop: "1rem",
               paddingBottom: "1rem",
-              marginRight: "1rem", // Add margin for spacing
+              marginRight: "1rem", 
+              fontFamily: 'sans-serif',
+              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent',
+              marginBottom:'2rem'
             }}
           >
             Notifications
@@ -130,6 +140,14 @@ const Page = () => {
               marginBottom: "1rem",
               color: "orange",
               marginRight: "1rem",
+              fontFamily: 'sans-serif',
+              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              color: 'transparent'
             }}
           >
             Select Date

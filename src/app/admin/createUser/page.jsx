@@ -45,8 +45,8 @@ const CreateUserPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 rounded-lg shadow-lg bg-gray-100 dark:bg-gray-800">
-      <h1 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">
+    <div className="max-w-md mx-auto mt-8 p-6  rounded-lg shadow-lg bg-gray-900 dark:bg-gray-800">
+      <h1 className="text-2xl font-semibold mb-4 text-gray-100 dark:text-white">
         Create User
       </h1>
       {message && <p className="text-green-600 mb-4">{message}</p>}
@@ -54,7 +54,7 @@ const CreateUserPage = () => {
         <div className="mb-4">
           <label
             htmlFor="student_id"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Student ID:
           </label>
@@ -64,13 +64,13 @@ const CreateUserPage = () => {
             name="student_id"
             value={user.student_id}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Email:
           </label>
@@ -80,13 +80,13 @@ const CreateUserPage = () => {
             name="email"
             value={user.email}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Password:
           </label>
@@ -96,13 +96,13 @@ const CreateUserPage = () => {
             name="password"
             value={user.password}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Name:
           </label>
@@ -112,13 +112,13 @@ const CreateUserPage = () => {
             name="name"
             value={user.name}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="sem"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Semester:
           </label>
@@ -128,13 +128,13 @@ const CreateUserPage = () => {
             name="sem"
             value={user.sem}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="branch"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Branch:
           </label>
@@ -144,13 +144,13 @@ const CreateUserPage = () => {
             name="branch"
             value={user.branch}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="registration_number"
-            className="block text-sm font-medium text-gray-700 dark:text-white"
+            className="block text-sm font-medium text-gray-100 dark:text-white"
           >
             Registration Number:
           </label>
@@ -160,7 +160,7 @@ const CreateUserPage = () => {
             name="registration_number"
             value={user.registration_number}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
           />
         </div>
         <button

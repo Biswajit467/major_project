@@ -1,15 +1,18 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import { get_user_data } from "../../../user_apis/route";
 import { user_stats } from "../../adminapi/route";
+import Link from "next/link";
 import { MdLogout } from "react-icons/md";
 import { RiUserAddFill } from "react-icons/ri";
+
 import { MdNotificationAdd } from "react-icons/md";
 import Typewriter from "typewriter-effect";
 import { CiSettings } from "react-icons/ci";
 import { RadialMultiBarChart } from "../../adminComponents/RadialMultiBarChart";
 import Branches from "../../adminComponents/Branches";
 import ShowSemPopUp from "../../adminComponents/ShowSemPopUp";
+import { IoPersonAddSharp } from "react-icons/io5";
 import "./page.css";
 const Home = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -17,19 +20,23 @@ const Home = () => {
   const [branch, setBranch] = useState("");
   const [showSempopup, setShowSempopup] = useState(false);
 
-  console.log("userStats" , userStats)
+  console.log("userStats", userStats);
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const userData = await get_user_data();
         setUserInfo(userData);
+
+
       } catch (error) {
         console.error("Error fetching user data in home page:", error);
       }
     };
 
     fetchUserData();
+
   }, []);
+
 
   useEffect(() => {
     const fetch_student_quantity = async () => {
@@ -48,95 +55,108 @@ const Home = () => {
 
   console.log("userStats", userStats);
   return (
-    <div style={{ padding: "10px", backgroundColor: "", height: "5rem" }}>
+    <div style={{ padding: "10px",  }}>
       {showSempopup ? (
         <ShowSemPopUp onClose={closePopup} branch={branch} />
       ) : null}
       <div>
-        {userInfo ? (
+
+
+
+
+
+
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              marginTop: "1rem",
             }}
           >
+            <p
+              style={{
+                margin: "0 10px",
+                marginLeft: "50rem",
+                fontSize: "14px",
+              }}
+            ></p>
+            <p style={{ margin: "0", fontSize: "14px" }}>
+              Branch: {userInfo?.user.branch}
+            </p>
+            <p style={{ margin: "0 10px", fontSize: "14px" }}>|</p>
+            <p style={{ margin: "0", fontSize: "14px" }}>
+              REG: {userInfo?.user.registration_number}
+            </p>
+
+            <Link href={"/admin/createUser"} class=" ml-8 mr-2  text-blue-000 hover:text-[#dbff00] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#dbff00] duration-700">
+              <IoPersonAddSharp   title="add user"      style={{ height: "2rem", width: "2rem" }} />
+            </Link>
+            <Link href={"/admin/dashboard/notification"} title="logout"
+              className="text-red-000 hover:text-[#00d53c] backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-[#00d53c] duration-700"
+            >
+              <MdNotificationAdd  title="add notification"    style={{ height: "2rem", width: "2rem" }} />
+
+            </Link>
+            <Link href={"/"} class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
+              <CiSettings  title="setting" style={{ height: "2rem", width: "2rem" }} />
+            </Link>
+            <Link href={"/"} title="logout"
+              className="text-red-000 hover:text-red-900 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
+            >
+              <MdLogout  title="logout" style={{ height: "2rem", width: "2rem" }} />
+
+            </Link>
+
+
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
             <div
               style={{
                 display: "flex",
-                justifyContent: "flex-end",
                 alignItems: "center",
-                marginTop: "1rem",
+                marginLeft: "8rem",
               }}
             >
-              <p
-                style={{
-                  margin: "0 10px",
-                  marginLeft: "50rem",
-                  fontSize: "14px",
-                }}
-              ></p>
-              <p style={{ margin: "0", fontSize: "14px" }}>
-                Branch: {userInfo?.user.branch}
-              </p>
-              <p style={{ margin: "0 10px", fontSize: "14px" }}>|</p>
-              <p style={{ margin: "0", fontSize: "14px" }}>
-                REG: {userInfo?.user.registration_number}
-              </p>
-
-              <button class=" ml-8 mr-2  text-blue-000 hover:text-blue-700 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-blue-400 duration-700">
-                <CiSettings />
-              </button>
-              <button title="logout"
-                className="text-red-000 hover:text-red-900 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(121,121,121,0.16)] to-transparent rounded-xl py-2 px-6 shadow hover:shadow-red-400 duration-700"
-              >
-                <MdLogout style={{ height: '2rem', width: '2rem' }} />
-
-              </button>
-            </div>
-
-            <div style={{ display: "flex", justifyContent: "flex-start" }}>
               <div
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "8rem",
+                  height: "7rem",
+                  width: "7rem",
+                  border: "1px solid white",
+                  borderRadius: "100%",
+                }}
+              ></div>
+
+              <h1
+                style={{
+                  margin: "0",
+                  fontSize: "30px",
+                  marginLeft: "1rem",
+                  textTransform: "capitalize",
                 }}
               >
-                <div
-                  style={{
-                    height: "7rem",
-                    width: "7rem",
-                    border: "1px solid white",
-                    borderRadius: "100%",
+                <Typewriter
+                  options={{
+                    strings: [` welcome ${userInfo?.user.name},`],
+                    autoStart: true,
+                    loop: true,
                   }}
-                ></div>
-
-                <h1
-                  style={{
-                    margin: "0",
-                    fontSize: "30px",
-                    marginLeft: "1rem",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  <Typewriter
-                    options={{
-                      strings: [` welcome ${userInfo?.user.name},`],
-                      autoStart: true,
-                      loop: true,
-                    }}
-                  />
-                </h1>
-              </div>
+                />
+              </h1>
             </div>
-
           </div>
-        ) : (
-          <p style={{ margin: "0", fontSize: "14px", fontWeight: "bold" }}>
-            No user data available
-          </p>
-        )}
+
+
+        </div>
       </div>
 
       <div
@@ -154,7 +174,11 @@ const Home = () => {
             "15px 15px 30px rgb(25, 25, 25),-15px -15px 30px rgb(60,60,60)",
         }}
       >
-        <div>{userStats ? userStats && <RadialMultiBarChart data={userStats} /> : null}</div>
+        <div>
+          {userStats
+            ? userStats && <RadialMultiBarChart data={userStats} />
+            : null}
+        </div>
         <div>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum id
           nobis numquam possimus voluptatem sunt laboriosam, culpa provident
@@ -205,9 +229,8 @@ const Home = () => {
                 branchName={`${item.branch}`}
                 quantity={`${item.total_students} / ${userStats?.total_records} `}
               />
-            </button>)
-            )
-          }
+            </button>
+          ))}
         </div>
       ) : null}
     </div>

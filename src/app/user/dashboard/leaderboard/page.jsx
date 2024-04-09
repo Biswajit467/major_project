@@ -46,7 +46,7 @@ const LeaderBoard = () => {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor: "#030439", height:'100vh'}}>
       {isCompareClicked && (
         <CompareRadarChart
           onClose={closePopup}
@@ -86,7 +86,7 @@ const LeaderBoard = () => {
           Students Leader Board
         </div>
 
-        <div style={{ padding: "2%" }}>
+        <div style={{ padding: "2%"}}>
           <div
             style={{
               display: "flex",
@@ -97,7 +97,7 @@ const LeaderBoard = () => {
               height: "10%",
             }}
           >
-            <div style={{ width: "10%" }}>Rank</div>
+            <div style={{ width: "10%"  }}>Rank</div>
             <div
               style={{
                 textAlign: "center",

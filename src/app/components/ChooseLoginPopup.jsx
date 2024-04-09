@@ -1,18 +1,18 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
 import { SiGooglemessages } from "react-icons/si";
 import Link from "next/link";
 import Image from "next/image";
-import Cap from '../images/cap.png';
-const ChooseLoginPopup = ({ onClose }) => {
+import Cap from "../images/cap.png";
+const ChooseLoginPopup = (props) => {
   const popupRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
-        onClose();
+        props.onClose();
       }
     };
 
@@ -21,17 +21,10 @@ const ChooseLoginPopup = ({ onClose }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [onClose]);
+  }, [props.onClose]);
 
-  const handleStudentLogin = () => {
-    onClose();
-  };
-
-  const handleAdminLogin = () => {
-    onClose();
-  };
-  const handleConatactWithUs = () => {
-    onClose();
+  const handleSubmit = () => {
+    props.onClose();
   };
 
   return (
@@ -41,24 +34,26 @@ const ChooseLoginPopup = ({ onClose }) => {
         className="bg-slate-900 rounded-lg shadow-lg p-8 w-96"
       >
         <div className="flex items-center mb-4 justify-center">
-        <Image
-            // width="94"
-            // height="94"
+          <Image
+            width="94"
+            height="94"
+            loading="lazy"
             src={Cap}
             alt="graduation-cap"
             className="w-20 h-20 transition-transform duration-300 transform hover:scale-110"
           />
           <h1
-          style={{
-            fontFamily: 'sans-serif',
-            backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent'
-          }}
+            style={{
+              fontFamily: "sans-serif",
+              backgroundImage:
+                'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
             className="text-4xl font-inter font-extrabold text-white py-4 transform transition duration-300 ease-out hover:scale-105 hover:animate-shake"
           >
             CampusCanvas
@@ -78,7 +73,7 @@ const ChooseLoginPopup = ({ onClose }) => {
                 },
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mr-2 w-80 flex items-center justify-center"
-              onClick={handleStudentLogin}
+              onClick={handleSubmit}
             >
               {" "}
               <PiStudentBold className="w-6 h-6 mr-2" />
@@ -95,7 +90,7 @@ const ChooseLoginPopup = ({ onClose }) => {
                 },
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-80  flex items-center justify-center"
-              onClick={handleAdminLogin}
+              onClick={handleSubmit}
             >
               {" "}
               <MdAdminPanelSettings className="w-6 h-6 mr-2" /> Login as an
@@ -109,7 +104,7 @@ const ChooseLoginPopup = ({ onClose }) => {
             <Link
               href="/dashboard"
               className="bg-slate-700 hover:bg-slate-800 text-white font-semibold py-2 px-4 rounded w-80 flex items-center justify-center"
-              onClick={handleConatactWithUs}
+              onClick={handleSubmit}
             >
               <SiGooglemessages className="w-6 h-6 mr-2" />
               Contact Us

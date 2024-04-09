@@ -8,7 +8,7 @@ const UpdateSemResults = dynamic(
 
 const SemResults = (props) => {
   const { data, id, branch } = props;
-//   console.log("props from sem resulst", props);
+  //   console.log("props from sem resulst", props);
 
   const [editSemMarks, setEditSemMarks] = useState(false);
 
@@ -26,9 +26,6 @@ const SemResults = (props) => {
     exam_type: data.exam_type,
     subject_marks: data.subject_marks,
   });
-
-  console.log("to be inserted data",tobeInserted)
-
   return (
     <div
       style={{
@@ -42,7 +39,11 @@ const SemResults = (props) => {
       }}
     >
       {editSemMarks ? (
-        <UpdateSemResults data={tobeInserted} onClose={closePopup} dorefresh = {props.dorefresh} />
+        <UpdateSemResults
+          data={tobeInserted}
+          onClose={closePopup}
+          dorefresh={props.dorefresh}
+        />
       ) : null}
       <div>
         {data && (
@@ -69,7 +70,7 @@ const SemResults = (props) => {
             </div>
             <button onClick={handleEditClick}>
               {" "}
-              <TiEdit style={{ color: "#00ff00" , fontSize:'25px' }} />
+              <TiEdit style={{ color: "#00ff00", fontSize: "25px" }} />
             </button>
           </div>
         )}

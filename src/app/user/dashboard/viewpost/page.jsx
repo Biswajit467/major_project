@@ -47,31 +47,35 @@ const ViewPost = () => {
   return (
     <div
       style={{
-        // background: "#2b2b2b",
         background: "#030439",
         padding: "20px",
         scrollBehavior: "smooth",
         color: "white",
         fontFamily: "sans-serif",
+        position: "relative", // Add position relative to the parent div
       }}
-    > 
-    <Link  style={{
-      display: "inline-block",
-      background: 'linear-gradient(to bottom, #FFFFFF, #3B82F6)',// Blue color
-      color: "white",
-      padding: "10px 20px",
-      borderRadius: "5px",
-      textDecoration: "none",
-      fontWeight: "bold",
-      textAlign: "center",
-      cursor: "pointer",
-      transition: "background-color 0.3s ease",
-      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-    }} href="/user/dashboard/addpost">
- 
-    
-  <BiSolidImageAdd style={{color:"black"}} />
-</Link>
+    >
+      <Link
+        style={{
+          display: "inline-block",
+          background: "linear-gradient(to bottom, #FFFFFF, #3B82F6)",
+          color: "white",
+          padding: "10px 20px",
+          borderRadius: "5px",
+          textDecoration: "none",
+          fontWeight: "bold",
+          textAlign: "center",
+          cursor: "pointer",
+          transition: "background-color 0.3s ease",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          position: "absolute", // Position the link absolutely within the parent div
+          top: "20px", // Adjust the top distance as needed
+          right: "20px", // Position it on the right side
+        }}
+        href="/user/dashboard/addpost"
+      >
+        <BiSolidImageAdd style={{ color: "black" }} />
+      </Link>
 
       <div
         style={{
@@ -79,7 +83,6 @@ const ViewPost = () => {
           margin: "0 auto",
         }}
       >
-        
         <h1
           style={{
             textAlign: "center",
@@ -91,7 +94,7 @@ const ViewPost = () => {
             color: "transparent",
           }}
         >
-          View Posts 
+          View Posts
         </h1>
 
         {posts.map((post, index) => (
@@ -151,7 +154,7 @@ const ViewPost = () => {
                 style={{
                   fontWeight: "normal",
                   fontSize: "1.3rem",
-                  color: "orange",
+                  color: "#00ff00",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center" }}>

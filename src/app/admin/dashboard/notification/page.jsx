@@ -65,6 +65,7 @@ const Page = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        backgroundColor: "#030439",
       }}
     >
       {/* Navbar */}
@@ -79,13 +80,20 @@ const Page = () => {
           alignItems: "center",
         }}
       >
-        {showComponent && <CreateNotificationPopUp style={{   background:"linear-gradient(to bottom, #FFFFFF, #3B82F6)"}} onClose={closePopup} />}
+        {showComponent && (
+          <CreateNotificationPopUp
+            style={{
+              background: "linear-gradient(to bottom, #FFFFFF, #3B82F6)",
+            }}
+            onClose={closePopup}
+          />
+        )}
         <div
           style={{
             fontSize: "1.5rem",
             fontWeight: "700",
             marginBottom: "1rem",
-            color: "orange",
+            color: "#00ff00",
             marginRight: "1rem",
           }}
         >
@@ -95,7 +103,7 @@ const Page = () => {
               style={{
                 fontSize: "2rem",
                 marginLeft: "2rem",
-                color:"blue"
+                color: "#00ff00",
               }}
             />
           </button>{" "}
@@ -106,19 +114,20 @@ const Page = () => {
               fontSize: "2.25rem",
               fontWeight: "800",
               fontFamily: "Inter",
-              color: "orange",
+              color: "#00ff00",
               paddingTop: "1rem",
               paddingBottom: "1rem",
-              marginRight: "1rem", 
-              fontFamily: 'sans-serif',
-              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-              marginBottom:'2rem'
+              marginRight: "1rem",
+              fontFamily: "sans-serif",
+              backgroundImage:
+                'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+              marginBottom: "2rem",
             }}
           >
             Notifications
@@ -138,16 +147,17 @@ const Page = () => {
               fontSize: "1.5rem",
               fontWeight: "700",
               marginBottom: "1rem",
-              color: "orange",
+              color: "#00ff00",
               marginRight: "1rem",
-              fontFamily: 'sans-serif',
-              backgroundImage: 'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent'
+              fontFamily: "sans-serif",
+              backgroundImage:
+                'url("/moon.jpg"), linear-gradient(to bottom, #FFFFFF, #3B82F6)',
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
             }}
           >
             Select Date
@@ -181,7 +191,7 @@ const Page = () => {
               gap: "0.5rem",
               background: isDateSelectedNotification(notification.created_at)
                 ? "#05223f"
-                : "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
+                : " linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)",
               borderRadius: "0.5rem",
               padding: "1rem",
               marginBottom: "1rem",

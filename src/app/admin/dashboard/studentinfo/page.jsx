@@ -44,9 +44,9 @@ const Page = ({ searchParams }) => {
     student_id,
     email,
     branch,
-    
-registration_number,
-password,
+
+    registration_number,
+    password,
 
     sem,
     ban: isBanned,
@@ -92,7 +92,7 @@ password,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height:'100%',
+    height: "100%",
     backgroundColor: "#030439",
     color: "white",
     fontFamily: "'Roboto', sans-serif",
@@ -121,9 +121,8 @@ password,
 
   const buttonContainerStyle = {
     display: "flex",
-    
+
     gap: "1rem",
-   
   };
 
   const contentStyle = {
@@ -186,6 +185,10 @@ password,
     width: "110%", // Changed width
     maxWidth: "550px", // Added max width
     fontFamily: "'Roboto', sans-serif",
+    background:
+      "linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%) ",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const buttonStyle = {
@@ -268,7 +271,9 @@ password,
           padding: "5%",
         }}
       >
-        <div style={{ fontSize: "40px", fontWeight: "bold" , marginBottom:'1%' }}>
+        <div
+          style={{ fontSize: "40px", fontWeight: "bold", marginBottom: "1%" }}
+        >
           Current Scores
         </div>
         <ScoreUpdation
@@ -299,8 +304,22 @@ password,
             dorefresh={setRefresh}
           />
         ))}
-      <div style={dangerZoneStyle}>
-        <p style={{ color: "white" }}>Do you want to ban {name}?</p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "70%",
+          justifyContent: "space-between",
+          alignItems: "center",
+          margin: "2%",
+          border: "1px solid white",
+          padding: "2%",
+          borderRadius:'10px'
+        }}
+      >
+        <div style={{ color: "white", fontSize: "30px" }}>
+          Do you want to ban {name}?
+        </div>
         <div
           style={{
             marginTop: "1rem",
@@ -321,7 +340,7 @@ password,
       {showBanPopup && (
         <div style={popupStyle}>
           <div style={popupContentStyle}>
-            <p>Are you sure you want to ban {name}?</p>
+            <div>Are you sure you want to ban {name}?</div>
             <div
               style={{
                 marginTop: "1rem",
@@ -369,7 +388,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:"black"
+                color: "black",
               }}
             >
               <input
@@ -377,7 +396,12 @@ password,
                 placeholder="Original Name"
                 value={name}
                 readOnly
-                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" , color:'black' }}
+                style={{
+                  flex: "1",
+                  marginRight: "1rem",
+                  padding: "0.5rem",
+                  color: "black",
+                }}
               />
               <input
                 type="text"
@@ -386,7 +410,7 @@ password,
                 onChange={(e) =>
                   setEditedInfo({ ...editedInfo, name: e.target.value })
                 }
-                style={{ flex: "1", padding: "0.5rem"  , color:'black'}}
+                style={{ flex: "1", padding: "0.5rem", color: "black" }}
               />
             </div>
 
@@ -395,7 +419,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:"black"
+                color: "black",
               }}
             >
               <input
@@ -403,7 +427,7 @@ password,
                 placeholder="Original Email"
                 value={email}
                 readOnly
-                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" , }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
               <input
                 type="text"
@@ -412,7 +436,7 @@ password,
                 onChange={(e) =>
                   setEditedInfo({ ...editedInfo, email: e.target.value })
                 }
-                style={{ flex: "1", padding: "0.5rem" , color:'black' }}
+                style={{ flex: "1", padding: "0.5rem", color: "black" }}
               />
             </div>
 
@@ -421,7 +445,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
@@ -447,7 +471,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
@@ -472,14 +496,13 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
                 type="text"
                 placeholder="Original Semester"
-                value={
-                  registration_number}
+                value={registration_number}
                 readOnly
                 style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
@@ -488,8 +511,10 @@ password,
                 placeholder="New Reg.no"
                 value={editedInfo.registration_number || ""}
                 onChange={(e) =>
-                  setEditedInfo({ ...editedInfo, 
-                    registration_number: e.target.value })
+                  setEditedInfo({
+                    ...editedInfo,
+                    registration_number: e.target.value,
+                  })
                 }
                 style={{ flex: "1", padding: "0.5rem" }}
               />
@@ -499,14 +524,13 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
                 type="text"
                 placeholder="old-password-hidden"
-                value={
-                  null}
+                value={null}
                 readOnly
                 style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
@@ -515,13 +539,11 @@ password,
                 placeholder="New Password"
                 value={editedInfo.password || ""}
                 onChange={(e) =>
-                  setEditedInfo({ ...editedInfo, 
-                    password: e.target.value })
+                  setEditedInfo({ ...editedInfo, password: e.target.value })
                 }
                 style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
-            
 
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button

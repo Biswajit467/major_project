@@ -48,7 +48,7 @@ const ViewPost = () => {
     <div
       style={{
         // background: "#2b2b2b",
-        background: "black",
+        background: "#030439",
         padding: "20px",
         scrollBehavior: "smooth",
         color: "white",
@@ -107,7 +107,7 @@ const ViewPost = () => {
               borderRadius: "10px ",
               color: "#333",
               background:
-                "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
+                " linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)",
             }}
           >
             <div

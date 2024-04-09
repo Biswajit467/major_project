@@ -44,6 +44,10 @@ const Page = ({ searchParams }) => {
     student_id,
     email,
     branch,
+    
+registration_number,
+password,
+
     sem,
     ban: isBanned,
   } = studentInfo;
@@ -88,7 +92,8 @@ const Page = ({ searchParams }) => {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "black",
+    height:'100%',
+    backgroundColor: "#030439",
     color: "white",
     fontFamily: "'Roboto', sans-serif",
   };
@@ -104,19 +109,21 @@ const Page = ({ searchParams }) => {
   const titleStyle = {
     fontSize: "2.5rem",
     fontWeight: "bold",
-    color: "#61dafb",
+    color: "#00ff00",
     alignSelf: "flex-start",
   };
 
   const studentDetailsStyle = {
     fontSize: "0.9rem",
-    color: "#61dafb",
+    color: "#00ff00",
     alignSelf: "flex-start",
   };
 
   const buttonContainerStyle = {
     display: "flex",
+    
     gap: "1rem",
+   
   };
 
   const contentStyle = {
@@ -242,10 +249,10 @@ const Page = ({ searchParams }) => {
         </div>
         <div style={buttonContainerStyle}>
           <button
-            style={{ ...buttonStyle, backgroundColor: "#3182ce" }}
+            style={{ ...buttonStyle, backgroundColor: "green" }}
             onClick={handleEditClick}
             onMouseOver={(e) => (e.target.style.backgroundColor = "#2563eb")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#3182ce")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#00ff00")}
           >
             Edit Info
           </button>
@@ -362,6 +369,7 @@ const Page = ({ searchParams }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
+                color:"black"
               }}
             >
               <input
@@ -369,7 +377,7 @@ const Page = ({ searchParams }) => {
                 placeholder="Original Name"
                 value={name}
                 readOnly
-                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" , color:'black' }}
               />
               <input
                 type="text"
@@ -378,7 +386,7 @@ const Page = ({ searchParams }) => {
                 onChange={(e) =>
                   setEditedInfo({ ...editedInfo, name: e.target.value })
                 }
-                style={{ flex: "1", padding: "0.5rem" }}
+                style={{ flex: "1", padding: "0.5rem"  , color:'black'}}
               />
             </div>
 
@@ -387,6 +395,7 @@ const Page = ({ searchParams }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
+                color:"black"
               }}
             >
               <input
@@ -394,7 +403,7 @@ const Page = ({ searchParams }) => {
                 placeholder="Original Email"
                 value={email}
                 readOnly
-                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" , }}
               />
               <input
                 type="text"
@@ -403,7 +412,7 @@ const Page = ({ searchParams }) => {
                 onChange={(e) =>
                   setEditedInfo({ ...editedInfo, email: e.target.value })
                 }
-                style={{ flex: "1", padding: "0.5rem" }}
+                style={{ flex: "1", padding: "0.5rem" , color:'black' }}
               />
             </div>
 
@@ -412,6 +421,7 @@ const Page = ({ searchParams }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
+                color:'black'
               }}
             >
               <input
@@ -437,6 +447,7 @@ const Page = ({ searchParams }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
+                color:'black'
               }}
             >
               <input
@@ -456,6 +467,61 @@ const Page = ({ searchParams }) => {
                 style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+                color:'black'
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Original Semester"
+                value={
+                  registration_number}
+                readOnly
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
+              />
+              <input
+                type="text"
+                placeholder="New Reg.no"
+                value={editedInfo.registration_number || ""}
+                onChange={(e) =>
+                  setEditedInfo({ ...editedInfo, 
+                    registration_number: e.target.value })
+                }
+                style={{ flex: "1", padding: "0.5rem" }}
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+                color:'black'
+              }}
+            >
+              <input
+                type="text"
+                placeholder="old-password-hidden"
+                value={
+                  null}
+                readOnly
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
+              />
+              <input
+                type="text"
+                placeholder="New Password"
+                value={editedInfo.password || ""}
+                onChange={(e) =>
+                  setEditedInfo({ ...editedInfo, 
+                    password: e.target.value })
+                }
+                style={{ flex: "1", padding: "0.5rem" }}
+              />
+            </div>
+            
 
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button

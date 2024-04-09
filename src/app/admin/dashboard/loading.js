@@ -1,5 +1,4 @@
-// import "../../../../components/ui/hamster.css";
-import '../../components/hamster.css'
+import "../../components/ui/hamster.css"
 export default function Loading() {
   return (
     <div
@@ -33,6 +32,8 @@ export default function Loading() {
         </div>
         <div class="spoke"></div>
       </div>
+
+
     </div>
   );
 }

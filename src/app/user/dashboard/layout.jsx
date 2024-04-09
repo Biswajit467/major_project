@@ -8,9 +8,9 @@ const Layout = ({ children }) => {
   const MemoizedNavBar = useMemo(() => <NavBar />, []);
 
   return (
-    <>
+    < >
       {MemoizedNavBar}
-      <div>{children}</div>
+      <div style={{backgroundColor: "#030439"}}>{ children}</div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import '../../components/hamster.css';
+import '../../components/ui/hamster.css';
 export default function Loading() {
   return (
     <div

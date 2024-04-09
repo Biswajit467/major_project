@@ -76,8 +76,8 @@ const CollageInfo = () => {
   return (
     <div>
       {/* Navbar */}
-      <nav style={{ backgroundColor: "", color: "white", padding: "2%" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <nav style={{  color: "white", padding: "2%" }}>
+        <div style={{ display: "flex", alignItems: "center" ,}}>
           <img
             className="w-12 h-12"
             src="https://synergyinstitute.ac.in/assets/img/Synergy-Logo.gif"

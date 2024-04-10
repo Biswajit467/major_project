@@ -70,18 +70,33 @@ const AddPost = () => {
   };
 
   return (
-    <div className="container">
+    <div
+      className="container mx-auto mt-8"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(81,81,81,1) 0%, rgba(98,98,98,1) 50%, rgba(79,79,79,1) 100%)",
+        borderRadius: "2rem",
+        color: "white",
+        padding: "20px",
+      }}
+    >
       <div
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         style={{
-          background:
-            "linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)   ",
-          // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          background: "rgba(0, 0, 0, 0.8)",
 
-          padding: "2%",
-          margin: "2%",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <h2 className="text-2xl font-bold mb-4 text-white">
+        <h2
+          className="text-2xl font-bold mb-4 text-gray-800"
+          style={{
+            color: "white",
+            gap: "1rem",
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
           <HiOutlinePencilSquare /> Create a New Blog Post
         </h2>
         <form onSubmit={handleSubmit} className="mb-4">
@@ -165,7 +180,12 @@ const AddPost = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            style={{
+              backgroundColor: "#002347",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
+              transition: "transform 0.2s ease-in-out",
+            }}
             onMouseOver={(e) =>
               (e.currentTarget.style.transform = "scale(1.05)")
             }

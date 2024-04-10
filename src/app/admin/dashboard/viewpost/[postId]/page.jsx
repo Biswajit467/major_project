@@ -15,6 +15,7 @@ const RelatedPosts = dynamic(
   () => import("../../../../components/postComponents/RelatedPosts"),
   { ssr: false }
 );
+// import Loading from "../../../../user/userComponents/Loading";
 const Loading = dynamic(
   () => import("../../../../user/userComponents/Loading"),
   { ssr: true }

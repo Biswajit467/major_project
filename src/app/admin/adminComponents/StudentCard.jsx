@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const StudentCard = (props) => {
   let clickedstudent_data = {
-    id:props.data.id,
+    id: props.data.id,
     name: props.data.name,
     sem: props.data.sem,
     registration_number: props.data.registration_number,
@@ -13,7 +14,7 @@ const StudentCard = (props) => {
   console.log("props from student card", props);
   const handleCurrentStudentClick = () => {
     props.currentStudentsData(clickedstudent_data);
-    props.currentsemclicked(true)
+    props.currentsemclicked(true);
   };
   return (
     <div>
@@ -33,9 +34,19 @@ const StudentCard = (props) => {
           boxSizing: "border-box",
         }}
       >
-        <div style={{ width: "10%", textAlign: "left" }}>
-          {props.data?.img ? props.data?.img : "x"}
-        </div>
+        <Image
+          width={500}
+          height={500}
+          loading="lazy"
+          src={props.data?.img}
+          alt="user's img"
+          priority={false}
+          style={{
+            height: "5rem",
+            width: "5rem",
+            borderRadius: "50%",
+          }}
+        />
         <div
           style={{
             textAlign: "center",

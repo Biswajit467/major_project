@@ -8,10 +8,10 @@ import CurrentSemMarkPopUP from "../../adminComponents/CurrentSemMarkPopUP";
 const page = ({ searchParams }) => {
   // const router = useRouter();
   const [allstudents, setAllstudents] = useState(null);
-  const [clickedstudentData , setClickedStudentData] = useState(null);
-  const [currentSemMarksClicked , setCurrentSemMarksClicked] = useState(false);
+  const [clickedstudentData, setClickedStudentData] = useState(null);
+  const [currentSemMarksClicked, setCurrentSemMarksClicked] = useState(false);
 
-  console.log("clickedstudentData" , clickedstudentData)
+  console.log("clickedstudentData", clickedstudentData);
 
   useEffect(() => {
     const fetch_students_by_branch = async () => {
@@ -32,13 +32,20 @@ const page = ({ searchParams }) => {
     setCurrentSemMarksClicked(false);
   };
 
-
   return (
     <div>
-      { currentSemMarksClicked ? <CurrentSemMarkPopUP data={clickedstudentData} onClose={closePopup}/> : null}
+      {currentSemMarksClicked ? (
+        <CurrentSemMarkPopUP data={clickedstudentData} onClose={closePopup} />
+      ) : null}
       {allstudents &&
         allstudents.map((item) => {
-          return <StudentCard data={item} currentStudentsData ={setClickedStudentData} currentsemclicked = {setCurrentSemMarksClicked} />;
+          return (
+            <StudentCard
+              data={item}
+              currentStudentsData={setClickedStudentData}
+              currentsemclicked={setCurrentSemMarksClicked}
+            />
+          );
         })}
     </div>
   );

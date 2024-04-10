@@ -47,7 +47,6 @@ const ViewPost = () => {
   return (
     <div
       style={{
-        // background: "#2b2b2b",
         background: "#030439",
         padding: "20px",
         scrollBehavior: "smooth",
@@ -69,7 +68,7 @@ const ViewPost = () => {
           transition: "background-color 0.3s ease",
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         }}
-        href="/user/dashboard/addpost"
+        href="/admin/dashboard/addpost"
       >
         <BiSolidImageAdd style={{ color: "black" }} />
       </Link>

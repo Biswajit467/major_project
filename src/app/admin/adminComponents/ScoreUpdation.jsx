@@ -84,7 +84,13 @@ const ScoreUpdation = (props) => {
   return (
     <>
       {showMessage ? (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-900 shadow-lg p-4 rounded-lg z-50 ">
+        <div
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-lg p-4 rounded-lg z-50 "
+          style={{
+            background:
+              "linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%) ",
+          }}
+        >
           <div
             style={{
               textAlign: "center",

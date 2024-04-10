@@ -45,7 +45,7 @@ const CreateUserPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6  rounded-lg shadow-lg bg-gray-900 dark:bg-gray-800">
+    <div className="max-w-md mx-auto mt-8 p-6  rounded-lg shadow-lg bg-gray-900 dark:bg-[#030439]">
       <h1 className="text-2xl font-semibold mb-4 text-gray-100 dark:text-white">
         Create User
       </h1>

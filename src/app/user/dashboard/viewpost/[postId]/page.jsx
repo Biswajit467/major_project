@@ -100,7 +100,7 @@ const PostPage = ({ params, searchParams }) => {
     <div
       style={{
         // background: "black",
-        background: "#2b2b2b",
+        background: "#030439",
         fontFamily: "sans-serif",
         color: "#C7C7D1",
       }}

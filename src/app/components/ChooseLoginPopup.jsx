@@ -6,13 +6,13 @@ import { SiGooglemessages } from "react-icons/si";
 import Link from "next/link";
 import Image from "next/image";
 import Cap from "../images/cap.png";
-const ChooseLoginPopup = ({ onClose }) => {
+const ChooseLoginPopup = (props) => {
   const popupRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
-        onClose();
+        props.onClose();
       }
     };
 
@@ -21,10 +21,10 @@ const ChooseLoginPopup = ({ onClose }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [onClose]);
+  }, [props.onClose]);
 
   const handleSubmit = () => {
-    onclose();
+    props.onClose();
   };
 
   return (

@@ -15,7 +15,7 @@ const ListCard = (props) => {
           flexDirection: "row",
           justifyContent: "space-evenly",
           alignItems: "center",
-           background:' linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)',
+          background:' linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)',
           margin: "0.3%",
           width: "100%", // Update width to match parent component
           height: "10%",

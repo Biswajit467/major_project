@@ -4,12 +4,19 @@ import {
   update_student_info,
   update_user_scores,
   get_user_sem_marks,
+  get_user_scores,
 } from "../../adminapi/route";
 import { FaEdit } from "react-icons/fa";
 import dynamic from "next/dynamic";
 const SemResults = dynamic(() => import("../../adminComponents/SemResults"), {
   ssr: false,
 });
+const ScoreUpdation = dynamic(
+  () => import("../../adminComponents/ScoreUpdation"),
+  {
+    ssr: false,
+  }
+);
 
 const Page = ({ searchParams }) => {
   let student_personal_details = null;
@@ -19,13 +26,15 @@ const Page = ({ searchParams }) => {
 
   const [studentInfo, setStudentInfo] = useState(student_personal_details);
   const [studentInfoUpdation, setStudentInfoUpdation] = useState(false);
-  const [updateScores, setUpdateScores] = useState(false);
+  // const [updateScores, setUpdateScores] = useState(false);
+  const [userScores, setUserScores] = useState(null);
   const [ban, setBan] = useState(false);
 
   const [responseMessage, setResponseMessage] = useState("");
   const [showBanPopup, setShowBanPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
-  const [refresh , setRefresh] = useState(0)
+  const [refresh, setRefresh] = useState(0);
+  const [scoreRefresh, setScoreRefresh] = useState(0);
 
   const [editedInfo, setEditedInfo] = useState({});
 
@@ -35,9 +44,9 @@ const Page = ({ searchParams }) => {
     student_id,
     email,
     branch,
-    
-registration_number,
-password,
+
+    registration_number,
+    password,
 
     sem,
     ban: isBanned,
@@ -46,33 +55,21 @@ password,
   useEffect(() => {
     setStudentInfo(student_personal_details);
   }, []);
+
   useEffect(() => {
-    const update_student_score_values = async () => {
+    const get_user_scores_data = async () => {
       try {
-        const new_score_values = {
-          student_id: student_personal_details.id,
-          semester: sem,
-          //   tech: tech,
-          //   etc: etc,
-          //   art: art,
-          //   sports: sports,
-          //   academic: academic,
-          tech: 30,
-          etc: 50,
-          art: 55,
-          sports: 90,
-          academic: 55,
-        };
-        const response = await update_user_scores(new_score_values);
-        setResponseMessage(response);
+        const response = await get_user_scores(id, sem);
+        setUserScores(response);
       } catch (error) {
-        console.log("error update_student_info from student info page", error);
+        console.log("error occured in getUserSCores", error);
       }
     };
-    if (updateScores) {
-      update_student_score_values();
+    if (studentInfo != null) {
+      console.log("inside if block");
+      get_user_scores_data();
     }
-  }, [updateScores]);
+  }, [studentInfo, scoreRefresh]);
 
   const [semMarks, setSemMarks] = useState(null);
   useEffect(() => {
@@ -89,14 +86,13 @@ password,
       sem_results();
     }
   }, [refresh]);
-  console.log("sem marks", semMarks);
 
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height:'100%',
+    height: "100%",
     backgroundColor: "#030439",
     color: "white",
     fontFamily: "'Roboto', sans-serif",
@@ -125,9 +121,8 @@ password,
 
   const buttonContainerStyle = {
     display: "flex",
-    
+
     gap: "1rem",
-   
   };
 
   const contentStyle = {
@@ -166,15 +161,15 @@ password,
   };
   const x = {
     position: "fixed",
-    
+
     top: "0",
     left: "0",
     width: "100%",
     height: "100%",
-    color:"black",
+    color: "black",
     backgroundColor: "rgba(0, 0, 0, 0.7)",
     display: "flex",
-    flexDirection:'column',
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     zIndex: "1000",
@@ -185,11 +180,15 @@ password,
     borderRadius: "0.5rem",
     padding: "3rem",
     display: "flex",
-    flexDirection:'column',
-    color:'white',
+    flexDirection: "column",
+    color: "white",
     width: "110%", // Changed width
     maxWidth: "550px", // Added max width
     fontFamily: "'Roboto', sans-serif",
+    background:
+      "linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%) ",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const buttonStyle = {
@@ -242,8 +241,6 @@ password,
     }
   };
 
-  console.log(student_personal_details);
-
   return (
     <div style={containerStyle}>
       <div style={headerStyle}>
@@ -258,11 +255,33 @@ password,
             style={{ ...buttonStyle, backgroundColor: "green" }}
             onClick={handleEditClick}
             onMouseOver={(e) => (e.target.style.backgroundColor = "#2563eb")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#00ff00")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "green")}
           >
             Edit Info
           </button>
         </div>
+      </div>
+      <div
+        style={{
+          width: "90%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          padding: "5%",
+        }}
+      >
+        <div
+          style={{ fontSize: "40px", fontWeight: "bold", marginBottom: "1%" }}
+        >
+          Current Scores
+        </div>
+        <ScoreUpdation
+          data={userScores}
+          student_id={id}
+          sem={sem}
+          refresh={setScoreRefresh}
+        />
       </div>
       <div
         style={{
@@ -278,10 +297,29 @@ password,
       </div>
       {semMarks != null &&
         semMarks.records.map((item, index) => (
-          <SemResults data={item} id={id} branch={branch}  dorefresh ={setRefresh}/>
+          <SemResults
+            data={item}
+            id={id}
+            branch={branch}
+            dorefresh={setRefresh}
+          />
         ))}
-      <div style={dangerZoneStyle}>
-        <p style={{color:"white"}}>Do you want to ban {name}?</p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "70%",
+          justifyContent: "space-between",
+          alignItems: "center",
+          margin: "2%",
+          border: "1px solid white",
+          padding: "2%",
+          borderRadius:'10px'
+        }}
+      >
+        <div style={{ color: "white", fontSize: "30px" }}>
+          Do you want to ban {name}?
+        </div>
         <div
           style={{
             marginTop: "1rem",
@@ -300,10 +338,9 @@ password,
         </div>
       </div>
       {showBanPopup && (
-
         <div style={popupStyle}>
           <div style={popupContentStyle}>
-            <p>Are you sure you want to ban {name}?</p>
+            <div>Are you sure you want to ban {name}?</div>
             <div
               style={{
                 marginTop: "1rem",
@@ -337,7 +374,6 @@ password,
               </button>
             </div>
           </div>
-          
         </div>
       )}
       {showEditPopup && (
@@ -352,7 +388,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:"black"
+                color: "black",
               }}
             >
               <input
@@ -360,7 +396,12 @@ password,
                 placeholder="Original Name"
                 value={name}
                 readOnly
-                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" , color:'black' }}
+                style={{
+                  flex: "1",
+                  marginRight: "1rem",
+                  padding: "0.5rem",
+                  color: "black",
+                }}
               />
               <input
                 type="text"
@@ -369,7 +410,7 @@ password,
                 onChange={(e) =>
                   setEditedInfo({ ...editedInfo, name: e.target.value })
                 }
-                style={{ flex: "1", padding: "0.5rem"  , color:'black'}}
+                style={{ flex: "1", padding: "0.5rem", color: "black" }}
               />
             </div>
 
@@ -378,7 +419,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:"black"
+                color: "black",
               }}
             >
               <input
@@ -386,7 +427,7 @@ password,
                 placeholder="Original Email"
                 value={email}
                 readOnly
-                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" , }}
+                style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
               <input
                 type="text"
@@ -395,7 +436,7 @@ password,
                 onChange={(e) =>
                   setEditedInfo({ ...editedInfo, email: e.target.value })
                 }
-                style={{ flex: "1", padding: "0.5rem" , color:'black' }}
+                style={{ flex: "1", padding: "0.5rem", color: "black" }}
               />
             </div>
 
@@ -404,7 +445,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
@@ -430,7 +471,7 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
@@ -455,14 +496,13 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
                 type="text"
                 placeholder="Original Semester"
-                value={
-                  registration_number}
+                value={registration_number}
                 readOnly
                 style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
@@ -471,8 +511,10 @@ password,
                 placeholder="New Reg.no"
                 value={editedInfo.registration_number || ""}
                 onChange={(e) =>
-                  setEditedInfo({ ...editedInfo, 
-                    registration_number: e.target.value })
+                  setEditedInfo({
+                    ...editedInfo,
+                    registration_number: e.target.value,
+                  })
                 }
                 style={{ flex: "1", padding: "0.5rem" }}
               />
@@ -482,14 +524,13 @@ password,
                 display: "flex",
                 justifyContent: "space-between",
                 marginBottom: "1rem",
-                color:'black'
+                color: "black",
               }}
             >
               <input
                 type="text"
                 placeholder="old-password-hidden"
-                value={
-                  null}
+                value={null}
                 readOnly
                 style={{ flex: "1", marginRight: "1rem", padding: "0.5rem" }}
               />
@@ -498,13 +539,11 @@ password,
                 placeholder="New Password"
                 value={editedInfo.password || ""}
                 onChange={(e) =>
-                  setEditedInfo({ ...editedInfo, 
-                    password: e.target.value })
+                  setEditedInfo({ ...editedInfo, password: e.target.value })
                 }
                 style={{ flex: "1", padding: "0.5rem" }}
               />
             </div>
-            
 
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button

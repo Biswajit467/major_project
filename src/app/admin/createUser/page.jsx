@@ -45,7 +45,7 @@ const CreateUserPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6  rounded-lg shadow-lg bg-gray-900 dark:bg-gray-800">
+    <div className="max-w-md mx-auto mt-8 p-6  rounded-lg shadow-lg bg-gray-900 dark:bg-[#030439]">
       <h1 className="text-2xl font-semibold mb-4 text-gray-100 dark:text-white">
         Create User
       </h1>
@@ -96,7 +96,7 @@ const CreateUserPage = () => {
             name="password"
             value={user.password}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
@@ -112,7 +112,7 @@ const CreateUserPage = () => {
             name="name"
             value={user.name}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
@@ -128,7 +128,7 @@ const CreateUserPage = () => {
             name="sem"
             value={user.sem}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
@@ -144,7 +144,7 @@ const CreateUserPage = () => {
             name="branch"
             value={user.branch}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <div className="mb-4">
@@ -160,7 +160,7 @@ const CreateUserPage = () => {
             name="registration_number"
             value={user.registration_number}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-700 text-gray-100 dark:text-gray-200"
+            className="mt-1 p-2 w-full border rounded-md bg-white dark:bg-gray-100 text-gray-700 dark:text-gray-200"
           />
         </div>
         <button

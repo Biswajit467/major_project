@@ -52,6 +52,30 @@ export const update_student_info = async (user_id, data) => {
   }
 };
 
+export const get_user_scores = async (userId, sem) => {
+  console.log('inside user cosres')
+  try {
+    const response = await axios.get(
+      `${MAIN_URL}user/get-user-scores/${userId}/${sem}/`
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching scores data : ", error);
+    return null;
+  }
+};
+
+export const get_leader_board = async () => {
+  const userId = localStorage.getItem("user_id");
+  try {
+    const response = await axios.get(`${MAIN_URL}get-leader-board/${userId}/`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching leaderboard data : ", error);
+    return null;
+  }
+};
+
 export const update_user_scores = async (data) => {
   try {
     const response = await axios.post(
@@ -63,7 +87,6 @@ export const update_user_scores = async (data) => {
         },
       }
     );
-    console.log("response data from update_student_info", response.data);
     return response; // Return the response data if needed
   } catch (error) {
     console.error("Error updating student info:", error);

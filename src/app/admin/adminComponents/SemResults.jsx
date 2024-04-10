@@ -8,7 +8,7 @@ const UpdateSemResults = dynamic(
 
 const SemResults = (props) => {
   const { data, id, branch } = props;
-//   console.log("props from sem resulst", props);
+  //   console.log("props from sem resulst", props);
 
   const [editSemMarks, setEditSemMarks] = useState(false);
 
@@ -26,9 +26,6 @@ const SemResults = (props) => {
     exam_type: data.exam_type,
     subject_marks: data.subject_marks,
   });
-
-  console.log("to be inserted data",tobeInserted)
-
   return (
     <div
       style={{
@@ -38,11 +35,16 @@ const SemResults = (props) => {
         width: "49%",
         borderRadius: "5px",
         boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#121212",
+        background : "linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%) " ,
+
       }}
     >
       {editSemMarks ? (
-        <UpdateSemResults data={tobeInserted} onClose={closePopup} dorefresh = {props.dorefresh} />
+        <UpdateSemResults
+          data={tobeInserted}
+          onClose={closePopup}
+          dorefresh={props.dorefresh}
+        />
       ) : null}
       <div>
         {data && (
@@ -56,20 +58,20 @@ const SemResults = (props) => {
               }}
             >
               Semester :
-              <span style={{ fontWeight: "bold", color: "orange" }}>
+              <span style={{ fontWeight: "bold", color: "#00ff00" }}>
                 {" "}
                 {data.sem}
               </span>{" "}
               , {"     "}
               Exam Type :{" "}
-              <span style={{ fontWeight: "bold", color: "orange" }}>
+              <span style={{ fontWeight: "bold", color: "#00ff00" }}>
                 {" "}
                 {data.exam_type}
               </span>
             </div>
             <button onClick={handleEditClick}>
               {" "}
-              <TiEdit style={{ color: "#00ff00" , fontSize:'25px' }} />
+              <TiEdit style={{ color: "#00ff00", fontSize: "25px" }} />
             </button>
           </div>
         )}

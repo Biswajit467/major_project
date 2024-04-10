@@ -15,6 +15,11 @@ const RelatedPosts = dynamic(
   () => import("../../../../components/postComponents/RelatedPosts"),
   { ssr: false }
 );
+// import Loading from "../../../../user/userComponents/Loading";
+const Loading = dynamic(
+  () => import("../../../../user/userComponents/Loading"),
+  { ssr: true }
+);
 
 const PostPage = ({ params, searchParams }) => {
   const [post, setPost] = useState(null);
@@ -103,7 +108,7 @@ const PostPage = ({ params, searchParams }) => {
     <div
       style={{
         // background: "black",
-        background: "#2b2b2b",
+        background: "#030439",
         fontFamily: "sans-serif",
         color: "#C7C7D1",
       }}
@@ -275,7 +280,7 @@ const PostPage = ({ params, searchParams }) => {
               </div>
             </div>
           ) : (
-            <p>Loading...</p>
+            <Loading />
           )}
 
           <RelatedPosts posts={userPosts} />

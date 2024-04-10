@@ -5,12 +5,19 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { MAIN_URL } from "../../../../common/urls";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-const UpdatePost = dynamic(() => import("../../../../components/postComponents/UpdatePost"), {
-  ssr: false,
-});
+const UpdatePost = dynamic(
+  () => import("../../../../components/postComponents/UpdatePost"),
+  {
+    ssr: false,
+  }
+);
 const RelatedPosts = dynamic(
   () => import("../../../../components/postComponents/RelatedPosts"),
   { ssr: false }
+);
+const Loading = dynamic(
+  () => import("../../../../user/userComponents/Loading"),
+  { ssr: true }
 );
 
 const PostPage = ({ params, searchParams }) => {
@@ -272,7 +279,7 @@ const PostPage = ({ params, searchParams }) => {
               </div>
             </div>
           ) : (
-            <p>Loading...</p>
+            <Loading />
           )}
 
           <RelatedPosts posts={userPosts} />

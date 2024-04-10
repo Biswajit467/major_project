@@ -72,7 +72,7 @@ const Home = () => {
   return (
     <>
       {userInfo ? (
-        <div style={{ padding: "10px" }}>
+        <div style={{ padding: "10px", background: "#030439" }}>
           {showSempopup ? (
             <ShowSemPopUp onClose={closePopup} branch={branch} />
           ) : null}
@@ -224,7 +224,12 @@ const Home = () => {
 
           <div>
             <h2
-              style={{ margin: "0", fontSize: "1.5rem", textAlign: "center" }}
+              style={{
+                margin: "0",
+                fontSize: "1.5rem",
+                textAlign: "center",
+                color: "#00ff00",
+              }}
             >
               Go For Students By Branches
             </h2>

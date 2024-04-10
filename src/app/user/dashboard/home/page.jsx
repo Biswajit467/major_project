@@ -167,8 +167,8 @@ const HomePage = () => {
               >
                 {userInfo != null ? (
                   <Image
-                    width="94"
-                    height="94"
+                    width={500}
+                    height={500}
                     loading="lazy"
                     src={userInfo?.user.img == null ? "" : userInfo?.user.img}
                     alt="user Image"
@@ -259,7 +259,7 @@ const HomePage = () => {
         <div>
           <div
             style={{
-              color: "white",
+              color: "#00ff00",
               fontSize: "20px",
               fontWeight: "bold",
               width: "100%",
@@ -279,7 +279,7 @@ const HomePage = () => {
                 borderRadius: "10px",
                 // boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
                 boxShadow:
-                "5px 5px 10px rgb(77,81,83),-5px -5px 10px rgb(77,81,83)",
+                  "5px 5px 10px rgb(77,81,83),-5px -5px 10px rgb(77,81,83)",
                 marginTop: "5%",
                 margin: "2%",
                 padding: "2%",

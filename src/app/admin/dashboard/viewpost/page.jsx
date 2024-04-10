@@ -150,7 +150,7 @@ const ViewPost = () => {
                 style={{
                   fontWeight: "normal",
                   fontSize: "1.3rem",
-                  color: "orange",
+                  color: "#00ff00",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -191,7 +191,7 @@ const ViewPost = () => {
                 >
                   <FaUser style={{ marginRight: "5px", fontSize: "20px" }} />
                   <p style={{ marginRight: "5px" }}>{post.uid.name}</p>
-                  <p style={{ color: "orange" }}>
+                  <p style={{ color: "#00ff00" }}>
                     {post.uid.admin ? <p>(Admin)</p> : null}
                   </p>
                 </div>

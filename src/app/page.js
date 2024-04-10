@@ -260,7 +260,7 @@ export default function Home() {
             </a>
           </div>
           <p class="mt-8 text-base leading-6 text-center text-gray-400">
-            &copy; 2021 SomeCompany, Inc. All rights reserved.
+            &copy; 2024 BSSH Group , Inc. All rights reserved.
           </p>
         </div>
       </section>

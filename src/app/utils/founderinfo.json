@@ -2,20 +2,32 @@
    
     {
         "name": "Hrushikesh Behera",
-        "work": "Project Lead"
+        "work": "Project Lead",
+        "linkedin":"https://www.linkedin.com/in/hrushikesh-behera-a6bb3321a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" ,
+        "email":"khrushikesh2002@gmail.com",
+        "github":"https://github.com/xxHRUSHIKESHxx"
     },
     {
         "name":"Biswajit Behera" , 
-        "work":"Backend Developer"
+        "work":"Backend Developer",
+        "linkedin":"https://www.linkedin.com/in/biswajit-behera-b585a8265/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "email":"beherabiswajit467@gmail.com",
+        "github":"https://github.com/Biswajit467"
     },
     {
         "name": "Sahil Sahoo",
-        "work": "Frontend Developer"
+        "work": "Frontend Developer",
+        "linkedin":"https://www.linkedin.com/in/sahil-sahoo-9634a3240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" ,
+        "email":"sahilsahoo68@gmail.com",
+        "github":"https://github.com/sahilzehrila"
     },
 
     {
         "name":"Subhashree Sahoo",
-        "work":"UI/UX Specialist"
+        "work":"UI/UX Specialist",
+        "linkedin":"https://www.linkedin.com/in/subhashree-sahoo-969715275/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "email":"subhashreesahoo267@gmail.com",
+        "github":"https://github.com/"
     }
     
 ]

@@ -149,7 +149,7 @@ const Notification = () => {
                 className={`text-lg md:text-xl font-inter flex flex-col items-center space-y-2 ${
                   isDateSelectedNotification(notification.created_at)
                     ? 'bg-[#05223f]'
-                    : 'bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900'
+                    : 'bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 h-32 w-64'
                 }`}
                 style={{
                   borderRadius: '10px',
@@ -182,7 +182,7 @@ const Notification = () => {
                     <>
                       {notification.notification}
                       <button
-                        style={{ color: '#76b4df', fontSize: '1rem', marginLeft: '1rem' }}
+                        style={{ color: '#FFFF00', fontSize: '1rem', marginLeft: '1rem' }}
                         onClick={() => toggleCollapse(index)}
                       >
                       ... Read Less
@@ -193,7 +193,7 @@ const Notification = () => {
                       {`${notification.notification.length > 400 ? notification.notification.substring(0, 400) + '...' : notification.notification}`}
                       {notification.notification.length > 400 && (
                         <button
-                          style={{ color: '#76b4df', fontSize: '1rem', marginLeft: '1rem' }}
+                          style={{ color: '#FFFF00', fontSize: '1rem', marginLeft: '1rem' }}
                           onClick={() => toggleExpand(index)}
                         >
                           Read More

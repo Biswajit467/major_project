@@ -53,7 +53,7 @@ const Notification = () => {
       {/* Notifications */}
       <div style={{ alignItems: 'center' }} className="w-full mb-4 p-2 flex flex-col justify-center">
         {/* Calendar */}
-        <div style={{ position: 'absolute', top: '10px', left:'1rem' }}>
+        <div style={{ position: 'absolute', top: '10px', left:'4rem' }}>
           <h2
             style={{
               backgroundSize: 'cover',

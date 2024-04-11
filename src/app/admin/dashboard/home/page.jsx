@@ -197,28 +197,7 @@ const Home = () => {
                 : null}
             </div>
             <div>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum id
-              nobis numquam possimus voluptatem sunt laboriosam, culpa provident
-              quo, a similique minus! Laudantium delectus, asperiores ipsum
-              nihil eum veniam distinctio.lorem Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Quia tempore nihil, dolores ipsa at
-              molestiae minima omnis praesentium earum ipsam modi necessitatibus
-              tenetur eaque laborum velit facere ipsum optio voluptatem! Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              excepturi qui minus tempore asperiores laudantium sequi
-              voluptatem, cum repellat, ipsam error quae iusto quaerat, laborum
-              iure beatae aliquid. Impedit, voluptatibus? Lorem ipsum dolor sit
-              amet consectetur adipisicing elit. Explicabo hic reiciendis omnis
-              delectus labore numquam totam aspernatur quasi! Enim voluptatem
-              repellendus voluptate optio magnam quam corrupti commodi
-              accusantium qui dolores. Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Facere, odio totam libero ad similique placeat
-              autem iste commodi, dicta fuga minus tenetur hic alias unde eos
-              laudantium eligendi debitis assumenda! Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Dolorem illo qui exercitationem
-              eligendi rerum natus error nemo quaerat. Repellat magni cupiditate
-              veniam libero ipsam nemo consectetur. Vitae minima quae
-              aspernatur?
+            The Apex Chart Sunburst Chart visually represents the percentage distribution of students across various academic branches within an educational institution, using distinct colors to signify each branch. Red segments depict Mechanical Engineering, blue represents Computer Science, yellow denotes Electrical Engineering, and green signifies Civil Engineering. This color-coded system makes it easy to discern the relative proportions of students in each discipline at a glance. The chart's interactive features enable users to hover over segments to view precise percentage values, empowering stakeholders to make data-driven decisions regarding resource allocation, program development, and strategic planning. Overall, the Sunburst Chart is a powerful tool for visualizing student demographics and supporting informed decision-making within the educational setting.
             </div>
           </div>
 

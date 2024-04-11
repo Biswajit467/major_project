@@ -52,7 +52,7 @@ const SettingPopUp = ({ onClose }) => {
               Update Profile Info
             </Link>
           </div>
-          <div className="mb-4 text-white flex  flex-col items-center">
+          {/* <div className="mb-4 text-white flex  flex-col items-center">
             <p className="mb-2 mr-2">Check Account status</p>
             <Link
               href={{
@@ -64,7 +64,7 @@ const SettingPopUp = ({ onClose }) => {
               {" "}
               <BiSolidDetail className="w-6 h-6 mr-2" /> Account Status
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

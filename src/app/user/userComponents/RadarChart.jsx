@@ -62,11 +62,21 @@ const RadarChart = (props) => {
     {
       name: "Overall Performance",
       data: props?.props && [
-        props?.props.percentage_academic ? props?.props.percentage_academic : 0,
-        props?.props.percentage_art ?  props?.props.percentage_art : 0,
-        props?.props.percentage_etc ? props?.props.percentage_etc : 0,
-        props?.props.percentage_sports ? props?.props.percentage_sports : 0,
-        props?.props.percentage_tech ? props?.props.percentage_tech : 0 ,
+        props?.props.percentage_academic
+          ? Math.ceil(props?.props.percentage_academic)
+          : 0,
+        props?.props.percentage_art
+          ? Math.ceil(props?.props.percentage_art)
+          : 0,
+        props?.props.percentage_etc
+          ? Math.ceil(props?.props.percentage_etc)
+          : 0,
+        props?.props.percentage_sports
+          ? Math.ceil(props?.props.percentage_sports)
+          : 0,
+        props?.props.percentage_tech
+          ? Math.ceil(props?.props.percentage_tech)
+          : 0,
       ],
     },
   ];

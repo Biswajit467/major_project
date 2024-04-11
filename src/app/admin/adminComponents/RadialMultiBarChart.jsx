@@ -36,7 +36,7 @@ export const RadialMultiBarChart = (props) => {
       },
     },
 
-    labels: ["CSE", "CIVIL", "EE", "ME"],
+    labels: ["CSE", "CIVIL", "ME", "EE"],
   };
   // const series = [44, 55, 41, 17, 15];
   const series = [

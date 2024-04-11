@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaUser } from "react-icons/fa";
 
 const StudentCard = (props) => {
   let clickedstudent_data = {
@@ -34,19 +35,30 @@ const StudentCard = (props) => {
           boxSizing: "border-box",
         }}
       >
-        <Image
-          width={500}
-          height={500}
-          loading="lazy"
-          src={props.data?.img}
-          alt="user's img"
-          priority={false}
-          style={{
-            height: "5rem",
-            width: "5rem",
-            borderRadius: "50%",
-          }}
-        />
+        {props.data?.img != null ? (
+          <Image
+            width={500}
+            height={500}
+            loading="lazy"
+            src={props.data?.img}
+            alt="user's img"
+            priority={false}
+            style={{
+              height: "5rem",
+              width: "5rem",
+              borderRadius: "50%",
+            }}
+          />
+        ) : (
+          <FaUser
+            style={{
+              height: "5rem",
+              width: "5rem",
+              borderRadius: "50%",
+              color: "gray",
+            }}
+          />
+        )}
         <div
           style={{
             textAlign: "center",

@@ -2,11 +2,12 @@ import React from "react";
 import { GiLaurelsTrophy, GiTrophy, GiDiamondTrophy } from "react-icons/gi";
 
 const ListCard = (props) => {
-  // console.log("props from listCard", props);
   const handleCompareClick = () => {
     props.handleCompareClick();
     props.studentTobeCompared(props.data);
   };
+
+  console.log("this is  props from listCard", props);
   return (
     <div>
       <div

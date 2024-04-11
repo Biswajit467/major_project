@@ -239,18 +239,10 @@ const HomePage = () => {
             >
               <RadarChart props={userScores && userScores?.radar_chart} />
               <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci ducimus rem iusto sapiente iure aliquam quam, fugit
-                dolor, recusandae sunt cum doloribus ullam voluptate illo, vitae
-                nulla quis rerum. Earum? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Nostrum iure consequuntur sequi tempore
-                deserunt atque minus libero voluptatibus incidunt aperiam
-                sapiente facilis repellat delectus at dolore error, blanditiis
-                esse facere? Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Omnis officiis aperiam consectetur perferendis magnam in
-                labore expedita blanditiis nemo libero saepe reprehenderit
-                necessitatibus enim dolores rem perspiciatis earum, assumenda
-                illo?
+                Welcome to our platform! We aim to provide you with the best
+                experience possible. Explore our features, connect with peers,
+                and stay updated with the latest notifications. Let's make
+                learning and collaboration easier together!
               </div>
             </div>
           ) : null}

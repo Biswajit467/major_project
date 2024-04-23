@@ -23,7 +23,7 @@ const LeaderBoard = () => {
     const fetch_leaderboard_data = async () => {
       try {
         const leader_board_data = await get_leader_board();
-        setLeaderboardData(leader_board_data);
+        setLeaderboardData(await leader_board_data);
       } catch (error) {
         console.error("Error fetching user data in home page:", error);
       }
@@ -46,7 +46,7 @@ const LeaderBoard = () => {
   };
 
   return (
-    <div style={{backgroundColor: "#030439", height:'100vh'}}>
+    <div style={{ backgroundColor: "#030439", height: "100vh" }}>
       {isCompareClicked && (
         <CompareRadarChart
           onClose={closePopup}
@@ -73,7 +73,7 @@ const LeaderBoard = () => {
           Students Leader Board
         </div>
 
-        <div style={{ padding: "2%"}}>
+        <div style={{ padding: "2%" }}>
           <div
             style={{
               display: "flex",
@@ -84,7 +84,7 @@ const LeaderBoard = () => {
               height: "10%",
             }}
           >
-            <div style={{ width: "10%"  }}>Rank</div>
+            <div style={{ width: "10%" }}>Rank</div>
             <div
               style={{
                 textAlign: "center",

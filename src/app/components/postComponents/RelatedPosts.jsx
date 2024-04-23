@@ -31,7 +31,7 @@ const RelatedPosts = ({ posts }) => {
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             transition: "transform 0.3s ease-in-out",
             background:
-              "linear-gradient(90deg, rgba(12,12,12,1) 6%, rgba(54,54,54,1) 50%, rgba(18,18,18,1) 100%)",
+              "linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)",
           }}
         >
           <Link

@@ -143,7 +143,7 @@ const Notification = () => {
                 }}
                 key={notification.id}
                 className={`text-xs md:text-xl font-inter flex flex-col items-center space-y-2 p-1 m-1 w-full h-auto ${
-                  isDateSelectedNotification(notification.created_at) ? 'bg-[#05223f]' : 'bg-gradient-to-b from-indigo-900 via-indigo-700 to-indigo-900'
+                  isDateSelectedNotification(notification.created_at) ? 'bg-[#05223f]' : 'bg-gradient-to-br from-[rgba(3,4,57,1)] via-[rgba(32,33,96,1)] to-[rgba(3,4,57,1)] h-32 w-64'
                 } rounded-lg p-4 m-4 ml-8 font-sans max-w-[88%] ${
                   notification.expanded ? 'h-auto' : 'h-fit-content'
                 } shadow-lg text-base`}

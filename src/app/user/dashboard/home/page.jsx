@@ -167,8 +167,8 @@ const HomePage = () => {
               >
                 {userInfo != null ? (
                   <Image
-                    width="94"
-                    height="94"
+                    width={500}
+                    height={500}
                     loading="lazy"
                     src={userInfo?.user.img == null ? "" : userInfo?.user.img}
                     alt="user Image"
@@ -239,18 +239,10 @@ const HomePage = () => {
             >
               <RadarChart props={userScores && userScores?.radar_chart} />
               <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci ducimus rem iusto sapiente iure aliquam quam, fugit
-                dolor, recusandae sunt cum doloribus ullam voluptate illo, vitae
-                nulla quis rerum. Earum? Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Nostrum iure consequuntur sequi tempore
-                deserunt atque minus libero voluptatibus incidunt aperiam
-                sapiente facilis repellat delectus at dolore error, blanditiis
-                esse facere? Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Omnis officiis aperiam consectetur perferendis magnam in
-                labore expedita blanditiis nemo libero saepe reprehenderit
-                necessitatibus enim dolores rem perspiciatis earum, assumenda
-                illo?
+                Welcome to our platform! We aim to provide you with the best
+                experience possible. Explore our features, connect with peers,
+                and stay updated with the latest notifications. Let's make
+                learning and collaboration easier together!
               </div>
             </div>
           ) : null}
@@ -259,7 +251,7 @@ const HomePage = () => {
         <div>
           <div
             style={{
-              color: "white",
+              color: "#00ff00",
               fontSize: "20px",
               fontWeight: "bold",
               width: "100%",
@@ -279,7 +271,7 @@ const HomePage = () => {
                 borderRadius: "10px",
                 // boxShadow: "3px 3px 5px 0px rgba(163, 16, 255, 0.695)",
                 boxShadow:
-                "5px 5px 10px rgb(77,81,83),-5px -5px 10px rgb(77,81,83)",
+                  "5px 5px 10px rgb(77,81,83),-5px -5px 10px rgb(77,81,83)",
                 marginTop: "5%",
                 margin: "2%",
                 padding: "2%",

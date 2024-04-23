@@ -90,7 +90,7 @@ const UpdatePost = ({ postId, postDetails }) => {
         padding: "20px",
         scrollBehavior: "smooth",
         maxHeight: "100%",
-        background: "#2b2b2b",
+        background: "#030439",
         fontFamily: "sans-serif",
         color: "#C7C7D1",
         wordSpacing: "2px",
@@ -114,7 +114,7 @@ const UpdatePost = ({ postId, postDetails }) => {
     alignItems: 'center'       
 }}>Edit your post</div>
 
-      <div style={{ maxWidth: "70%", margin: "0 auto" }}>
+      <div style={{ maxWidth: "70%", margin: "0 auto" , backgroundColor:'linear-gradient(153deg, rgba(3,4,57,1) 0%, rgba(32,33,96,1) 51%, rgba(3,4,57,1) 100%)' }}>
         <div
           key={postDetails.id}
           style={{

@@ -111,25 +111,6 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/user/dashboard/collageInfo">
-            <div
-              className="dot"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: "2rem",
-              }}
-              onMouseOver={() => handleMouseOver("info")}
-              onMouseOut={() => handleMouseOut("info")}
-            >
-              <div id="icon" style={getIconStyle("info")}>
-                <FaInfoCircle title=" Collage Info" />
-              </div>
-            </div>
-          </Link>
-        </li>
-        <li>
           <Link href="/user/dashboard/notification">
             <div
               className="dot"
@@ -144,6 +125,25 @@ const NavBar = () => {
             >
               <div id="icon" style={getIconStyle("notifications")}>
                 <IoNotificationsCircle title="Notice Board" />
+              </div>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link href="/user/dashboard/collageInfo">
+            <div
+              className="dot"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+              onMouseOver={() => handleMouseOver("info")}
+              onMouseOut={() => handleMouseOut("info")}
+            >
+              <div id="icon" style={getIconStyle("info")}>
+                <FaInfoCircle title=" Collage Info" />
               </div>
             </div>
           </Link>
